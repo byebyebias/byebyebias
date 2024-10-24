@@ -53,7 +53,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'myproject.urls'
+ROOT_URLCONF = 'backend.myproject.urls'
 CORS_ALLOW_ALL_ORIGINS = True
 TEMPLATES = [
     {

@@ -2,3 +2,7 @@ backend/api/__pycache__
 backend/venv
 backend/api/migrations/__pycache__
 .venv
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml

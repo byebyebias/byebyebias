@@ -65,7 +65,7 @@ jobs:
         run: npm run test  
 
   build-frontend:
-    needs: [frontend-tests]
+    needs: frontend-tests
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -84,47 +84,3 @@ jobs:
       - name: Run frontend build
         working-directory: frontend
         run: npm run build  
-
-  # build-backend:
-  #   needs: [backend-tests]
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Checkout code
-  #       uses: actions/checkout@v3
-
-  #     - name: Set up Python
-  #       uses: actions/setup-python@v4
-  #       with:
-  #         python-version: 3.9
-
-  #     - name: Install Python dependencies
-  #       working-directory: backend
-  #       run: |
-  #         python -m pip install --upgrade pip
-  #         pip install -r requirements.txt
-
-  #     - name: Run backend build
-  #       working-directory: backend
-  #       run: |
-  #         python manage.py collectstatic
-
-  # deploy:
-  #   needs: build
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Deploy to AWS
-  #       uses: aws-actions/configure-aws-credentials@v3
-  #       with:
-  #         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-  #         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-  #         aws-region: us-east-1  # Update to your region
-
-  #     - name: Deploy backend to AWS Elastic Beanstalk or EC2
-  #       run: |
-  #         # Add deployment scripts to deploy the Django backend
-  #         # Example for Elastic Beanstalk:
-  #         eb deploy --staged
-
-  #     - name: Deploy frontend to S3 (if applicable)
-  #       run: |
-  #         aws s3 sync frontend/build s3://your-s3-bucket-name --delete

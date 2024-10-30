@@ -1,0 +1,27 @@
+.footer {
+    /* Footer Container */
+
+    position: absolute;
+    height: 141px;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    border-radius: 0px;
+
+    background: #E6EEF5;
+
+    /* Text */
+
+    position: absolute;
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 42px;
+    text-align: center;
+
+    color: #000000;
+
+
+}

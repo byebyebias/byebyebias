@@ -2,4 +2,10 @@
 Django==4.2.5
 djangorestframework==3.14.0
 django-cors-headers==3.14.0
-gunicorn
+gunicorn 
+
+# pytest
+pytest>=7.0 
+pytest_django>=4.0 
+coverage>=6.0
+pytest-cov>=3.0

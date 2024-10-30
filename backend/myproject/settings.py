@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-x3fij+2l8@8%wev4wvlb6k5*6)qi_#tvotkq+%x_qa^%_=!7yw
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost','test-4.eba-r3rnw3kr.us-west-2.elasticbeanstalk.com']
 
 
 # Application definition
@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'corsheaders',
     'rest_framework',
-    'api'
+    'backend.api'
 ]
 
 MIDDLEWARE = [
@@ -53,7 +53,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'myproject.urls'
+ROOT_URLCONF = 'backend.myproject.urls'
 CORS_ALLOW_ALL_ORIGINS = True
 TEMPLATES = [
     {
@@ -71,7 +71,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'myproject.wsgi.application'
+WSGI_APPLICATION = 'backend.myproject.wsgi.application'
 
 
 # Database

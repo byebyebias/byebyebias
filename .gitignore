@@ -1,5 +1,6 @@
 **/__pycache__/
 backend/venv/
+backend/api/metrics/venv
 .venv
 # Elastic Beanstalk Files
 .elasticbeanstalk/*

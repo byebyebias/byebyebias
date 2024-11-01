@@ -46,13 +46,13 @@ def get_average_odds(truth_df, prediction_df, label_name, protected_attribute="S
 
 
 dataTrue = {
-    'Sender_Gender': [0, 1, 0, 1],
-    'Fraud_Result': [0, 1, 1, 0]
+    'Sender_Gender': [1, 0, 1, 0],
+    'Fraud_Result': [1, 0, 0, 1]
 }
 
 dataPred = {
-    'Sender_Gender': [0, 1, 0, 1],
-    'Fraud_Result': [1, 0, 1, 0]
+    'Sender_Gender': [1, 0, 1, 0],
+    'Fraud_Result': [0, 1, 0, 1]
 }
 
 dfTrue = pd.DataFrame(dataTrue)

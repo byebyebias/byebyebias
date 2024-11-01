@@ -10,7 +10,7 @@ First, run `pip install -r requirements.txt`.
 
 #### Backend
 `cd backend`  
-`python manage.py runserver`
+`python manage.py runserver` or `python3 manage.py runserver`
 
 #### Frontend
 `cd frontend`  

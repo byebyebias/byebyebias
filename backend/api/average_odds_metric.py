@@ -2,8 +2,8 @@ import pandas as pd
 from aif360.datasets import BinaryLabelDataset
 from aif360.metrics import MDSSClassificationMetric
 
-# privileged is 0 for man
-# unprivileged is 1 for woman
+# privileged is 1 for man
+# unprivileged is 0 for woman
 # 'Is_Fraud': [0, 1, 1, 0],
 # 'Predicted_Fraud': [1, 0, 1, 0],
 
@@ -20,16 +20,16 @@ def get_average_odds(truth_df, prediction_df, label_name, protected_attribute="S
         df=truth_df,
         label_names=[label_name],
         protected_attribute_names=[protected_attribute],
-        favorable_label=0,
-        unfavorable_label=1,
+        favorable_label=1,
+        unfavorable_label=0,
     )
 
     predicted_data = BinaryLabelDataset(
         df=prediction_df,
         label_names=[label_name],
         protected_attribute_names=[protected_attribute],
-        favorable_label=0,
-        unfavorable_label=1
+        favorable_label=1,
+        unfavorable_label=0
     )
 
     metric = MDSSClassificationMetric(
@@ -46,12 +46,12 @@ def get_average_odds(truth_df, prediction_df, label_name, protected_attribute="S
 
 
 dataTrue = {
-    'Sender_Gender': [1, 0, 1, 0],
+    'Sender_Gender': [0, 1, 0, 1],
     'Fraud_Result': [0, 1, 1, 0]
 }
 
 dataPred = {
-    'Sender_Gender': [1, 0, 1, 0],
+    'Sender_Gender': [0, 1, 0, 1],
     'Fraud_Result': [1, 0, 1, 0]
 }
 

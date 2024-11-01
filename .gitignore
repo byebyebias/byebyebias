@@ -5,6 +5,7 @@ backend/api/migrations/__pycache__
 frontend/coverage/
 **/__pycache__/
 backend/venv/
+backend/api/metrics/venv
 .venv
 # Elastic Beanstalk Files
 .elasticbeanstalk/*

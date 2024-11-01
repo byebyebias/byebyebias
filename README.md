@@ -6,14 +6,17 @@ Thank you to the University of Toronto's Focus in Technology Leadership teaching
 
 
 ##  🏃 Running Our Project
-#### Frontend
-cd frontend
-npm run dev
-Hosting: https://main.d1wqrmdy4z9wpu.amplifyapp.com/
+First, run `pip install -r requirements.txt`.
 
 #### Backend
-cd backend
-python manage.py runserverHosting: 
+`cd backend`  
+`python manage.py runserver` or `python3 manage.py runserver`
+
+#### Frontend
+`cd frontend`  
+`npm run dev`  
+
+Frontend is hosted on https://main.d1wqrmdy4z9wpu.amplifyapp.com/
 
 #### Testing
 Backend
@@ -31,14 +34,14 @@ run frontend tests with the command
 `npm run test`
 
 ##  🌎 Our Mission   
-ByeByeBias strives to spot and recommend fixes to reduce bias in AI fraud detection, building trust in financial services for everyone. We believe everyone deserves fair access to financial tools, especially underserved communities. 
+Bye Bye Bias strives to spot and recommend fixes to reduce bias in AI fraud detection, building trust in financial services for everyone. We believe everyone deserves fair access to financial tools, especially underserved communities. 
 
 ## ⭐️ Our Approach 
-With the click of a button, AI engineers can input financial datasets onto our platform!
+With the click of a button, ML engineers can input financial datasets onto our platform!
 
 We then
-- Detect and provide visualizations better understand discrepancies 
-- Assign data a grade from A-F
+- Detect and provide visualizations to better understand discrepancies 
+- Assign data a grade from A to F
 
 ## 🖥 Tech Stack  
 - **Backend:** Django 

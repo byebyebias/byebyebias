@@ -2,23 +2,18 @@ import {
     Typography,
     Stack,
  } from "@mui/material"
-import { useEffect } from "react"
 import Overview from "../../components/dashboard-components/Overview/Overview"
-
-const data = {
-    bias_score: "C+",
-    top_percentile: 50,
-    top_category: "ABC",
-    improvement_area: "BCD",
-}
+import GraphGrid from "../../components/dashboard-components/GraphGrid/GraphGrid"
+import { dataOverview, dataGraphs, dataset_name } from "./data"
 
 function DashboardPage() { 
 
     return (
-        <Stack sx={{p:20}}>
-            <Typography variant="h3">Dashboard</Typography>
-            <Overview/>
-            
+        <Stack p={20}>
+            <Typography variant="body2" pb={3}>{dataset_name}</Typography>
+            <Typography variant="h3" pb={3}>Dashboard</Typography>
+            <Overview data={dataOverview}/>
+            <GraphGrid graphsInfo={dataGraphs}/>
 
         </Stack>
     )

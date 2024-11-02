@@ -1,6 +1,12 @@
-import Grid from "@mui/material/Grid2";
-import { Container, Box } from "@mui/material";
-import BarChart from "../BarChart/BarChart";
+const dataOverview = {
+    bias_score: "C+",
+    top_percentile: 50,
+    top_category: "ABC",
+    improvement_areas: ["BCD", "CDE"],
+}
+
+const dataset_name = "your_dataset.csv"
+
 
 const dataGraphs = [
     {
@@ -78,19 +84,4 @@ const dataGraphs = [
 
 ]
 
-function GraphGrid({graphsInfo}) {
-    return (
-        <Container sx={{display: 'inline-block'}}>
-            <Grid container spacing={2}>
-                {dataGraphs.map( (graphInfo, index) => 
-                    <Grid style={{ minWidth: "350px" }} >
-                        <BarChart graphInfo={graphInfo.values} title={graphInfo.title}/>
-                    </Grid>
-                )}
-
-            </Grid>
-        </Container>
-    )    
-}
-
-export default GraphGrid
+export { dataOverview, dataGraphs, dataset_name }

@@ -1,5 +1,18 @@
-export default function DashboardPage() {
+import { 
+    Typography,
+    Stack,
+ } from "@mui/material"
+
+import Overview from "../../components/dashboard-components/Overview/Overview"
+
+
+function DashboardPage() {
     return (
-        <div>Hello World</div>
+        <Stack>
+            <Typography variant="h1">Dashboard</Typography>
+            <Overview/>
+        </Stack>
     )
 }
+
+export default DashboardPage

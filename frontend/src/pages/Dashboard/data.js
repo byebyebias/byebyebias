@@ -33,15 +33,15 @@ const dataGraphs = [
 
             {
             "protected_attribute": "Gender",
-            "score": 100,
+            "score": -1,
             },
             {
                 "protected_attribute": "Race",
-                "score": 50,
+                "score": -3,
             },
             {
                 "protected_attribute": "Age",
-                "score": 75,
+                "score": -0.5,
             },
         ]
     },

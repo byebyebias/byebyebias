@@ -2,6 +2,7 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import App from './App.js'
 import './index.css'
+import { createTheme, ThemeProvider } from '@mui/material'
 
 // Trying react router stuff here
 import DashBoardPage from "./pages/Dashboard"
@@ -15,7 +16,6 @@ const router = createBrowserRouter([
 ])
 
 
-
 // React router stuff ends here
 
 const rootElement = document.getElementById('root')!;
@@ -23,7 +23,6 @@ const rootElement = document.getElementById('root')!;
 createRoot(rootElement).render(
   <StrictMode>
     {/* <App /> */}
-    <RouterProvider router={router}/>
-
+      <RouterProvider router={router}/>
   </StrictMode>,
 )

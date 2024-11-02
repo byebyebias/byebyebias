@@ -2,16 +2,15 @@ import { Typography } from "@mui/material";
 import { ResponsiveBar } from "@nivo/bar";
 
 
-const BarChart = ({ data, title }) => (
+const BarChart = ({ data }) => (
         <div style={{height: "300px"}}>
-            <Typography variant="body1" textAlign={"center"}>{title}</Typography>
             <ResponsiveBar
                 data={data}
                 keys={[
                     'score'
                 ]}
                 indexBy="protected_attribute"
-                margin={{ top: 50, right: 130, bottom: 50, left: 60 }}
+                margin={{ top: 50, right:50, bottom: 50, left: 60 }}
                 padding={0.3}
                 valueScale={{ type: 'linear' }}
                 indexScale={{ type: 'band', round: true }}

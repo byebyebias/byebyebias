@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-x3fij+2l8@8%wev4wvlb6k5*6)qi_#tvotkq+%x_qa^%_=!7yw
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost','test-4.eba-r3rnw3kr.us-west-2.elasticbeanstalk.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost','test-4.eba-r3rnw3kr.us-west-2.elasticbeanstalk.com', 'https://tripleb-test2-a4c9d334fe4e.herokuapp.com/']
 
 
 # Application definition

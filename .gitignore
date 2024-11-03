@@ -9,7 +9,6 @@ frontend/coverage/
 backend/venv/
 backend/api/metrics/venv
 .venv
-# Elastic Beanstalk Files
-.elasticbeanstalk/*
-!.elasticbeanstalk/*.cfg.yml
-!.elasticbeanstalk/*.global.yml
+.env
+myenv/
+node_modules

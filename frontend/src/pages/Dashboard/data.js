@@ -1,9 +1,10 @@
 const dataOverview = {
-    bias_score: "C+",
     top_percentile: 50,
     top_category: "ABC",
     improvement_areas: ["BCD", "CDE"],
 }
+
+const dataScore = "C+"
 
 const dataset_name = "your_dataset.csv"
 
@@ -84,4 +85,4 @@ const dataGraphs = [
 
 ]
 
-export { dataOverview, dataGraphs, dataset_name }
+export { dataScore, dataOverview, dataGraphs, dataset_name }

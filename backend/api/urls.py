@@ -4,5 +4,6 @@ from .views import statistical_parity
 
 urlpatterns = [
     path('hello/', hello_world, name='hello_world'),
-    path('spd/', statistical_parity, name='spd')
+    path('spd/', statistical_parity, name='spd'), 
+     path('upload/', upload_file, name="upload_file")
 ]

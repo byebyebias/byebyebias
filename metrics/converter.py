@@ -32,9 +32,9 @@ class Converter:
         self.df['sender_race'] = self.df['sender_race'].map(race_map)
 
         # encode the 'gender' column
-        sex_map = {'Male': 1, 'Female': 0} # placeholder
-        self.df['receiver_gender'] = self.df['receiver_gender'].map(sex_map)
-        self.df['sender_gender'] = self.df['sender_gender'].map(sex_map)
+        gender_map = {'Male': 1, 'Female': 0} # placeholder
+        self.df['receiver_gender'] = self.df['receiver_gender'].map(gender_map)
+        self.df['sender_gender'] = self.df['sender_gender'].map(gender_map)
 
         self.df = self.df.drop(columns=[c for c in self.df.columns if c not in ['sender_gender', 'receiver_gender', 'sender_race', 'receiver_race', 'is_fraud', 'predicted_fraud']])
 

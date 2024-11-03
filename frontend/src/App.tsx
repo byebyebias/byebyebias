@@ -1,13 +1,14 @@
 import { useState } from "react";
 import "./App.css";
 import React from "react";
+const apiUrl = `${import.meta.env.VITE_API_URL}/api/hello/`;
 
 function App() {
   const [message, setMessage] = useState("");
 
   const fetchMessage = async () => {
     try {
-      const response = await fetch("${import.meta.env.VITE_API_URL}/api/hello/");
+      const response = await fetch(apiUrl);
       const data = await response.json();
       setMessage(data.message);
     } catch (error) {

@@ -6,6 +6,7 @@ import Button from './components/Button/Button';
 import Footer from './components/Footer/Footer';
 import HeroSection from './components/HeroSection/HeroSection';
 import ProcessStep from './components/ProcessStep/ProcessStep';
+import logo from './images/Square_Cash_app_logo.png'; 
 
 const App: React.FC = () => {
   const [message, setMessage] = useState<string>("");
@@ -16,7 +17,15 @@ const App: React.FC = () => {
   };
 
   return (
+    
     <div className="App">
+
+      <div className="sticky-logo">
+        <img src={logo} alt="Logo" />
+      </div>
+
+      <h1 className="title">BYE BYE BIAS</h1>
+
       {/* Hero Section */}
       <HeroSection 
           heading="Target fraud detection bias at the source." 

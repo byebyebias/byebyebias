@@ -114,6 +114,12 @@ button:focus-visible {
 /* App.css or Footer.css */
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap');
+@font-face {
+  font-family: 'Agarndir Grand Heavy';
+  src: url('./fonts/agrandir-grand-heavy.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
 
 .App {
   display: flex;
@@ -130,4 +136,28 @@ button:focus-visible {
   padding-left: 50px; 
   font-size: 18px;
   color: #ff1b1b; 
+}
+
+.title {
+  margin: 300px;
+  font-family: 'Agarndir Grand Heavy', sans-serif;  
+  font-style: normal;
+  font-weight: 700;
+  font-size: 75px;
+  line-height: 91px;
+  text-align: center;
+
+  color: #000000;
+}
+
+.sticky-logo {
+  position: fixed; 
+  top: 30px; 
+  right: 50px; 
+  z-index: 1000; 
+}
+
+.sticky-logo img {
+  width: 60px;
+  height: auto; 
 }

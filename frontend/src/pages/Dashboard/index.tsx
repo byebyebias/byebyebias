@@ -12,7 +12,7 @@ function DashboardPage() {
         <Stack p={20}>
             <Typography variant="body2" pb={3}>{dataset_name}</Typography>
             <Typography variant="h3" pb={3}>Dashboard</Typography>
-            <Overview data={dataOverview}/>
+            {/* <Overview data={dataOverview}/> */}
             <GraphGrid graphsInfo={dataGraphs}/>
 
         </Stack>

@@ -1,26 +1,28 @@
-
 import pandas as pd
 from aif360.metrics import MDSSClassificationMetric
 from aif360.datasets import BinaryLabelDataset
 
-# Store sample dataset as dataframe
-# Dataset contains binary values
-df = pd.read_csv("./data/example_data.csv")
 
-label_names = ["Is_Fraud"]
+def spd(filename: str):
 
-# attribute to analyze bias for
-protected_attribute_names = ["Sender_Gender"]
+    # Store sample dataset as dataframe
+    # Dataset contains binary values
+    df = pd.read_csv("./data/example_data.csv")
 
-# This dataset analyzes ground truth values
-dataset = BinaryLabelDataset(df=df, label_names=label_names, protected_attribute_names=protected_attribute_names, favorable_label=1, unfavorable_label=0)
+    label_names = ["Is_Fraud"]
 
-# Modifies original dataset to contain only predictions
-classified_dataset = dataset.copy()
-classified_dataset.labels = df['Predicted_Fraud'].values.reshape(-1, 1)
+    # attribute to analyze bias for
+    protected_attribute_names = ["Sender_Gender"]
 
-# Compares ground truth values to predicted values
-metric = MDSSClassificationMetric(dataset=dataset, classified_dataset=classified_dataset, unprivileged_groups=[{'Sender_Gender': 0}], privileged_groups=[{'Sender_Gender': 1}])
-statistical_parity_difference = metric.statistical_parity_difference()
+    # This dataset analyzes ground truth values
+    dataset = BinaryLabelDataset(df=df, label_names=label_names, protected_attribute_names=protected_attribute_names, favorable_label=1, unfavorable_label=0)
 
-print("Statistical Parity Difference:", statistical_parity_difference)
+    # Modifies original dataset to contain only predictions
+    classified_dataset = dataset.copy()
+    classified_dataset.labels = df['Predicted_Fraud'].values.reshape(-1, 1)
+
+    # Compares ground truth values to predicted values
+    metric = MDSSClassificationMetric(dataset=dataset, classified_dataset=classified_dataset, unprivileged_groups=[{'Sender_Gender': 0}], privileged_groups=[{'Sender_Gender': 1}])
+    statistical_parity_difference = metric.statistical_parity_difference()
+
+    return [{"attribute": protected_attribute_name, "metric_value": statistical_parity_difference} for protected_attribute_name in protected_attribute_names]

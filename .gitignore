@@ -11,3 +11,4 @@ backend/api/metrics/venv
 .venv
 .env
 myenv/
+node_modules

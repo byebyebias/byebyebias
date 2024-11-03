@@ -1,5 +1,0 @@
-# requirements.txt
-Django==4.2.5
-djangorestframework==3.14.0
-django-cors-headers==3.14.0
-gunicorn

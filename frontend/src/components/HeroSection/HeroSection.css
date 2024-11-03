@@ -1,0 +1,31 @@
+.hero-heading {
+    /* Target fraud detection bias at the source. */
+
+    width: 738px;
+    height: 273px;
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 75px;
+    line-height: 91px;
+
+    color: #000000;
+
+}
+
+.hero-body {
+    /* Some sort of subtitle text here. Check out our handy guide ↓ if you need any help! */
+
+    width: 718px;
+    height: 84px;
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 35px;
+    line-height: 42px;
+
+    color: #000000;
+
+}

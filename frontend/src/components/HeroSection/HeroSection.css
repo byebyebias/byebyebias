@@ -1,8 +1,17 @@
+
+.hero-section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
 .hero-heading {
     /* Target fraud detection bias at the source. */
 
     width: 738px;
-    height: 273px;
+    height: 200px;
+    margin: 0;
 
     font-family: 'Montserrat';
     font-style: normal;
@@ -11,6 +20,7 @@
     line-height: 91px;
 
     color: #000000;
+    
 
 }
 
@@ -27,5 +37,7 @@
     line-height: 42px;
 
     color: #000000;
+    margin: 0; 
+    margin-bottom: 25px; 
 
 }

@@ -111,3 +111,15 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 } */
+/* App.css or Footer.css */
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensure the app takes full height */
+}
+
+.footer {
+  margin-top: auto; /* Pushes footer to the bottom */
+  padding: 10px; /* Add some padding for spacing */
+}
+

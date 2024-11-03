@@ -122,7 +122,12 @@ button:focus-visible {
 }
 
 .footer {
-  margin-top: auto; /* Pushes footer to the bottom */
-  padding: 10px; /* Add some padding for spacing */
+  margin-top: auto; 
+  padding: 10px; 
 }
-
+.message {
+  font-family: 'Montserrat';
+  padding-left: 50px; 
+  font-size: 18px;
+  color: #ff1b1b; 
+}

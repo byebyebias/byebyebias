@@ -4,13 +4,15 @@
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
+    margin: 50px 50px;
+
 }
 
 .hero-heading {
     /* Target fraud detection bias at the source. */
 
     width: 738px;
-    height: 200px;
+    height: 300px;
     margin: 0;
 
     font-family: 'Montserrat';
@@ -28,7 +30,7 @@
     /* Some sort of subtitle text here. Check out our handy guide ↓ if you need any help! */
 
     width: 718px;
-    height: 84px;
+    height: 100px;
 
     font-family: 'Montserrat';
     font-style: normal;

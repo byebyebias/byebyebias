@@ -1,6 +1,7 @@
 from django.urls import path
 from .views import hello_world
 from .views import statistical_parity
+from .views import upload_file
 
 urlpatterns = [
     path('hello/', hello_world, name='hello_world'),

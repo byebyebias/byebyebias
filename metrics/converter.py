@@ -65,17 +65,10 @@ class Converter:
         df = self.df.drop(columns=['is_fraud'])
         return df
     
-    def find_priv(self, category: str):
-        # find the group with the most number of FPs
-        match category:
-            case "gender":
-                fp_count = self.df[(self.df['is_fraud'] == 0) & (self.df['predicted_fraud'] == 1)].groupby('sender_gender').size().   sort_values(ascending=False)
-                return fp_count.index[0]
-            case "race":
-                fp_count = self.df[(self.df['is_fraud'] == 0) & (self.df['predicted_fraud'] == 1)].groupby('sender_race').size().   sort_values(ascending=False)
-                print(fp_count)
-                return fp_count.index[0]
-            case "location":
-                pass
-
+    def find_priv(self, column: str):
+        # column in table, eg. sender_gender, sender_race 
+        # finds the group with the most number of FPs
+        fp_count = self.df[(self.df['is_fraud'] == 0) & (self.df['predicted_fraud'] == 1)].groupby().size().sort_values(ascending=False)
+        return fp_count.index[0]
+        
 df = Converter('transaction_triple_b.parquet')

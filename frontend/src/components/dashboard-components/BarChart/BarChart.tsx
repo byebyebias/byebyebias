@@ -3,6 +3,7 @@ import { ResponsiveBar } from "@nivo/bar";
 import React from 'react';
 
 
+
 const BarChart = ({ data }) => (
         <div style={{height: "300px"}}>
             <ResponsiveBar
@@ -16,6 +17,7 @@ const BarChart = ({ data }) => (
                 valueScale={{ type: 'linear' }}
                 indexScale={{ type: 'band', round: true }}
                 colors={() => "#00CF31"}
+
                 borderColor={{
                     from: 'color',
                     modifiers: [

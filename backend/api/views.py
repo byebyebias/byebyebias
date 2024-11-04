@@ -5,6 +5,8 @@ from backend.actions.bias_metrics import get_bias_metrics
 from backend.actions.converter import Converter
 from backend.metrics.statistical_parity_difference import spd
 from backend.api.mockBiasMetrics import BiasMetrics
+import pandas as pd
+from django.core.files.storage import default_storage
 
 @api_view(['GET'])
 def hello_world(request):
@@ -69,3 +71,22 @@ def statistical_parity(request):
     
     # Assuming processed_data is in the correct format to be returned
     return Response(processed_data)  # Return the processed data as JSON
+
+@api_view(['POST'])
+def upload_file(request):
+    if 'file' in request.FILES:
+        uploaded_file = request.FILES['file']
+        file_name = default_storage.save(uploaded_file.name, uploaded_file)
+        file_path = default_storage.path(file_name)
+
+        try:
+            df = pd.read_parquet(file_path)
+            print(df.head())  # For example, print first few rows
+
+            # Return a success response with some relevant info if needed
+            return Response({'status': 'success', 'message': 'File processed successfully'})
+
+        except Exception as e:
+            return Response({'status': 'error', 'message': str(e)})
+
+    return Response({'status': 'error', 'message': 'No file provided or invalid request'})

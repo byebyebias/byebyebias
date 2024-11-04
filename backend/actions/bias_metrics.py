@@ -13,7 +13,7 @@ def calculate_bias_metrics(true_df, pred_df, protected_attribute) -> dict[str: f
     pred_dataset = BinaryLabelDataset(favorable_label=1, unfavorable_label=0, df=pred_df, label_names=['fraud_result'], protected_attribute_names=[protected_attribute])
     metric = MDSSClassificationMetric(true_dataset, pred_dataset, privileged_groups=[{protected_attribute: 1.0}], unprivileged_groups=[{protected_attribute: 0.0}])
 
-    # metrics['Disparate Impact'] = round(float(metric.disparate_impact()), 2)
+    metrics['Disparate Impact'] = round(float(metric.disparate_impact()), 2)
     metrics['Disparate Impact'] = metric.disparate_impact()
     metrics['Statistical Parity Difference'] = round(float(metric.statistical_parity_difference()), 2)
     metrics['Average Odds Difference'] = round(float(metric.average_odds_difference()), 2)

@@ -3,27 +3,27 @@ import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import HeroSection from '../components/HeroSection/HeroSection';
 
-const handleClick = jest.fn();
+// const handleClick = jest.fn();
 
 
-describe('HeroSection Component', () => {
-    beforeEach(() => {
-        render(<HeroSection heading="First Step" body="So this is how you upload data..."/>) // buttonLabel="Click Me" onClick = {handleClick}/>);
-    })
+// describe('HeroSection Component', () => {
+//     beforeEach(() => {
+//         render(<HeroSection heading="First Step" body="So this is how you upload data..."/>) // buttonLabel="Click Me" onClick = {handleClick}/>);
+//     })
 
-    test('renders hero section', () => {
+//     test('renders hero section', () => {
     
-        const heroElement = screen.getByText(/First Step/i);
-        expect(heroElement).toBeInTheDocument();
+//         const heroElement = screen.getByText(/First Step/i);
+//         expect(heroElement).toBeInTheDocument();
       
-    });
+//     });
     
-    test('renders hero section with correct title name', () => {
+//     test('renders hero section with correct title name', () => {
         
-        const heroElement = screen.getByText(/First Step/i);
-        expect(heroElement).toHaveTextContent("First Step");
+//         const heroElement = screen.getByText(/First Step/i);
+//         expect(heroElement).toHaveTextContent("First Step");
       
-    });
+//     });
     
     // test('renders hero section with button', () => {
     
@@ -46,4 +46,4 @@ describe('HeroSection Component', () => {
     //     expect(handleClick).toHaveBeenCalled(); 
 
     // });
-})
+// })

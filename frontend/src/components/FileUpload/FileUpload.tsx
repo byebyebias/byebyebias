@@ -1,13 +1,23 @@
 // src/components/FileUpload.tsx
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
+import Button from "../Button/Button";
 
 const FileUpload = () => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
 
+  
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files) {
       setSelectedFile(event.target.files[0]);
     }
+  };
+
+
+  // triggers file input by calling fileInputRef
+  const handleButtonClick = () => {
+    fileInputRef.current?.click(); 
+    handleSubmit();
   };
 
   const handleSubmit = async () => {
@@ -34,8 +44,15 @@ const FileUpload = () => {
 
   return (
     <div>
-      <input type="file" accept=".parquet" onChange={handleFileChange} />
-      <button onClick={handleSubmit}>Upload</button>
+
+      <input
+        type="file"
+        accept=".parquet"
+        ref={fileInputRef}
+        onChange={handleFileChange}
+        style={{ display: "none" }}
+      />
+      <Button label="Upload Data >" onClick={handleButtonClick}/>
     </div>
   );
 };

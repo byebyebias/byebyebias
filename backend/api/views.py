@@ -11,20 +11,17 @@ def hello_world(request):
 
 @api_view(["GET"])
 def get_dashboard_data(request):
-    TEMP_TEST_FILE = "/Users/michelle/UofT_Stuff/Year2/CSC207/tripleb/backend/api/transaction_triple_b.parquet"
+    TEMP_TEST_FILE = "backend/api/transaction_triple_b.parquet"
     PROTECTED_ATTRIBUTE = 'sender_race'
 
     fileConverter = Converter(TEMP_TEST_FILE)
-    print(        type(fileConverter.get_true_df()))
-    print(        type(fileConverter.get_pred_df()))
-
+  
     # Format is {metric: float}
     bias_metrics = get_bias_metrics(
         fileConverter.get_true_df(), 
         fileConverter.get_pred_df(), 
         PROTECTED_ATTRIBUTE
     )
-    print(bias_metrics)
 
     return Response({
             "file_name": TEMP_TEST_FILE,

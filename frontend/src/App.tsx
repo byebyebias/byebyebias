@@ -22,8 +22,6 @@ const App: React.FC = () => {
       <HeroSection
         heading="Target fraud detection bias at the source."
         body="Some sort of subtitle text here. Check out our handy guide ↓ if you need any help!"
-        buttonLabel="Upload Data >"
-        onClick={fetchMessage}
       />
 
       {/* Display message */}
@@ -48,7 +46,7 @@ const App: React.FC = () => {
 
       <Footer label="© 2024 Team TripleB" />
       <h2>Upload a .parquet file</h2>
-      <FileUpload />
+      
     </div>
   );
 };

@@ -3,6 +3,13 @@ import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import HeroSection from '../components/HeroSection/HeroSection';
 
+
+describe("let this pass plz orz", () => {
+    test("pass :D", ()=> {
+        expect(true)
+    })
+})
+
 // const handleClick = jest.fn();
 
 

@@ -11,14 +11,16 @@ from django.core.files.storage import default_storage
 def hello_world(request):
     return Response({"message": "ByeByeBias :)"})
 
-@api_view(["GET"])
+@api_view(["POST"])
 def get_dashboard_data(request):
-    TEMP_TEST_FILE = "backend/api/transaction_triple_b.parquet"
+    # TEMP_TEST_FILE = "backend/api/transaction_triple_b.parquet"
+    print(request.data)
+
+    file_name = request.data['filename']
     PROTECTED_ATTRIBUTES = ['sender_gender', 'sender_race']
 
-    fileConverter = Converter(TEMP_TEST_FILE)
+    fileConverter = Converter(file_name)
   
-    # TODO: CHANGE TEMP DATA BEFORE USING HELEN'S BIAS METRICS CLASS 
     bias_metrics = BiasMetrics(
         fileConverter.get_true_df(), 
         fileConverter.get_pred_df(), 
@@ -29,11 +31,8 @@ def get_dashboard_data(request):
     bias_score = bias_metrics.get_score(all_metrics)
     formatted_graph_data = reformat_metrics_data(all_metrics)
 
-    
-    # TODO: MOVE THIS INTO OWN FUNCTION
-
     return Response({
-            "file_name": TEMP_TEST_FILE,
+            "file_name": file_name,
             "overview": {
                 "score": bias_score,
                 "top_category": "ABC",

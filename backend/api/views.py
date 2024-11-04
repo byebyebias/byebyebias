@@ -1,10 +1,9 @@
 from django.shortcuts import render
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from backend.actions.bias_metrics import get_bias_metrics
 from backend.actions.converter import Converter
 from backend.metrics.statistical_parity_difference import spd
-from backend.api.mockBiasMetrics import BiasMetrics
+from backend.actions.bias_metrics import BiasMetrics
 import pandas as pd
 from django.core.files.storage import default_storage
 
@@ -27,7 +26,7 @@ def get_dashboard_data(request):
     )
 
     all_metrics = bias_metrics.get_all_bias_metrics()
-    bias_score = bias_metrics.get_score()
+    bias_score = bias_metrics.get_score(all_metrics)
     formatted_graph_data = reformat_metrics_data(all_metrics)
 
     

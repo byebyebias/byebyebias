@@ -3,6 +3,8 @@ import Button from '../Button/Button'; // Import the button component
 import './HeroSection.css';
 import FileUpload from '../FileUpload/FileUpload';
 
+type setState = (filename: string) => void;
+
 type HeroSectionProps = {
     heading: string;
     body: string;

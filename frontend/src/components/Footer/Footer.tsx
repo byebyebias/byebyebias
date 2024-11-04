@@ -1,3 +1,4 @@
+// src/components/Footer/Footer.tsx
 import React from 'react';
 import './Footer.css';
 
@@ -5,12 +6,11 @@ type FooterProps = {
     label: string;
 }
 
-const Footer:React.FC<FooterProps> = ({ label }) => {
+const Footer: React.FC<FooterProps> = ({ label }) => {
     return (
-        <button 
-            className="footer">
+        <footer className="footer"> 
             {label}
-        </button>
+        </footer>
     );
 };
 

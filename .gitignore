@@ -9,15 +9,6 @@ frontend/coverage/
 backend/venv/
 backend/api/metrics/venv
 .venv
-<<<<<<< HEAD
 .env
 myenv/
-node_modules
-=======
-# Elastic Beanstalk Files
-.elasticbeanstalk/*
-!.elasticbeanstalk/*.cfg.yml
-!.elasticbeanstalk/*.global.yml
-
 node_modules/
->>>>>>> e76b2d47 (added frontend/coverage/ onto gitignore)

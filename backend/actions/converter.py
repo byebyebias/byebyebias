@@ -29,8 +29,8 @@ class Converter:
         self.clean_dataset()
 
     def clean_dataset(self):
-        priv_gender = self.find_priv( "gender")
-        priv_race = self.find_priv("race")
+        priv_gender = self.find_priv( "sender_gender")
+        priv_race = self.find_priv("sender_race")
 
         # encode the 'race' column as binary 
         races = set(self.df['receiver_race']).union(set(self.df['sender_race']))
@@ -68,7 +68,6 @@ class Converter:
     def find_priv(self, column: str):
         # column in table, eg. sender_gender, sender_race 
         # finds the group with the most number of FPs
-        fp_count = self.df[(self.df['is_fraud'] == 0) & (self.df['predicted_fraud'] == 1)].groupby().size().sort_values(ascending=False)
+        fp_count = self.df[(self.df['is_fraud'] == 0) & (self.df['predicted_fraud'] == 1)].groupby(column).size().sort_values(ascending=False)
         return fp_count.index[0]
         
-df = Converter('transaction_triple_b.parquet')

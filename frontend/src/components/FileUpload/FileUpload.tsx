@@ -1,6 +1,7 @@
 // src/components/FileUpload.tsx
 import React, { useRef, useState } from "react";
 import Button from "../Button/Button";
+const apiUrl = import.meta.env.VITE_API_URL;
 
 const FileUpload = () => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
@@ -26,7 +27,7 @@ const FileUpload = () => {
       formData.append("file", selectedFile);
 
       try {
-        const response = await fetch("http://localhost:8000/api/upload/", {
+        const response = await fetch(`${apiUrl}/api/upload/`, {
           method: "POST",
           body: formData,
         });

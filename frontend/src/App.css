@@ -111,3 +111,23 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 } */
+/* App.css or Footer.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap');
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensure the app takes full height */
+}
+
+.footer {
+  margin-top: auto; 
+  padding: 10px; 
+}
+.message {
+  font-family: 'Montserrat';
+  padding-left: 50px; 
+  font-size: 18px;
+  color: #ff1b1b; 
+}

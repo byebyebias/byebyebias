@@ -2,17 +2,16 @@ import "./App.css";
 import React, { useState, useEffect } from "react";
 import BarChart, { BarChartData } from "./components/BarChart/BarChart";
 
-function App() {
-  const [message, setMessage] = useState("");
-  // state variable barChartData
-  const [barChartData, setBarChartData] = useState<BarChartData[]>([]);
-
-import React, { useState } from "react";
 import "./App.css";
 import Button from './components/Button/Button';
 import Footer from './components/Footer/Footer';
 import HeroSection from './components/HeroSection/HeroSection';
 import ProcessStep from './components/ProcessStep/ProcessStep';
+
+function App() {
+  const [message, setMessage] = useState("");
+  // state variable barChartData
+  const [barChartData, setBarChartData] = useState<BarChartData[]>([]);
 
 const App: React.FC = () => {
   const [message, setMessage] = useState<string>("");

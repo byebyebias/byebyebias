@@ -84,4 +84,4 @@ const dataGraphs = [
 
 ]
 
-export { dataOverview, dataGraphs, dataset_name }
+export { dataOverview, dataGraphs, dataset_name, dataScore }

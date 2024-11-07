@@ -8,7 +8,7 @@ const handleClick = jest.fn();
 
 describe('HeroSection Component', () => {
     beforeEach(() => {
-        render(<HeroSection heading="First Step" body="So this is how you upload data..." buttonLabel="Click Me" onClick = {handleClick}/>);
+        render(<HeroSection heading="First Step" body="So this is how you upload data..."/>);
     })
 
     test('renders hero section', () => {

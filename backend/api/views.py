@@ -11,36 +11,36 @@ from django.core.files.storage import default_storage
 def hello_world(request):
     return Response({"message": "ByeByeBias :)"})
 
-@api_view(["POST"])
-def get_dashboard_data(request):
-    # TEMP_TEST_FILE = "backend/api/transaction_triple_b.parquet"
-    print(request.data)
+# @api_view(["POST"])
+# def get_dashboard_data(request):
+#     # TEMP_TEST_FILE = "backend/api/transaction_triple_b.parquet"
+#     print(request.data)
 
-    file_name = request.data['filename']
-    PROTECTED_ATTRIBUTES = ['sender_gender', 'sender_race']
+#     file_name = request.data['filename']
+#     PROTECTED_ATTRIBUTES = ['sender_gender', 'sender_race']
 
-    fileConverter = Converter(file_name)
+#     fileConverter = Converter(file_name)
   
-    bias_metrics = BiasMetrics(
-        fileConverter.get_true_df(), 
-        fileConverter.get_pred_df(), 
-        PROTECTED_ATTRIBUTES
-    )
+#     bias_metrics = BiasMetrics(
+#         fileConverter.get_true_df(), 
+#         fileConverter.get_pred_df(), 
+#         PROTECTED_ATTRIBUTES
+#     )
 
-    all_metrics = bias_metrics.get_all_bias_metrics()
-    bias_score = bias_metrics.get_score(all_metrics)
-    formatted_graph_data = reformat_metrics_data(all_metrics)
+#     all_metrics = bias_metrics.get_all_bias_metrics()
+#     bias_score = bias_metrics.get_score(all_metrics)
+#     formatted_graph_data = reformat_metrics_data(all_metrics)
 
-    return Response({
-            "file_name": file_name,
-            "overview": {
-                "score": bias_score,
-                "top_category": "ABC",
-            },
-            "metric_results": formatted_graph_data,
+#     return Response({
+#             "file_name": file_name,
+#             "overview": {
+#                 "score": bias_score,
+#                 "top_category": "ABC",
+#             },
+#             "metric_results": formatted_graph_data,
 
-            }
-        )
+#             }
+#         )
 
 
 def reformat_metrics_data(metrics_data):
@@ -78,11 +78,31 @@ def upload_file(request):
         file_path = default_storage.path(file_name)
 
         try:
-            df = pd.read_parquet(file_path)
-            print(df.head())  # For example, print first few rows
+            # Set up protected attributes and instantiate Converter
+            PROTECTED_ATTRIBUTES = ['sender_gender', 'sender_race']
+            fileConverter = Converter(file_path)
 
-            # Return a success response with some relevant info if needed
-            return Response({'status': 'success', 'message': 'File processed successfully'})
+            # Calculate bias metrics
+            bias_metrics = BiasMetrics(
+                fileConverter.get_true_df(), 
+                fileConverter.get_pred_df(), 
+                PROTECTED_ATTRIBUTES
+            )
+
+            all_metrics = bias_metrics.get_all_bias_metrics()
+            bias_score = bias_metrics.get_score(all_metrics)
+            formatted_graph_data = reformat_metrics_data(all_metrics)
+
+            # Return the results including file information and metrics
+            return Response({
+                "file_name": file_name,
+                "file_path": file_path,
+                "overview": {
+                    "score": bias_score,
+                    "top_category": "ABC", 
+                },
+                "metric_results": formatted_graph_data,
+            })
 
         except Exception as e:
             return Response({'status': 'error', 'message': str(e)})

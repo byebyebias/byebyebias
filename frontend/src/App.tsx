@@ -1,6 +1,6 @@
 // src/App.tsx
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import Button from "./components/Button/Button";
 import Footer from "./components/Footer/Footer";
@@ -8,13 +8,32 @@ import HeroSection from "./components/HeroSection/HeroSection";
 import ProcessStep from "./components/ProcessStep/ProcessStep";
 import FileUpload from "./components/FileUpload/FileUpload";
 
-const App: React.FC = () => {
-  const [message, setMessage] = useState<string>("");
+const apiUrl = import.meta.env.VITE_API_URL;
 
-  const fetchMessage = async () => {
-    // Simulating a backend call
-    setMessage("Button test works.");
-  };
+const App: React.FC = () => {
+  // const [filename, setFilename] = useState<string>("")
+  // const navigate = useNavigate();
+
+  // const fetchDashboardData = async () => {
+  //   // Simulating a backend call
+  //   const response = await fetch(`http://127.0.0.1:8000/api/metrics`, {
+  //     method: 'GET',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //     body: JSON.stringify({filename: 'value'}),
+  //   });
+
+  //   const dashboardData = await response.json()
+  //   navigate('/dashboard', { dashboardData: { dashboardData } });
+  // };
+
+  // useEffect(
+  //   fetchDashboardData,
+  //   [filename]
+  // )
+
+  // console.log(filename)
 
   return (
     <div className="App">
@@ -22,12 +41,12 @@ const App: React.FC = () => {
       <HeroSection
         heading="Target fraud detection bias at the source."
         body="Some sort of subtitle text here. Check out our handy guide ↓ if you need any help!"
-        buttonLabel="Upload Data >"
-        onClick={fetchMessage}
+        // filename={filename}
+        // setFilename={setFilename}
       />
 
       {/* Display message */}
-      {message && <div className="message">{message}</div>}
+      {true && <div className="message">{"hello"}</div>}
 
       {/* Process Step / Instruction Section */}
       <ProcessStep
@@ -47,8 +66,6 @@ const App: React.FC = () => {
       />
 
       <Footer label="© 2024 Team TripleB" />
-      <h2>Upload a .parquet file</h2>
-      <FileUpload />
     </div>
   );
 };

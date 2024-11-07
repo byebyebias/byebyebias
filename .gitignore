@@ -12,3 +12,4 @@ backend/api/metrics/venv
 .env
 myenv/
 node_modules/
+backend/media/

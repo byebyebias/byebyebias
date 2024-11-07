@@ -66,8 +66,6 @@ const App: React.FC = () => {
       />
 
       <Footer label="© 2024 Team TripleB" />
-      <h2>Upload a .parquet file</h2>
-      
     </div>
   );
 };

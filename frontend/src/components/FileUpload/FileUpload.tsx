@@ -44,7 +44,7 @@ const FileUpload = () => {
       formData.append("file", selectedFile);
 
       try {
-        const response = await fetch(`http://127.0.0.1:8000/api/upload/`, {
+        const response = await fetch(`${apiUrl}/api/upload/`, {
           method: "POST",
           body: formData,
         });

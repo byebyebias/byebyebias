@@ -6,6 +6,7 @@ import Button from "./components/Button/Button";
 import Footer from "./components/Footer/Footer";
 import HeroSection from "./components/HeroSection/HeroSection";
 import ProcessStep from "./components/ProcessStep/ProcessStep";
+import Table from "./components/Table/Table"
 import FileUpload from "./components/FileUpload/FileUpload";
 
 const apiUrl = import.meta.env.VITE_API_URL;
@@ -52,8 +53,9 @@ const App: React.FC = () => {
       <ProcessStep
         title="Upload your dataset."
         stepnum={1}
-        body="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean molestie mi id sapien posuer."
+        body="The format of the dataset must be a parquet file with the following mandatory columns highlighted in the table below."
       />
+      <Table />
       <ProcessStep
         title="View our feedback."
         stepnum={2}

@@ -6,10 +6,6 @@ from backend.actions.bias_metrics import BiasMetrics
 import pandas as pd
 from django.core.files.storage import default_storage
 
-@api_view(['GET'])
-def hello_world(request):
-    return Response({"message": "ByeByeBias :)"})
-
 # @api_view(["POST"])
 # def get_dashboard_data(request):
 #     # TEMP_TEST_FILE = "backend/api/transaction_triple_b.parquet"

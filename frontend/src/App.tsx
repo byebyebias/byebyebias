@@ -46,9 +46,6 @@ const App: React.FC = () => {
         // setFilename={setFilename}
       />
 
-      {/* Display message */}
-      {true && <div className="message">{"hello"}</div>}
-
       {/* Process Step / Instruction Section */}
       <ProcessStep
         title="Upload your dataset."

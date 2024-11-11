@@ -44,7 +44,7 @@ const App: React.FC = () => {
       {/* Put heading section here and mark with "header" when that PR is merged */}
       {/* <header role="title">…</header> */}
 
-      <main> role="herosection"
+      <main role="herosection">
       <HeroSection
         heading="Target fraud detection bias at the source."
         body="Some sort of subtitle text here. Check out our handy guide ↓ if you need any help!"
@@ -57,7 +57,7 @@ const App: React.FC = () => {
         body="The format of the dataset must be a parquet file with the following mandatory columns highlighted in the table below."
       />
       <Table />
-      <aside> role = "userguide"
+      <aside role = "userguide">
       <ProcessStep
         title="View our feedback."
         stepnum={2}

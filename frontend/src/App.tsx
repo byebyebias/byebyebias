@@ -12,29 +12,6 @@ import FileUpload from "./components/FileUpload/FileUpload";
 const apiUrl = import.meta.env.VITE_API_URL;
 
 const App: React.FC = () => {
-  // const [filename, setFilename] = useState<string>("")
-  // const navigate = useNavigate();
-
-  // const fetchDashboardData = async () => {
-  //   // Simulating a backend call
-  //   const response = await fetch(`http://127.0.0.1:8000/api/metrics`, {
-  //     method: 'GET',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //     },
-  //     body: JSON.stringify({filename: 'value'}),
-  //   });
-
-  //   const dashboardData = await response.json()
-  //   navigate('/dashboard', { dashboardData: { dashboardData } });
-  // };
-
-  // useEffect(
-  //   fetchDashboardData,
-  //   [filename]
-  // )
-
-  // console.log(filename)
 
   return (
     <div className="App">
@@ -42,8 +19,7 @@ const App: React.FC = () => {
       <HeroSection
         heading="Target fraud detection bias at the source."
         body="Some sort of subtitle text here. Check out our handy guide ↓ if you need any help!"
-        // filename={filename}
-        // setFilename={setFilename}
+
       />
 
       {/* Display message */}

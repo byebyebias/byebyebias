@@ -1,5 +1,3 @@
-// src/App.tsx
-
 import React, { useEffect, useState } from "react";
 import "./App.css";
 import Button from "./components/Button/Button";
@@ -12,6 +10,34 @@ import FileUpload from "./components/FileUpload/FileUpload";
 const apiUrl = import.meta.env.VITE_API_URL;
 
 const App: React.FC = () => {
+  useEffect(() => {
+    // Function to add title to Pericles iframe for Lighthouse score
+    const addTitleToPericlesIframe = () => {
+      const iframe = document.getElementById('_pericles_content_iframe');
+      if (iframe && iframe instanceof HTMLIFrameElement && !iframe.title) {
+        iframe.title = 'Homepage Content Frame';
+      }
+    };
+
+    addTitleToPericlesIframe();
+
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.addedNodes.length) {
+          addTitleToPericlesIframe();
+        }
+      });
+    });
+
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true
+    });
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
 
   return (
     <div className="App">
@@ -19,7 +45,6 @@ const App: React.FC = () => {
       <HeroSection
         heading="Target fraud detection bias at the source."
         body="Some sort of subtitle text here. Check out our handy guide ↓ if you need any help!"
-
       />
 
       {/* Display message */}

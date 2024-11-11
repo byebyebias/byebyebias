@@ -1,10 +1,13 @@
 from aif360.datasets import BinaryLabelDataset
 from aif360.metrics.mdss_classification_metric import MDSSClassificationMetric
-import pandas as pd 
+import pandas as pd
 
 class BiasMetrics:
+    '''
+    BiasMetrics object contains bias metrics.
+    '''
 
-    def __init__(self, true_df, pred_df, protected_attributes: list[str]):
+    def __init__(self, true_df: pd.DataFrame, pred_df: pd.DataFrame, protected_attributes: list[str]):
         self.true_df = true_df
         self.pred_df = pred_df
         self.protected_attributes = protected_attributes

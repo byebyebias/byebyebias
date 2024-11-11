@@ -3,12 +3,14 @@ import warnings
 
 warnings.filterwarnings("ignore", category=UserWarning) # Suppress PyTorch warnings
 
-class Converter:
+class FileConverter:
     
-    def __init__(self, df):
-        self.df = pandas.read_parquet(df)
+    def __init__(self, file, protected_attributes: list[str]):
+        self.df = pandas.read_parquet(file)
+        self.protected_attributes = protected_attributes
         self.clean_dataset()
 
+    # refactor clean_dataset to use protected_attributes to clean dataset
     def clean_dataset(self):
         priv_gender = self.find_priv( "sender_gender")
         priv_race = self.find_priv("sender_race")
@@ -30,9 +32,6 @@ class Converter:
 
         self.df = self.df.drop(columns=[c for c in self.df.columns if c not in ['sender_gender', 'receiver_gender', 'sender_race', 'receiver_race', 'is_fraud', 'predicted_fraud']])
 
-        # print("SUM:")
-        # print(self.df.isna().sum())
-        # print("------")
         self.df = self.df.dropna()
     
     def get_df(self):

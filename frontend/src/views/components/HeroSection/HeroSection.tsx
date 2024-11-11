@@ -1,5 +1,4 @@
 import React from 'react';
-import Button from '../Button/Button'; // Import the button component
 import './HeroSection.css';
 import FileUpload from '../FileUpload/FileUpload';
 

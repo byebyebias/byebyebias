@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import HeroSection from '../components/HeroSection/HeroSection';
+import HeroSection from '../views/components/HeroSection/HeroSection';
 
 
 describe("let this pass plz orz", () => {

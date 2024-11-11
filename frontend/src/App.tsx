@@ -2,12 +2,11 @@
 
 import React, { useEffect, useState } from "react";
 import "./App.css";
-import Button from "./components/Button/Button";
-import Footer from "./components/Footer/Footer";
-import HeroSection from "./components/HeroSection/HeroSection";
-import ProcessStep from "./components/ProcessStep/ProcessStep";
-import Table from "./components/Table/Table"
-import FileUpload from "./components/FileUpload/FileUpload";
+import Footer from "./views/components/Footer/Footer";
+import HeroSection from "./views/components/HeroSection/HeroSection";
+import ProcessStep from "./views/components/ProcessStep/ProcessStep";
+import Table from "./views/components/Table/Table"
+import FileUpload from "./views/components/FileUpload/FileUpload";
 
 const apiUrl = import.meta.env.VITE_API_URL;
 
@@ -42,8 +41,6 @@ const App: React.FC = () => {
       <HeroSection
         heading="Target fraud detection bias at the source."
         body="Some sort of subtitle text here. Check out our handy guide ↓ if you need any help!"
-        // filename={filename}
-        // setFilename={setFilename}
       />
 
       {/* Process Step / Instruction Section */}

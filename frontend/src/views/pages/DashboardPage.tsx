@@ -1,8 +1,8 @@
 import { Typography, Stack, Box } from "@mui/material";
 import { useLocation } from "react-router-dom";
-import Overview from "../../components/dashboard-components/Overview/Overview";
-import GraphGrid from "../../components/dashboard-components/GraphGrid/GraphGrid";
-import BiasScore from "../../components/dashboard-components/BiasScore/BiasScore";
+import Overview from "../components/Dashboard/Overview/Overview";
+import GraphGrid from "../components/Dashboard/GraphGrid/GraphGrid";
+import BiasScore from "../components/Dashboard/BiasScore/BiasScore";
 
 function DashboardPage() {
   const location = useLocation();

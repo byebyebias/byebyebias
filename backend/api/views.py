@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from backend.actions.converter import Converter
-from backend.actions.bias_metrics import BiasMetrics
+from backend.entity.file_converter import FileConverter
+from backend.entity.bias_metrics import BiasMetrics
 import pandas as pd
 from django.core.files.storage import default_storage
 
@@ -66,12 +66,12 @@ def upload_file(request):
         try:
             # Set up protected attributes and instantiate Converter
             PROTECTED_ATTRIBUTES = ['sender_gender', 'sender_race']
-            fileConverter = Converter(file_path)
+            file_converter = FileConverter(file_path, PROTECTED_ATTRIBUTES)
 
             # Calculate bias metrics
             bias_metrics = BiasMetrics(
-                fileConverter.get_true_df(), 
-                fileConverter.get_pred_df(), 
+                file_converter.get_true_df(), 
+                file_converter.get_pred_df(), 
                 PROTECTED_ATTRIBUTES
             )
 

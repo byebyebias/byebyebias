@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client'
 import App from './App.js'
 
 // Trying react router stuff here
-import DashBoardPage from "./pages/Dashboard"
+import DashBoardPage from "./views/pages/DashboardPage.js"
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 const router = createBrowserRouter([
@@ -17,14 +17,12 @@ const router = createBrowserRouter([
   },
 ])
 
-
 // React router stuff ends here
 
 const rootElement = document.getElementById('root')!;
 
 createRoot(rootElement).render(
   <StrictMode>
-    {/* <App /> */}
       <RouterProvider router={router}/>
   </StrictMode>,
 )

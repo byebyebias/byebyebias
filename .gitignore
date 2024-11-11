@@ -8,7 +8,6 @@ frontend/coverage/
 **/__pycache__/
 backend/venv/
 backend/api/metrics/venv
-.venv
 .env
 myenv/
 node_modules/

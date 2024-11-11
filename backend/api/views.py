@@ -6,6 +6,7 @@ from backend.metrics.statistical_parity_difference import spd
 from backend.actions.bias_metrics import BiasMetrics
 import pandas as pd
 from django.core.files.storage import default_storage
+from django.views.decorators.csrf import csrf_exempt
 
 @api_view(['GET'])
 def hello_world(request):
@@ -70,6 +71,7 @@ def statistical_parity(request):
     # Assuming processed_data is in the correct format to be returned
     return Response(processed_data)  # Return the processed data as JSON
 
+@csrf_exempt
 @api_view(['POST'])
 def upload_file(request):
     if 'file' in request.FILES:

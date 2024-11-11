@@ -51,6 +51,7 @@ const FileUpload = () => {
 
         if (response.ok) {
           const result = await response.json();
+          console.log("API Response:", result);
           console.log("File uploaded and metrics fetched successfully");
 
           // Destructure and navigate with dashboard data

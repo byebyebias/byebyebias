@@ -1,7 +1,7 @@
 backend/api/__pycache__
 backend/venv
 backend/api/migrations/__pycache__
-backend/myproject/__pycache__
+backend/setup/__pycache__
 backend/tests/__pycache__
 .venv
 frontend/coverage/

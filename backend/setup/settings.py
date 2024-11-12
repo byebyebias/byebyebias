@@ -55,7 +55,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'backend.myproject.urls'
+ROOT_URLCONF = 'backend.setup.urls'
 CORS_ALLOW_ALL_ORIGINS = True
 TEMPLATES = [
     {
@@ -73,7 +73,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'backend.myproject.wsgi.application'
+WSGI_APPLICATION = 'backend.setup.wsgi.application'
 
 
 # Database

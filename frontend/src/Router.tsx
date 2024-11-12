@@ -1,6 +1,6 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import App from './App.js'
+import MainPage from './views/pages/MainPage.js'
 
 // Trying react router stuff here
 import DashBoardPage from "./views/pages/DashboardPage.js"
@@ -9,7 +9,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App/>
+    element: <MainPage/>
   },
   {
     path: "/dashboard",

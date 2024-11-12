@@ -11,7 +11,7 @@ function DashboardPage() {
   return (
     <Stack>
       <Typography variant="body2" pb={3}>
-        {dashboardData.file_path}
+        {dashboardData.filePath}
       </Typography>
 
       <Box bgcolor="#E6EEF5" p={10}>
@@ -19,7 +19,7 @@ function DashboardPage() {
           <BiasScore score={dashboardData.overview.score} />
           <Overview data={dashboardData.overview} />
         </Stack>
-        <GraphGrid graphsInfo={dashboardData.metric_results} />
+        <GraphGrid graphsInfo={dashboardData.metricResults} />
       </Box>
     </Stack>
   );

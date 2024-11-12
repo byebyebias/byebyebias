@@ -1,16 +1,15 @@
 // src/App.tsx
 
 import React, { useEffect, useState } from "react";
-import "./App.css";
-import Footer from "./views/components/Footer/Footer";
-import HeroSection from "./views/components/HeroSection/HeroSection";
-import ProcessStep from "./views/components/ProcessStep/ProcessStep";
-import Table from "./views/components/Table/Table"
-import FileUpload from "./views/components/FileUpload/FileUpload";
+import "./MainPage.css";
+import Footer from "../components/Footer/Footer";
+import HeroSection from "../components/HeroSection/HeroSection";
+import ProcessStep from "../components/ProcessStep/ProcessStep";
+import Table from "../components/Table/Table"
 
 const apiUrl = import.meta.env.VITE_API_URL;
 
-const App: React.FC = () => {
+const MainPage: React.FC = () => {
   // const [filename, setFilename] = useState<string>("")
   // const navigate = useNavigate();
 
@@ -36,7 +35,7 @@ const App: React.FC = () => {
   // console.log(filename)
 
   return (
-    <div className="App">
+    <div className="MainPage">
       {/* Hero Section */}
       <HeroSection
         heading="Target fraud detection bias at the source."
@@ -66,4 +65,4 @@ const App: React.FC = () => {
   );
 };
 
-export default App;
+export default MainPage;

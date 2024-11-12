@@ -1,7 +1,6 @@
 import React from 'react';
 import './HeroSection.css';
-import FileUpload from '../FileUpload/FileUpload';
-import UploadViewManager from '../../UploadFileView';
+import UploadFileView from '../../UploadFileView';
 
 type setState = (filename: string) => void;
 
@@ -15,7 +14,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ heading, body }) => {
         <div className="hero-section">
             <h1 className="hero-heading">{heading}</h1>
             <p className="hero-body">{body}</p>
-            <UploadViewManager/>
+            <UploadFileView/>
         </div>
     );
 };

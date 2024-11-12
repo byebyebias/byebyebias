@@ -4,7 +4,7 @@ import { UploadFileInteractor } from "../usecases/UploadFileInteractor";
 import { UploadFilePresenter } from "../presenters/UploadFilePresenter";
 import Button from "./components/Button/Button";
 
-const UploadViewManager: React.FC = () => {
+const UploadFileView: React.FC = () => {
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   const presenter = new UploadFilePresenter();
@@ -36,4 +36,4 @@ const UploadViewManager: React.FC = () => {
   );
 };
 
-export default UploadViewManager;
+export default UploadFileView;

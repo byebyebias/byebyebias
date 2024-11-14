@@ -18,10 +18,10 @@ function DashboardPage() {
       <Box bgcolor="#E6EEF5" p={10}>
         <Stack direction="row" spacing={2}>
           <Typography sx={{fontFamily: 'Montserrat', fontSize:'15px', fontWeight: 300, color:"#9921D2"}}>{dashboardData.fileName}</Typography>
-          <LetterGrade score={dashboardData.overview?.score || "A+"} />
+          <LetterGrade aria-label="letter grade" score={dashboardData.overview?.score || "A+"} />
           <Overview data={dashboardData.overview || { score: 0, top_category: 'Sender_Gender' }} />
         </Stack>
-        <GraphGrid graphsInfo={dashboardData.metricResults} />
+        <GraphGrid aria-label="Grid of graphs" graphsInfo={dashboardData.metricResults} />
       </Box>
     </Stack>
     <Footer label="© 2024 Team TripleB" /></>

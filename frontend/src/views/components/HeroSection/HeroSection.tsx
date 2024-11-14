@@ -1,6 +1,6 @@
 import React from 'react';
 import './HeroSection.css';
-import UploadFileView from '../../UploadFileView';
+import UploadFileView from '../Upload/UploadFileView';
 
 type setState = (filename: string) => void;
 

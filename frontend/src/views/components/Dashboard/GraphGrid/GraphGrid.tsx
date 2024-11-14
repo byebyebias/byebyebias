@@ -17,18 +17,18 @@ function Graph({data, title}) {
 function GraphGrid({graphsInfo}) {
 
     if (!graphsInfo || !Array.isArray(graphsInfo)) {
-        return <p>No data available</p>;  // or render something else like a loading state
-      }
+        return <p>No data available</p>; 
+    }
     
-        return (
-        <Container style={{display: 'flex', justifyContent:"center", maxWidth:"none"}}>
-            <Grid container rowSpacing={8} columnSpacing={8} pt={8}>
-                {graphsInfo.map( (graphInfo: { values: any; title: any; }) => 
-                    <Graph data={graphInfo.values} title={graphInfo.title}/>
-                )}
+    return (
+    <Container style={{display: 'flex', justifyContent:"center", maxWidth:"none"}}>
+        <Grid container rowSpacing={8} columnSpacing={8} pt={8}>
+            {graphsInfo.map( (graphInfo: { values: any; title: any; }) => 
+                <Graph data={graphInfo.values} title={graphInfo.title}/>
+            )}
 
-            </Grid>
-        </Container>
+        </Grid>
+    </Container>
     )    
 }
 

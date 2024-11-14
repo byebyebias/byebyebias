@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import Footer from '../components/Footer/Footer';
+import Footer from '../views/components/Footer/Footer';
 
 test('renders the footer with the correct label', () => {
     

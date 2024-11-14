@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import BarChart from '../components/BarChart/BarChart';
+import BarChart from '../views/components/BarChart/BarChart';
 import { ResponsiveBar } from '@nivo/bar';
 
 // mocks a ResponsiveBar to use in testing

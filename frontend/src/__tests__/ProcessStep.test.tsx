@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import ProcessStep from '../components/ProcessStep/ProcessStep';
+import ProcessStep from '../views/components/ProcessStep/ProcessStep';
 
 const handleClick = jest.fn();
 

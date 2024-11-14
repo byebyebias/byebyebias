@@ -3,13 +3,14 @@ import { useLocation } from "react-router-dom";
 import GraphGrid from "../components/Dashboard/GraphGrid/GraphGrid";
 import Overview from "../components/Dashboard/Overview/Overview";
 import LetterGrade from "../components/Dashboard/LetterGrade/LetterGrade";
+import Footer from "../components/Footer/Footer";
 
 function DashboardPage() {
   const location = useLocation();
   const { dashboardData } = location.state;
 
   return (
-    <Stack sx={{backgroundColor: '#E6EEF5'}}>
+    <><Stack sx={{backgroundColor: '#E6EEF5'}}>
       <Typography sx={{textAlign:'left',fontFamily: 'Montserrat'}} variant="body2" pb={3}>
         {dashboardData.filePath}
       </Typography>
@@ -23,6 +24,7 @@ function DashboardPage() {
         <GraphGrid graphsInfo={dashboardData.metricResults} />
       </Box>
     </Stack>
+    <Footer label="© 2024 Team TripleB" /></>
   );
 }
 

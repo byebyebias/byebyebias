@@ -3,7 +3,9 @@ from rest_framework.response import Response
 from backend.core.data_access.file_repository import FileRepository
 from backend.core.use_cases.calculate_metrics_interactor import CalculateMetricsInteractor
 from backend.core.use_cases.convert_file_interactor import ConvertFileInteractor
+from django.views.decorators.csrf import csrf_exempt
 
+@csrf_exempt
 @api_view(['POST'])
 def upload_file(request):
     if 'file' not in request.FILES:

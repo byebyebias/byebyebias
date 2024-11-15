@@ -22,6 +22,9 @@ def upload_file(request):
         true_df, pred_df = convert_file.convert(file_path, protected_attributes)
         results = calculate_metrics.calculate(true_df, pred_df, protected_attributes)
 
+        if os.path.exists(file_path):
+            os.remove(file_path)
+
         return Response({
             "file_name": file_name,
             "file_path": file_path,

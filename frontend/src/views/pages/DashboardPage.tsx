@@ -10,12 +10,15 @@ function DashboardPage() {
   const { dashboardData } = location.state;
 
   return (
-    <><Stack sx={{backgroundColor: '#E6EEF5'}}>
-      <Typography sx={{textAlign:'left',fontFamily: 'Montserrat'}} variant="body2" pb={3}>
-        {dashboardData.filePath}
+    <>
+    <Stack>
+      <Typography p={14} sx={{textAlign:'left', fontFamily: 'Montserrat', color: "#9921D2", fontWeight: 500, fontSize: '15pt'}} pb={3}>
+        {dashboardData.filePath.split('/').pop()}
       </Typography>
 
-      <Box bgcolor="#E6EEF5" p={10}>
+      <Stack sx={{backgroundColor: '#E6EEF5'}}>
+      
+      <Box bgcolor="#E6EEF5" p={6}>
         <Stack direction="row" spacing={2}>
           <Typography sx={{fontFamily: 'Montserrat', fontSize:'15px', fontWeight: 300, color:"#9921D2"}}>{dashboardData.fileName}</Typography>
           <LetterGrade aria-label="letter grade" score={dashboardData.overview?.score || "A+"} />
@@ -24,6 +27,9 @@ function DashboardPage() {
         <GraphGrid aria-label="Grid of graphs" graphsInfo={dashboardData.metricResults} />
       </Box>
     </Stack>
+
+    </Stack>
+    
     <Footer label="© 2024 Team TripleB" /></>
   );
 }

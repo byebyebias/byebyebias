@@ -1,45 +1,24 @@
-// src/App.tsx
-
 import React, { useEffect, useState } from "react";
 import "./MainPage.css";
 import Footer from "../components/Footer/Footer";
 import HeroSection from "../components/HeroSection/HeroSection";
 import ProcessStep from "../components/ProcessStep/ProcessStep";
 import Table from "../components/Table/Table"
+import Title from "../components/Title/Title";
 
 const apiUrl = import.meta.env.VITE_API_URL;
 
 const MainPage: React.FC = () => {
-  // const [filename, setFilename] = useState<string>("")
-  // const navigate = useNavigate();
-
-  // const fetchDashboardData = async () => {
-  //   // Simulating a backend call
-  //   const response = await fetch(`http://127.0.0.1:8000/api/metrics`, {
-  //     method: 'GET',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //     },
-  //     body: JSON.stringify({filename: 'value'}),
-  //   });
-
-  //   const dashboardData = await response.json()
-  //   navigate('/dashboard', { dashboardData: { dashboardData } });
-  // };
-
-  // useEffect(
-  //   fetchDashboardData,
-  //   [filename]
-  // )
-
-  // console.log(filename)
 
   return (
     <div className="MainPage">
       {/* Hero Section */}
+
+      <Title label="BYE BYE BIAS"/>
+
       <HeroSection
         heading="Target fraud detection bias at the source."
-        body="Some sort of subtitle text here. Check out our handy guide ↓ if you need any help!"
+        body="Visualize and alleviate bias in transaction datasets fed into fraud detection AI models. Check out our handy guide ↓ if you need any help!"
       />
 
       {/* Process Step / Instruction Section */}

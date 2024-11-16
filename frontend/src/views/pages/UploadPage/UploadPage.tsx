@@ -69,17 +69,20 @@ function UploadPage() {
                         </Box>
 
                         <Typography variant="h2" fontSize="2.5em" fontWeight="500">or</Typography>
-                        <label for="bucketInput" hidden>paste public s3 bucket link</label>
-                        <input 
-                            id="bucketInput"
-                            name="bucketInput"
-                            className={styles.bucketUrlInput} 
-                            type="url"
-                            placeholder="paste public s3 bucket link"
-                            value={link}
-                            onChange={onLinkChange}
-                            ref={linkRef}
-                        />
+                        <div style={{position:"relative"}}>
+                            <label for="bucketInput" hidden>paste public s3 bucket link</label>
+                            <img src="linkIcon.png" className={styles.bucketLinkIcon}/>
+                            <input 
+                                id="bucketInput"
+                                name="bucketInput"
+                                className={styles.bucketUrlInput} 
+                                type="url"
+                                placeholder="paste public s3 bucket link"
+                                value={link}
+                                onChange={onLinkChange}
+                                ref={linkRef}
+                            />
+                        </div>
 
                         <Button 
                             onClick={handleUploadClick}

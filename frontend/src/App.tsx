@@ -6,7 +6,7 @@ import Button from './components/Button/Button';
 import Footer from './components/Footer/Footer';
 import HeroSection from './components/HeroSection/HeroSection';
 import ProcessStep from './components/ProcessStep/ProcessStep';
-import logo from './images/Square_Cash_app_logo.png'; 
+import logo from './assets/Square_Cash_app_logo.png'; 
 
 const App: React.FC = () => {
   const [message, setMessage] = useState<string>("");
@@ -24,7 +24,7 @@ const App: React.FC = () => {
         <img src={logo} alt="Logo" />
       </div>
 
-      <h1 className="title">BYE BYE BIAS</h1>
+      {/* <h1 className="title">Bye Bye Bias</h1> */}
 
       {/* Hero Section */}
       <HeroSection 

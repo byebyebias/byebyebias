@@ -20,7 +20,7 @@ const protectedAttributes = ["sender_gender", "sender_race", "sender_age", "rece
 function UploadPage() {
     const [file, setFile] = useState<File | undefined>(undefined)
     const [page, setPage] = useState<number>(1)
-    const [link, setLink] = useState<string>('')
+    const [link, setLink] = useState<string>("")
     const linkRef = useRef(null)
 
     const presenter = new UploadFilePresenter();
@@ -32,13 +32,17 @@ function UploadPage() {
         if (newFile) setFile(newFile)
     };
 
+    {/* FIGURE OUT HOW TO SUPPRESS POSSIBLY NULL ERROR*/}
     const handleUploadClick = () => {
-        if (file) {
+        if (file && link) {
+            linkRef.current.setCustomValidity("Please enter ONLY A FILE or ONLY A LINK")
+            linkRef.current.reportValidity()
+        } else if (file) {
             controller.handleFileUpload(file);
             setPage(2)
         } else if (linkRef.current.reportValidity()) {
             setPage(2)
-        }
+        } 
 
     };
 

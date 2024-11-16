@@ -34,6 +34,7 @@ const UploadFileView: React.FC<Props> = ({handleFileChange}) => {
           textTransform: "none",
           boxShadow: "none",
           fontFamily: "Montserrat",
+          fontSize: "20px",
         }}
         aria-label="Choose a file to upload"
       >

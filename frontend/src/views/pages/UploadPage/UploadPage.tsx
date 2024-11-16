@@ -6,7 +6,7 @@ import {
     Box,
 } from "@mui/material";
 import Grid from '@mui/material/Grid2';
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 import { UploadFileController } from "../../../controllers/UploadFileController"
 import { UploadFileInteractor } from "../../../usecases/UploadFileInteractor";
@@ -21,6 +21,7 @@ function UploadPage() {
     const [file, setFile] = useState<File | undefined>(undefined)
     const [page, setPage] = useState<number>(1)
     const [link, setLink] = useState<string>('')
+    const linkRef = useRef(null)
 
     const presenter = new UploadFilePresenter();
     const interactor = new UploadFileInteractor();
@@ -32,7 +33,13 @@ function UploadPage() {
     };
 
     const handleUploadClick = () => {
-        if (file) controller.handleFileUpload(file);
+        if (file) {
+            controller.handleFileUpload(file);
+            setPage(2)
+        } else if (linkRef.current.reportValidity()) {
+            setPage(2)
+        }
+
     };
 
     const onLinkChange = (e: React.ChangeEvent<HTMLInputElement>) => setLink(e.target.value)
@@ -67,10 +74,11 @@ function UploadPage() {
                             placeholder="paste public s3 bucket link"
                             value={link}
                             onChange={onLinkChange}
+                            ref={linkRef}
                         />
 
                         <Button 
-                            onClick={() => setPage(2)}
+                            onClick={handleUploadClick}
                             className={styles.uploadButton}
                             disabled={file == undefined && link == ''}
                         >
@@ -88,8 +96,9 @@ function UploadPage() {
                     </header>
 
                     <main className={styles.center} aria-live="polite">
+                        {/* TODO FOR BUCKET, ADD ACTUAL FILE NAME WHEN CONNECTED WITH S3 INTEGRATION*/}
                         <Typography variant="h2"  fontSize="1.25em">
-                            Selected attributes in <span className={styles.filename}>{file.name}</span> will be scanned for bias
+                            Selected attributes in <span className={styles.filename}>{file ? file.name : "INSERTDUMMYBUCKETNAME.parquet"}</span> will be scanned for bias
                         </Typography>
                         <Grid 
                             container 

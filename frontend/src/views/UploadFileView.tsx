@@ -31,7 +31,21 @@ const UploadFileView: React.FC = () => {
         onChange={handleFileChange}
         style={{ display: "none" }}
       />
-      <Button label="Upload Data >" onClick={() => { handleButtonClick(); }} />
+      <Button
+        role={undefined}
+        variant="contained"
+        startIcon={<UploadIcon />}
+        onClick={handleButtonClick}
+        sx={{
+          backgroundColor: "#A136D6",
+          textTransform: "none",
+          boxShadow: "none",
+          fontFamily: "Montserrat",
+        }}
+        aria-label="Choose a file to upload"
+      >
+        Choose file
+      </Button>
     </div>
   );
 };

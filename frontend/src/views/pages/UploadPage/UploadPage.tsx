@@ -20,6 +20,7 @@ const protectedAttributes = ["sender_gender", "sender_race", "sender_age", "rece
 function UploadPage() {
     const [file, setFile] = useState<File | undefined>(undefined)
     const [page, setPage] = useState<number>(1)
+    const [link, setLink] = useState<string>('')
 
     const presenter = new UploadFilePresenter();
     const interactor = new UploadFileInteractor();
@@ -34,6 +35,8 @@ function UploadPage() {
         if (file) controller.handleFileUpload(file);
     };
 
+    const onLinkChange = (e: React.ChangeEvent<HTMLInputElement>) => setLink(e.target.value)
+
     return (
         <Container
             maxWidth={false}
@@ -44,7 +47,7 @@ function UploadPage() {
             {page === 1 &&
                 <>
                     <header>
-                        <Typography variant="h1" fontSize="4em" fontWeight="500" id="uploadHeader">Upload Your Dataset</Typography>
+                        <Typography variant="h1" fontSize="4em" fontWeight="600" id="uploadHeader" fontFamily="Montserrat">Upload Your Dataset</Typography>
                     </header>
 
                     <main className={styles.center}>
@@ -61,19 +64,15 @@ function UploadPage() {
                             name="bucketInput"
                             className={styles.bucketUrlInput} 
                             type="url"
-                            placeholder="paste public s3 bucket link" 
+                            placeholder="paste public s3 bucket link"
+                            value={link}
+                            onChange={onLinkChange}
                         />
 
                         <Button 
                             onClick={() => setPage(2)}
-                            sx={{ 
-                                backgroundColor: "#00CF31", 
-                                color: "white", 
-                                borderRadius: "30px", 
-                                padding: "10px 30px", 
-                                textTransform: "none",
-                            }}
-                            disabled={file == undefined}
+                            className={styles.uploadButton}
+                            disabled={file == undefined && link == ''}
                         >
                             Upload
                         </Button>

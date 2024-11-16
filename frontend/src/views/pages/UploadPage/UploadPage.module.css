@@ -66,10 +66,29 @@ button.attributeButton {
     background-position: 20px 18px; 
     background-size: 20px ;
     background-repeat: no-repeat;
+    font-size: 16px;
 }
 
 .bucketUrlInput::placeholder {
     font-style: italic;
     color: #979797;
     font-family: 'Montserrat';
+    font-size: 16px;
+
+}
+
+button.uploadButton {
+    background-color: #00CF31; 
+    color: white; 
+    border-radius: 40px; 
+    padding: 10px 45px; 
+    text-transform: none;
+    font-size: 35px;
+    font-family: "Montserrat";
+    font-weight: bold;
+}
+
+button.uploadButton:disabled {
+    opacity: 60%;
+    color: lightgrey;
 }

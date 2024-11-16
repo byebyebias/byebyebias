@@ -1,7 +1,6 @@
-// src/App.tsx
-
 import React, { useState } from "react";
 import "./App.css";
+import Title from './components/Title/Title';
 import Button from './components/Button/Button';
 import Footer from './components/Footer/Footer';
 import HeroSection from './components/HeroSection/HeroSection';
@@ -17,14 +16,13 @@ const App: React.FC = () => {
   };
 
   return (
-    
     <div className="App">
-
       <div className="sticky-logo">
         <img src={logo} alt="Logo" />
       </div>
 
-      {/* <h1 className="title">Bye Bye Bias</h1> */}
+      {/* Title Section
+      <Title text="Bye Bye Bias" /> */}
 
       {/* Hero Section */}
       <HeroSection 

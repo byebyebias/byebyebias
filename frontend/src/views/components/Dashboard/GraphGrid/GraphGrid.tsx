@@ -14,7 +14,7 @@ interface GraphProps {
 
 function Graph({ data, title }: GraphProps) {
     return (
-        <Card p={3} style={{ width: "325px" }}>
+        <Card sx={{ width: 325, p: 3 }}>
             <CardHeader title={title} />
             <CardContent>
                 <BarChart data={data} />

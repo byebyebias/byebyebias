@@ -20,7 +20,7 @@ function UploadPage() {
     const [file, setFile] = useState<File | undefined>(undefined)
     const [page, setPage] = useState<number>(1)
     const [link, setLink] = useState<string>("")
-    const linkRef = useRef(null)
+    const linkRef = useRef<HTMLInputElement | null>(null)
 
     const presenter = new UploadFilePresenter();
     const interactor = new UploadFileInteractor();
@@ -34,16 +34,16 @@ function UploadPage() {
     {/* FIGURE OUT HOW TO SUPPRESS POSSIBLY NULL ERROR */}
     const handleUploadClick = () => {
         if (file && link) {
-            linkRef.current.setCustomValidity("Please enter ONLY A FILE or ONLY A LINK")
-            linkRef.current.reportValidity()
+            linkRef.current?.setCustomValidity("Please enter ONLY A FILE or ONLY A LINK")
+            linkRef.current?.reportValidity()
         } else if (file) {
             setPage(2)
-        } else if (linkRef.current.reportValidity()) {
+        } else if (linkRef.current?.reportValidity()) {
             setPage(2)
         } 
 
     };
-    const handleViewResults = () => controller.handleFileUpload(file);
+    const handleViewResults = () => {if (file != null) return controller.handleFileUpload(file)};
 
     const onLinkChange = (e: React.ChangeEvent<HTMLInputElement>) => setLink(e.target.value)
 

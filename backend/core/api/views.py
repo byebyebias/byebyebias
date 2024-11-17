@@ -19,7 +19,6 @@ def upload_file(request):
         protected_attributes = ['sender_gender', 'sender_race']
         true_df, pred_df = convert_file.convert(file_path, protected_attributes)
         results = calculate_metrics.calculate(true_df, pred_df, protected_attributes)
-        print(results["formatted_metrics"])
 
         return Response({
             "file_name": file_name,

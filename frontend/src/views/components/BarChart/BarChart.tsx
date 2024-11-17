@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { ResponsiveBar } from '@nivo/bar';
 
 export interface BarChartData {
@@ -11,12 +11,18 @@ type BarProps = {
     xaxis: string;
     yaxis: string;
     data: BarChartData[];
+    onClick: void;
 }
 
-const BarChart:React.FC<BarProps> = ({ xaxis, yaxis, data}) => {
+const BarChart:React.FC<BarProps> = ({ xaxis, yaxis, data, onClick}) => {
+    const [isEnlarged, setIsEnlarged] = useState(false)
+
+    const switchSize = () => {
+      setIsEnlarged((prev) => !prev);
+    }
 
     return (
-        <div style={{ height: 400 }}>
+        <div style={{ height: 400 }} onClick={switchSize}>
           <ResponsiveBar
             data={data}
             keys={[yaxis]}

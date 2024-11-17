@@ -9,8 +9,8 @@ const colorMap = {
     "receiver_race": "#EE55E7",
 };
 
-const BarChart = ({ data }) => (
-        <div style={{height: "300px", width: "100%"}}>
+const BarChart = ({ data, width = '100%', height = '400px'}) => (
+        <div style={{height: height, width: width}}>
             <ResponsiveBar
                 isFocusable={true}
                 barAriaLabel={({ id, value, indexValue }) =>

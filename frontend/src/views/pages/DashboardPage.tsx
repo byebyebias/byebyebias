@@ -12,7 +12,7 @@ function DashboardPage() {
   return (
     <>
     <Stack>
-      <Typography p={14} sx={{textAlign:'left', fontFamily: 'Montserrat', color: "#9921D2", fontWeight: 500, fontSize: '15pt'}} pb={3}>
+      <Typography tabIndex={0} aria-label={`File path displayed as ${dashboardData.filePath.split('/').pop()}`} p={14} sx={{textAlign:'left', fontFamily: 'Montserrat', color: "#9921D2", fontWeight: 500, fontSize: '15pt'}} pb={3}>
         {dashboardData.filePath.split('/').pop()}
       </Typography>
 
@@ -21,10 +21,10 @@ function DashboardPage() {
       <Box bgcolor="#E6EEF5" p={6}>
         <Stack direction="row" spacing={2}>
           <Typography sx={{fontFamily: 'Montserrat', fontSize:'15px', fontWeight: 300, color:"#9921D2"}}>{dashboardData.fileName}</Typography>
-          <LetterGrade aria-label="letter grade" score={dashboardData.overview?.score || "A+"} />
+          <LetterGrade tabIndex={0} aria-label={`Letter grade is ${dashboardData.overview?.score || "A+"}`} score={dashboardData.overview?.score || "A+"} />
           <Overview data={dashboardData.overview || { score: 0, top_category: 'Sender_Gender' }} />
         </Stack>
-        <GraphGrid aria-label="Grid of graphs" graphsInfo={dashboardData.metricResults} />
+        <GraphGrid graphsInfo={dashboardData.metricResults} />
       </Box>
     </Stack>
 

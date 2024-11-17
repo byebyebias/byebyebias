@@ -6,7 +6,7 @@ import BarChart from "../BarChart/BarChart";
 
 function Graph({data, title}) {
     return (
-        <Card p={0} sx={{ width: "30%", borderRadius: '35px', background: "#F8FEFA", alignItems: 'center'}} >
+        <Card p={0} aria-label={`This graph displays the ${title} metric for each of your selected attributes`} tabIndex={0} sx={{ width: "30%", borderRadius: '35px', background: "#F8FEFA", alignItems: 'center'}} >
             <Typography style= {{textAlign: 'left', paddingLeft: '30px', paddingTop: '20px', fontFamily: 'Montserrat', fontSize:'20px', fontWeight: 400, fontStyle: 'italic'}}>{title}</Typography>
             <CardContent sx={{justifyContent: 'center', alignItems: 'center', width: '100%'}}>
                 <BarChart data={data} />

@@ -12,6 +12,10 @@ const colorMap = {
 const BarChart = ({ data }) => (
         <div style={{height: "300px", width: "100%"}}>
             <ResponsiveBar
+                isFocusable={true}
+                barAriaLabel={({ id, value, indexValue }) =>
+                    `The ${indexValue} bar has a score of ${value}`
+                }
                 theme={{
                     labels: {
                         text: {

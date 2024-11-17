@@ -1,7 +1,6 @@
 import { 
     Typography,
     Button,
-    TextField,
     Container,
     Box,
 } from "@mui/material";
@@ -32,19 +31,19 @@ function UploadPage() {
         if (newFile) setFile(newFile)
     };
 
-    {/* FIGURE OUT HOW TO SUPPRESS POSSIBLY NULL ERROR*/}
+    {/* FIGURE OUT HOW TO SUPPRESS POSSIBLY NULL ERROR */}
     const handleUploadClick = () => {
         if (file && link) {
             linkRef.current.setCustomValidity("Please enter ONLY A FILE or ONLY A LINK")
             linkRef.current.reportValidity()
         } else if (file) {
-            controller.handleFileUpload(file);
             setPage(2)
         } else if (linkRef.current.reportValidity()) {
             setPage(2)
         } 
 
     };
+    const handleViewResults = () => controller.handleFileUpload(file);
 
     const onLinkChange = (e: React.ChangeEvent<HTMLInputElement>) => setLink(e.target.value)
 
@@ -69,6 +68,7 @@ function UploadPage() {
                         </Box>
 
                         <Typography variant="h2" fontSize="2.5em" fontWeight="500">or</Typography>
+
                         <div style={{position:"relative"}}>
                             <label for="bucketInput" hidden>paste public s3 bucket link</label>
                             <img src="linkIcon.png" className={styles.bucketLinkIcon}/>
@@ -125,7 +125,7 @@ function UploadPage() {
                             )}
                         </Grid>
 
-                        <Button variant="contained" onClick={handleUploadClick}>
+                        <Button variant="contained" onClick={handleViewResults}>
                             View Results
                         </Button>
                     </main>

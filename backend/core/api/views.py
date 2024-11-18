@@ -4,6 +4,7 @@ from backend.core.data_access.file_repository import FileRepository
 from backend.core.use_cases.calculate_metrics_interactor import CalculateMetricsInteractor
 from backend.core.use_cases.convert_file_interactor import ConvertFileInteractor
 from django.views.decorators.csrf import csrf_exempt
+import os
 
 @csrf_exempt
 @api_view(['POST'])

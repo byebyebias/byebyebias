@@ -1,14 +1,32 @@
 import { BarChart } from "@mui/icons-material";
-import { Modal, Box, Card, CardContent, IconButton } from "@mui/material";
+import { Modal, Box, Card, CardContent, IconButton, Typography } from "@mui/material";
 import CloseIcon from '@mui/icons-material/Close';
 
-function GraphPopUp({title, data, open, handleClose}) {
+type Value = {
+    protected_attribute: string;
+    score: number;
+  };
+  
+type Metric = {
+    title: string;
+    values: Value[];
+};
+  
+    
+type GraphPopUpProps = {
+    title: string;
+    data: Metric[];
+    open: boolean; 
+    handleClose: (...args: any[]) => any;
+}
 
+function GraphPopUp({title, data, open, handleClose}: GraphPopUpProps) {
 
     return (
-        <Modal open={open} onClose={handleClose}>
+        <Modal aria-label="Popup with enlarged ${title} graph" open={open} onClose={handleClose}>
             <Box 
-                p={6} aria-label={`This is the enlarged version of the ${title} graph`} tabIndex={0} 
+                
+                p={6} tabIndex={0} 
                 sx={{
                     display: 'flex',
                     justifyContent: 'center',
@@ -21,14 +39,14 @@ function GraphPopUp({title, data, open, handleClose}) {
                     padding: '10px',
                     borderRadius: '35px',
                 }}>
-                    <Card p={6} tabIndex={0} sx={{width: "90%", borderRadius: '35px', backgroundColor: '#F8FEFA',}} >
+                    <Typography style= {{textAlign: 'left', paddingLeft: '30px', paddingTop: '20px', fontFamily: 'Montserrat', fontSize:'20px', fontWeight: 400, fontStyle: 'italic'}}>{title}</Typography>
+                    <Card component="div" tabIndex={0} sx={{width: "90%", borderRadius: '35px', backgroundColor: '#F8FEFA'}} >
                         <CardContent sx={{display:'flex'}}>
                             <BarChart data={data} height="600px" width="50%" />
-                            <IconButton aria-label="close popup" sx={{position: 'absolute', zIndex: 1, top:30, right: 100}}>
+                            <IconButton tabIndex={0} aria-label="Close popup" sx={{position: 'absolute', zIndex: 1, top:30, right: 100}}>
                                 <CloseIcon/>
                             </IconButton>
                         </CardContent>
-                        
                     </Card>
                     
             </Box>

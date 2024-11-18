@@ -1,15 +1,30 @@
 import { Typography } from "@mui/material";
 import { ResponsiveBar } from "@nivo/bar";
 
+type Value = {
+    protected_attribute: string;
+    score: number;
+  };
+  
+type Metric = {
+    title: string;
+    values: Value[];
+};
 
-const colorMap = {
+type BarChartProps = {
+    data: Metric[];
+    height: string;
+    width: string;
+  };  
+
+const colorMap : {[key: string]: string} = {
     "sender_gender": "#271DE0",
     "sender_race": "#6820EA",
     "receiver_gender": "#00D632", 
     "receiver_race": "#EE55E7",
 };
 
-const BarChart = ({ data, width = '100%', height = '400px'}) => (
+const BarChart = ({ data, width = '100%', height = '400px'}: BarChartProps) => (
         <div style={{height: height, width: width}}>
             <ResponsiveBar
                 isFocusable={true}
@@ -28,17 +43,17 @@ const BarChart = ({ data, width = '100%', height = '400px'}) => (
                     axis: {
                         ticks: {
                             text: {
-                                fontSize: 12,        // Font size for tick labels
-                                fontFamily: 'Montserrat', // Font family for ticks
-                                fill: '#333',         // Tick color
+                                fontSize: 12,        
+                                fontFamily: 'Montserrat',
+                                fill: '#333',        
                             },
                         },
                         legend: {
                             text: {
-                                fontSize: 14,        // Font size for legends
-                                fontFamily: 'Montserrat', // Font family for legends
-                                fontWeight: 'bold',    // Font weight for legends
-                                fill: '#333',         // Legend color
+                                fontSize: 14,        
+                                fontFamily: 'Montserrat', 
+                                fontWeight: 'bold',   
+                                fill: '#333',       
                             },
                         },
                     },

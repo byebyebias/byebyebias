@@ -15,14 +15,9 @@ type BarProps = {
 }
 
 const BarChart:React.FC<BarProps> = ({ xaxis, yaxis, data, onClick}) => {
-    const [isEnlarged, setIsEnlarged] = useState(false)
-
-    const switchSize = () => {
-      setIsEnlarged((prev) => !prev);
-    }
-
+   
     return (
-        <div style={{ height: 400 }} onClick={switchSize}>
+        <div style={{ height: 400 }}>
           <ResponsiveBar
             data={data}
             keys={[yaxis]}

@@ -1,17 +1,20 @@
 import Grid from "@mui/material/Grid2";
-import { Container, Card, CardContent, CardHeader, Typography, Modal, Box, IconButton } from "@mui/material";
-import { ResponsiveBar } from "@nivo/bar";
-import { colorSchemes } from '@nivo/colors';
+import { Container, Card, CardContent, Typography, Modal, Box, IconButton } from "@mui/material";
 import BarChart from "../BarChart/BarChart";
-import ViewGraphButton from "../ViewGraphButton/ViewGraphButton";
-import { AlignVerticalBottom } from "@mui/icons-material";
 import { useState } from "react";
 import CloseIcon from '@mui/icons-material/Close';
 import OpenInFullIcon from '@mui/icons-material/OpenInFull';
 
+type GraphProps = {
+    title: string;
+    data: any;  
+}
 
+type GraphGridProps = {
+    graphsInfo: []
+}
 
-function Graph({data, title}) {
+function Graph({data, title}: GraphProps) {
 
     const [open, setOpen] = useState(false);
     const handleOpen = () => {
@@ -28,11 +31,11 @@ function Graph({data, title}) {
     return (
 
         
-        <><Card p={0} aria-label={`This graph displays the ${title} metric for each of your selected attributes`} tabIndex={0} sx={{ width: "30%", borderRadius: '35px', background: "#F8FEFA", alignItems: 'center'}} >
-            <Typography style= {{textAlign: 'left', paddingLeft: '30px', paddingTop: '20px', fontFamily: 'Montserrat', fontSize:'20px', fontWeight: 400, fontStyle: 'italic'}}>{title}</Typography>
+        <><Card aria-label={`This graph displays the ${title} metric for each of your selected attributes`} tabIndex={0} sx={{ width: "30%", borderRadius: '35px', background: "#F8FEFA", alignItems: 'center'}} >
+            
             <CardContent sx={{justifyContent: 'center', alignItems: 'center', width: '100%'}}>
                 <BarChart data={data}/>
-                <IconButton onClick={handleOpen}>
+                <IconButton tabIndex={0} aria-label="enlarge graph" onClick={handleOpen}>
                     <OpenInFullIcon/>
                 </IconButton>
             </CardContent>
@@ -41,7 +44,7 @@ function Graph({data, title}) {
         <Modal open={open} onClose={handleClose}>
             
             <Box 
-            p={6} aria-label={`This is the enlarged version of the ${title} graph`} tabIndex={0} 
+            p={6} aria-label={`Enlarged version of the ${title} graph`} tabIndex={0} 
             sx={{
                 display: 'flex',
                 justifyContent: 'center',
@@ -55,7 +58,7 @@ function Graph({data, title}) {
                 padding: '10px',
                 borderRadius: '35px',
             }}>
-                <Card p={6} tabIndex={0} sx={{width: "90%", borderRadius: '35px', backgroundColor: '#F8FEFA',}} >
+                <Card component="div" tabIndex={0} sx={{width: "90%", borderRadius: '35px', backgroundColor: '#F8FEFA',}} >
                     <Typography style= {{textAlign: 'left', paddingLeft: '50px', paddingTop: '30px', fontFamily: 'Montserrat', fontSize:'30px', fontWeight: 400, fontStyle: 'italic'}}>{title}</Typography>
 
                     <CardContent sx={{display:'flex'}}>
@@ -74,7 +77,7 @@ function Graph({data, title}) {
 }
 
 
-function GraphGrid({graphsInfo}) {
+function GraphGrid({graphsInfo}: GraphGridProps) {
 
     if (!graphsInfo || !Array.isArray(graphsInfo)) {
         return <p>No data available</p>; 

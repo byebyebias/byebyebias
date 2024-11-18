@@ -3,7 +3,9 @@ from rest_framework.response import Response
 from backend.core.data_access.file_repository import FileRepository
 from backend.core.use_cases.calculate_metrics_interactor import CalculateMetricsInteractor
 from backend.core.use_cases.convert_file_interactor import ConvertFileInteractor
+from django.views.decorators.csrf import csrf_exempt
 
+@csrf_exempt
 @api_view(['POST'])
 def upload_file(request):
     if 'file' not in request.FILES:
@@ -19,6 +21,9 @@ def upload_file(request):
         protected_attributes = ['sender_gender', 'sender_race']
         true_df, pred_df = convert_file.convert(file_path, protected_attributes)
         results = calculate_metrics.calculate(true_df, pred_df, protected_attributes)
+
+        if os.path.exists(file_path):
+            os.remove(file_path)
 
         return Response({
             "file_name": file_name,

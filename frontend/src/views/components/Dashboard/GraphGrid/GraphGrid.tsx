@@ -23,7 +23,7 @@ const GraphGrid: React.FC<GraphGridProps> = ({ graphsInfo }) => {
 
           return (
             <Grid item key={index}>
-              <Card style={{ position: "relative", width: "325px" }}>
+              <Card style={{ position: "relative", width: "400px" }}>
                 <CardHeader title={graphTitle} />
                 <CardContent>
                   <InfoButton description={description} />

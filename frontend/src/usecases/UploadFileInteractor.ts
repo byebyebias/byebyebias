@@ -7,10 +7,7 @@ export class UploadFileInteractor {
 
     const response = await apiService.post("/upload/", formData);
     if (response.ok) {
-      console.log("Raw Response", response);
       const data = await response.json();
-      console.log("Parsed Response:", data);
-      console.log("Metric Results:", data.metric_results);
       return {
         fileName: data.file_name,
         filePath: data.file_path,

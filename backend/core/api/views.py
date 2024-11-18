@@ -30,8 +30,9 @@ def upload_file(request):
             "file_name": file_name,
             "file_path": file_path,
             "overview": {
-                "score": results["bias_score"],
-                "top_category": "ABC",
+                "score": results["letter_grade"],
+                "percentage": results["bias_score"],
+                "top_category": "ABC"
             },
             "metric_results": results["formatted_metrics"],
         })

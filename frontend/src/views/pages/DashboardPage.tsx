@@ -16,7 +16,10 @@ function DashboardPage() {
 
       <Box bgcolor="#E6EEF5" p={10}>
         <Stack direction="row" spacing={5}>
-          <BiasScore score={dashboardData.overview.score} />
+          <BiasScore
+            score={dashboardData.overview.score}
+            percentage={dashboardData.overview.percentage}
+          />
           <Overview data={dashboardData.overview} />
         </Stack>
         <GraphGrid graphsInfo={dashboardData.metricResults} />

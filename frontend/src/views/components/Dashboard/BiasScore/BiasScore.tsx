@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader, Typography } from "@mui/material";
 
-// Function to calculate luminance
+// Function to calculate luminance - helps with accessibility and looks better visually, formula from https://www.w3.org/TR/WCAG20/#relativeluminancedef
 const getLuminance = (r, g, b) => {
   const a = [r, g, b].map((v) => {
     v /= 255;

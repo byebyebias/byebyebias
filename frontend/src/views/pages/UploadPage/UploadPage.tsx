@@ -67,7 +67,14 @@ function UploadPage() {
                             <Typography variant="body2" fontFamily="Montserrat">{file ? file.name : ''}</Typography>
                         </Box>
 
-                        <Typography variant="h2" fontSize="2.5em" fontWeight="500">or</Typography>
+                        <Typography 
+                            variant="h2"
+                            fontSize="2.5em"
+                            fontWeight="500"
+                            fontFamily="Montserrat"
+                        >
+                            or
+                        </Typography>
 
                         <div style={{position:"relative"}}>
                             <label htmlFor="bucketInput" hidden>paste public s3 bucket link</label>

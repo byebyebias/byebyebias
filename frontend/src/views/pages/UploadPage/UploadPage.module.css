@@ -83,9 +83,9 @@ button.attributeButton {
 button.uploadButton {
     background-color: #00CF31; 
     color: white; 
-    /* border-radius: 40px;  */
+    border-radius: 40px; 
     padding: 6px 16px; 
-    width: 171px;
+    width: 175px;
     text-transform: none;
     font-size: 20px;
     font-family: "Montserrat";

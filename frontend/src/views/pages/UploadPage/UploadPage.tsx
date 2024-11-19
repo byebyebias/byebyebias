@@ -13,6 +13,7 @@ import { UploadFilePresenter } from "../../../presenters/UploadFilePresenter";
 
 import UploadFileView from "../../UploadFileView";
 import styles from "./UploadPage.module.css"
+import Footer from "../../components/Footer/Footer";
 
 const protectedAttributes = ["sender_gender", "sender_race", "sender_age", "receiver_gender", "receiver_race"]
 
@@ -48,97 +49,101 @@ function UploadPage() {
     const onLinkChange = (e: React.ChangeEvent<HTMLInputElement>) => setLink(e.target.value)
 
     return (
-        <Container
-            maxWidth={false}
-            disableGutters
-            className={styles.container}
-            aria-labelledby="uploadHeader"
-        >
-            {page === 1 &&
-                <>
-                    <header>
-                        <Typography variant="h1" fontSize="4em" fontWeight="600" id="uploadHeader" fontFamily="Montserrat">Upload Your Dataset</Typography>
-                    </header>
+        <>
+            <Container
+                maxWidth={false}
+                disableGutters
+                className={styles.container}
+                aria-labelledby="uploadHeader"
+            >
+                {page === 1 &&
+                    <>
+                        <header>
+                            <Typography variant="h1" fontSize="4em" fontWeight="600" id="uploadHeader" fontFamily="Montserrat">Upload Your Dataset</Typography>
+                        </header>
 
-                    <main className={styles.center}>
+                        <main className={styles.center}>
 
-                        <Box sx={{display: "flex", flexDirection: "column", alignItems: "center"}}>
-                            <UploadFileView handleFileChange={handleFileChange}/>
-                            <Typography variant="body2" fontFamily="Montserrat">{file ? file.name : ''}</Typography>
-                        </Box>
+                            <Box sx={{display: "flex", flexDirection: "column", alignItems: "center"}}>
+                                <UploadFileView handleFileChange={handleFileChange}/>
+                                <Typography variant="body2" fontFamily="Montserrat">{file ? file.name : ''}</Typography>
+                            </Box>
 
-                        <Typography 
-                            variant="h2"
-                            fontSize="2.5em"
-                            fontWeight="500"
-                            fontFamily="Montserrat"
-                        >
-                            or
-                        </Typography>
+                            <Typography 
+                                variant="h2"
+                                fontSize="2.5em"
+                                fontWeight="500"
+                                fontFamily="Montserrat"
+                            >
+                                or
+                            </Typography>
 
-                        <div style={{position:"relative"}}>
-                            <label htmlFor="bucketInput" hidden>paste public s3 bucket link</label>
-                            <img src="linkIcon.png" className={styles.bucketLinkIcon}/>
-                            <input 
-                                id="bucketInput"
-                                name="bucketInput"
-                                className={styles.bucketUrlInput} 
-                                type="url"
-                                placeholder="paste public s3 bucket link"
-                                value={link}
-                                onChange={onLinkChange}
-                                ref={linkRef}
-                            />
-                        </div>
+                            <div style={{position:"relative"}}>
+                                <label htmlFor="bucketInput" hidden>paste public s3 bucket link</label>
+                                <img src="linkIcon.png" className={styles.bucketLinkIcon}/>
+                                <input 
+                                    id="bucketInput"
+                                    name="bucketInput"
+                                    className={styles.bucketUrlInput} 
+                                    type="url"
+                                    placeholder="paste public s3 bucket link"
+                                    value={link}
+                                    onChange={onLinkChange}
+                                    ref={linkRef}
+                                />
+                            </div>
 
-                        <Button 
-                            onClick={handleUploadClick}
-                            className={styles.uploadButton}
-                            disabled={file == undefined && link == ''}
-                        >
-                            Upload
-                        </Button>
-                    </main>
+                            <Button 
+                                onClick={handleUploadClick}
+                                className={styles.uploadButton}
+                                disabled={file == undefined && link == ''}
+                            >
+                                Upload
+                            </Button>
+                        </main>
 
-                </>
-            }
+                    </>
+                }
 
-            {page === 2 && 
-                <>
-                    <header aria-live="polite">
-                         <Typography  variant="h1" fontSize="4em" fontWeight="500" id="uploadHeader">Select Attributes</Typography>
-                    </header>
+                {page === 2 && 
+                    <>
+                        <header aria-live="polite">
+                            <Typography  variant="h1" fontSize="4em" fontWeight="500" id="uploadHeader">Select Attributes</Typography>
+                        </header>
 
-                    <main className={styles.center} aria-live="polite">
-                        {/* TODO FOR BUCKET, ADD ACTUAL FILE NAME WHEN CONNECTED WITH S3 INTEGRATION*/}
-                        <Typography variant="h2"  fontSize="1.25em">
-                            Selected attributes in <span className={styles.filename}>{file ? file.name : "INSERTDUMMYBUCKETNAME.parquet"}</span> will be scanned for bias
-                        </Typography>
-                        <Grid 
-                            container 
-                            spacing={{ xs: 2, md: 3 }} 
-                            columns={{xs: 1, sm: 1, md: 2, lg: 3, xl: 3}} 
-                            className={styles.attributeSelection}
-                        >
-                            {protectedAttributes.map((attribute, index) => 
-                                <Grid size={1} sx={{display: "flex", justifyContent: "center"}}>
-                                    <Button 
-                                        key={index}
-                                        className={styles.attributeButton}
-                                    >
-                                        {attribute}
-                                    </Button>
-                                </Grid>
-                            )}
-                        </Grid>
+                        <main className={styles.center} aria-live="polite">
+                            {/* TODO FOR BUCKET, ADD ACTUAL FILE NAME WHEN CONNECTED WITH S3 INTEGRATION*/}
+                            <Typography variant="h2"  fontSize="1.25em">
+                                Selected attributes in <span className={styles.filename}>{file ? file.name : "INSERTDUMMYBUCKETNAME.parquet"}</span> will be scanned for bias
+                            </Typography>
+                            <Grid 
+                                container 
+                                spacing={{ xs: 2, md: 3 }} 
+                                columns={{xs: 1, sm: 1, md: 2, lg: 3, xl: 3}} 
+                                className={styles.attributeSelection}
+                            >
+                                {protectedAttributes.map((attribute, index) => 
+                                    <Grid size={1} sx={{display: "flex", justifyContent: "center"}}>
+                                        <Button 
+                                            key={index}
+                                            className={styles.attributeButton}
+                                        >
+                                            {attribute}
+                                        </Button>
+                                    </Grid>
+                                )}
+                            </Grid>
 
-                        <Button variant="contained" onClick={handleViewResults}>
-                            View Results
-                        </Button>
-                    </main>
-                </>
-            }
-        </Container>    
+                            <Button variant="contained" onClick={handleViewResults}>
+                                View Results
+                            </Button>
+                        </main>
+                    </>
+                }
+            </Container>    
+
+            <Footer label="made with <3 by team triple b."/>
+        </>
     )
 }
 

@@ -32,7 +32,6 @@ function UploadPage() {
         if (newFile) setFile(newFile)
     };
 
-    {/* FIGURE OUT HOW TO SUPPRESS POSSIBLY NULL ERROR */}
     const handleUploadClick = () => {
         if (file && link) {
             linkRef.current?.setCustomValidity("Please enter ONLY A FILE or ONLY A LINK")
@@ -79,8 +78,7 @@ function UploadPage() {
                             </Typography>
 
                             <div style={{position:"relative"}}>
-                                <label htmlFor="bucketInput" hidden>paste public s3 bucket link</label>
-                                <img src="linkIcon.png" className={styles.bucketLinkIcon}/>
+                                <img alt="" src="linkIcon.png" className={styles.bucketLinkIcon}/>
                                 <input 
                                     id="bucketInput"
                                     name="bucketInput"
@@ -90,6 +88,9 @@ function UploadPage() {
                                     value={link}
                                     onChange={onLinkChange}
                                     ref={linkRef}
+
+                                    // label for accesibility
+                                    aria-label="paste public s3 bucket link"
                                 />
                             </div>
 
@@ -142,7 +143,9 @@ function UploadPage() {
                 }
             </Container>    
 
-            <Footer label="made with <3 by team triple b."/>
+            <footer>
+                <Footer label="made with <3 by team triple b."/>
+            </footer>
         </>
     )
 }

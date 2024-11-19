@@ -57,11 +57,8 @@ function UploadPage() {
             >
                 {page === 1 &&
                     <>
-                        <header>
-                            <Typography variant="h1" fontSize="4em" fontWeight="600" id="uploadHeader" fontFamily="Montserrat">Upload Your Dataset</Typography>
-                        </header>
-
                         <main className={styles.center}>
+                            <Typography variant="h1" fontSize="4em" fontWeight="600" id="uploadHeader" fontFamily="Montserrat">Upload Your Dataset</Typography>
 
                             <Box sx={{display: "flex", flexDirection: "column", alignItems: "center"}}>
                                 <UploadFileView handleFileChange={handleFileChange}/>
@@ -108,11 +105,9 @@ function UploadPage() {
 
                 {page === 2 && 
                     <>
-                        <header aria-live="polite">
-                            <Typography  variant="h1" fontSize="4em" fontWeight="500" id="uploadHeader">Select Attributes</Typography>
-                        </header>
-
                         <main className={styles.center} aria-live="polite">
+                            <Typography  variant="h1" fontSize="4em" fontWeight="500" id="uploadHeader">Select Attributes</Typography>
+
                             {/* TODO FOR BUCKET, ADD ACTUAL FILE NAME WHEN CONNECTED WITH S3 INTEGRATION*/}
                             <Typography variant="h2"  fontSize="1.25em">
                                 Selected attributes in <span className={styles.filename}>{file ? file.name : "INSERTDUMMYBUCKETNAME.parquet"}</span> will be scanned for bias

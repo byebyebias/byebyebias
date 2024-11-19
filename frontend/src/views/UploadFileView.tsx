@@ -14,6 +14,7 @@ const UploadFileView: React.FC<Props> = ({handleFileChange}) => {
   const handleButtonClick = () => {
     fileInputRef.current?.click();
   };
+  console.log(fileInputRef.current?.files)
 
   return (
     <div>
@@ -23,6 +24,7 @@ const UploadFileView: React.FC<Props> = ({handleFileChange}) => {
         ref={fileInputRef}
         onChange={handleFileChange}
         style={{ display: "none" }}
+        aria-label="File upload"
       />
       <Button
         role={undefined}

@@ -64,13 +64,13 @@ function UploadPage() {
 
                         <Box sx={{display: "flex", flexDirection: "column", alignItems: "center"}}>
                             <UploadFileView handleFileChange={handleFileChange}/>
-                            <Typography variant="body2">{file ? file.name : ''}</Typography>
+                            <Typography variant="body2" fontFamily="Montserrat">{file ? file.name : ''}</Typography>
                         </Box>
 
                         <Typography variant="h2" fontSize="2.5em" fontWeight="500">or</Typography>
 
                         <div style={{position:"relative"}}>
-                            <label for="bucketInput" hidden>paste public s3 bucket link</label>
+                            <label htmlFor="bucketInput" hidden>paste public s3 bucket link</label>
                             <img src="linkIcon.png" className={styles.bucketLinkIcon}/>
                             <input 
                                 id="bucketInput"
@@ -114,7 +114,7 @@ function UploadPage() {
                             className={styles.attributeSelection}
                         >
                             {protectedAttributes.map((attribute, index) => 
-                                <Grid item size={1} sx={{display: "flex", justifyContent: "center"}}>
+                                <Grid size={1} sx={{display: "flex", justifyContent: "center"}}>
                                     <Button 
                                         key={index}
                                         className={styles.attributeButton}

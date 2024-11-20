@@ -1,26 +1,15 @@
-import { BarChart } from "@mui/icons-material";
 import { Modal, Box, Card, CardContent, IconButton, Typography } from "@mui/material";
 import CloseIcon from '@mui/icons-material/Close';
-
-type Value = {
-    protected_attribute: string;
-    score: number;
-  };
+import BarChart from "../BarChart/BarChart";
   
-type Metric = {
-    title: string;
-    values: Value[];
-};
-  
-    
 type GraphPopUpProps = {
     title: string;
-    data: Metric[];
+    data: any;
     open: boolean; 
     handleClose: (...args: any[]) => any;
 }
 
-function GraphPopUp({title, data, open, handleClose}: GraphPopUpProps) {
+function GraphPopUp({title, data, open, handleClose, }: GraphPopUpProps) {
 
     return (
         <Modal aria-label="Popup with enlarged ${title} graph" open={open} onClose={handleClose}>
@@ -40,10 +29,10 @@ function GraphPopUp({title, data, open, handleClose}: GraphPopUpProps) {
                     borderRadius: '35px',
                 }}>
                     <Typography style= {{textAlign: 'left', paddingLeft: '30px', paddingTop: '20px', fontFamily: 'Montserrat', fontSize:'20px', fontWeight: 400, fontStyle: 'italic'}}>{title}</Typography>
-                    <Card component="div" tabIndex={0} sx={{width: "90%", borderRadius: '35px', backgroundColor: '#F8FEFA'}} >
+                    <Card tabIndex={0} sx={{width: "90%", borderRadius: '35px', backgroundColor: '#F8FEFA'}} >
                         <CardContent sx={{display:'flex'}}>
-                            <BarChart data={data} height="600px" width="50%" />
-                            <IconButton tabIndex={0} aria-label="Close popup" sx={{position: 'absolute', zIndex: 1, top:30, right: 100}}>
+                            <BarChart data={data} height="400px" width="50%" />
+                            <IconButton component="div" tabIndex={0} aria-label="Close popup" sx={{position: 'absolute', zIndex: 1, top:30, right: 100}}>
                                 <CloseIcon/>
                             </IconButton>
                         </CardContent>

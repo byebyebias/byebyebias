@@ -12,12 +12,15 @@ type BarProps = {
     yaxis: string;
     data: BarChartData[];
     onClick: void;
+    height: string;
+    width: string
+    
 }
 
-const BarChart:React.FC<BarProps> = ({ xaxis, yaxis, data, onClick}) => {
+const BarChart:React.FC<BarProps> = ({ xaxis, yaxis, data, onClick, height, width}) => {
    
     return (
-        <div style={{ height: 400 }}>
+        <div style={{ height, width }}>
           <ResponsiveBar
             data={data}
             keys={[yaxis]}

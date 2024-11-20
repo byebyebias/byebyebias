@@ -10,9 +10,6 @@ type GraphProps = {
     data: any;  
 }
 
-type GraphGridProps = {
-    graphsInfo: []
-}
 
 function Graph({data, title}: GraphProps) {
 
@@ -77,7 +74,7 @@ function Graph({data, title}: GraphProps) {
 }
 
 
-function GraphGrid({graphsInfo}: GraphGridProps) {
+function GraphGrid({graphsInfo}) {
 
     if (!graphsInfo || !Array.isArray(graphsInfo)) {
         return <p>No data available</p>; 

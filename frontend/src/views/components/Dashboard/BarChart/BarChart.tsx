@@ -1,22 +1,6 @@
 import { Typography } from "@mui/material";
 import { ResponsiveBar } from "@nivo/bar";
 
-type Value = {
-    protected_attribute: string;
-    score: number;
-  };
-  
-type Metric = {
-    title: string;
-    values: Value[];
-};
-
-type BarChartProps = {
-    data: Metric[];
-    height: string;
-    width: string;
-  };  
-
 const colorMap : {[key: string]: string} = {
     "sender_gender": "#271DE0",
     "sender_race": "#6820EA",
@@ -24,7 +8,7 @@ const colorMap : {[key: string]: string} = {
     "receiver_race": "#EE55E7",
 };
 
-const BarChart = ({ data, width = '100%', height = '400px'}: BarChartProps) => (
+const BarChart = ({ data, width = '100%', height = '400px'}) => (
         <div style={{height: height, width: width}}>
             <ResponsiveBar
                 isFocusable={true}

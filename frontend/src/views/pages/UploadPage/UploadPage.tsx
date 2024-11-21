@@ -15,6 +15,9 @@ import UploadFileView from "../../UploadFileView";
 import styles from "./UploadPage.module.css"
 import Footer from "../../components/Footer/Footer";
 
+const apiUrl = import.meta.env.VITE_BASE_URL
+console.log(apiUrl)
+
 const protectedAttributes = ["sender_gender", "sender_race", "sender_age", "receiver_gender", "receiver_race"]
 
 function UploadPage() {

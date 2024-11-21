@@ -5,6 +5,7 @@ import HeroSection from "../components/HeroSection/HeroSection";
 import ProcessStep from "../components/ProcessStep/ProcessStep";
 import Table from "../components/Table/Table"
 import Title from "../components/Title/Title";
+import GraphImage from "../assets/GraphImage.png"
 
 const apiUrl = import.meta.env.VITE_API_URL;
 
@@ -16,10 +17,18 @@ const MainPage: React.FC = () => {
 
       <Title label="BYE BYE BIAS"/>
 
-      <HeroSection
-        heading="Target fraud detection bias at the source."
-        body="Visualize and alleviate bias in transaction datasets fed into fraud detection AI models. Check out our handy guide ↓ if you need any help!"
-      />
+      <div className="flex-container">
+        <HeroSection
+          heading={
+            <>
+            Target <span className="highlight">fraud detection</span> bias at the source.
+            </>
+          }
+          body="Visualize and alleviate bias in transaction datasets fed into fraud detection AI models. Check out our handy guide ↓ if you need any help!"
+        />
+        <img src={GraphImage} alt="Graph Image" />
+        
+      </div>
 
       {/* Process Step / Instruction Section */}
       <ProcessStep

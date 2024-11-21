@@ -5,7 +5,7 @@ import UploadFileView from '../../UploadFileView';
 type setState = (filename: string) => void;
 
 type HeroSectionProps = {
-    heading: string;
+    heading: React.ReactNode;
     body: string;
 };
 

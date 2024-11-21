@@ -2,6 +2,8 @@
 .title-section {
     padding: 250px;
     position: relative;
+    margin-top: 0;
+    margin-bottom: 100px;
 }
 
 .glitch {

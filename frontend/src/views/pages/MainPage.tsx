@@ -7,8 +7,6 @@ import HeroSection from "../components/HeroSection/HeroSection";
 import ProcessStep from "../components/ProcessStep/ProcessStep";
 import Table from "../components/Table/Table"
 
-const apiUrl = import.meta.env.VITE_API_URL;
-
 const MainPage: React.FC = () => {
   // const [filename, setFilename] = useState<string>("")
   // const navigate = useNavigate();

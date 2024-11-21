@@ -1,6 +1,10 @@
 import { Card, CardContent, CardHeader, Typography } from "@mui/material";
 
-function BiasScore({score}) {
+interface BiasScoreProps {
+    score: number;
+}
+
+function BiasScore({ score }: BiasScoreProps) {
     return (
         <Card  sx={{flex: "1"}}>
             <CardHeader title="Your Fairness Score"/>

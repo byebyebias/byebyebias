@@ -3,7 +3,7 @@ import '@testing-library/jest-dom';
 import { userEvent } from "@testing-library/user-event";
 
 import { MemoryRouter, Routes, Route } from "react-router-dom";
-import UploadPage from '../views/pages/UploadPage/UploadPage';
+import UploadPage from './UploadPage';
 
 describe('Testing Upload Page', () => {
     beforeEach(() => {

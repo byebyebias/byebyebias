@@ -17,5 +17,5 @@
     "jsx": "react-jsx"
   },
   "include": ["src", "**/*.ts", "**/*.tsx"],
-  "types": ["jest", "@testing-library/jest-dom"]
+  "types": ["jest", "@testing-library/jest-dom", "vite/client"]
 }

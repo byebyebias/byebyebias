@@ -4,8 +4,13 @@ import {
     Card,
  } from "@mui/material"
 
+ interface OverviewProps {
+    data: {
+      top_category: string;
+    };
+  }
 
-function Overview( { data } ) {
+function Overview( { data }: OverviewProps) {
     //TODO add improvement areas dynamically
 
     return (

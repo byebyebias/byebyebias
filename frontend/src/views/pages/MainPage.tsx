@@ -18,7 +18,7 @@ const MainPage: React.FC = () => {
 
       <Title label="BYE BYE BIAS"/>
 
-      <div className="center-container">
+      <div className="arrow-container">
        <a href="#about">
           <img src={DownArrow} alt="Down Arrow" id="down-arrow" />
         </a>
@@ -37,23 +37,25 @@ const MainPage: React.FC = () => {
           <img src={GraphImage} alt="Graph Image" id="graph-image" />
         </div>
       </section>
-
-      <ProcessStep
-        title="Upload Dataset"
-        stepnum={1}
-        body="The format of the dataset must be a parquet file with the mandatory columns highlighted in the table below."
-      />
-      <Table />
-      <ProcessStep
-        title="View Results"
-        stepnum={2}
-        body="Look at overall fairness score and bias metric results"
-      />
-      <ProcessStep
-        title="Adjust and Try Again"
-        stepnum={3}
-        body="Modify the dataset according to the bias results and submit the file again."
-      />
+      
+      <div className="process-container">
+        <ProcessStep
+          title="Upload your dataset."
+          stepnum={1}
+          body="The format of the dataset must be a parquet file with the mandatory columns highlighted in the table below."
+        />
+        <Table />
+        <ProcessStep
+          title="View our feedback."
+          stepnum={2}
+          body="Look at overall fairness score and bias metric results"
+        />
+        <ProcessStep
+          title="Adjust and try again!"
+          stepnum={3}
+          body="Modify the dataset according to the bias results and submit the file again."
+        />
+      </div>
 
       <Footer label="© 2024 Team TripleB" />
     </div>

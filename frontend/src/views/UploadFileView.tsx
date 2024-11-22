@@ -31,7 +31,7 @@ const UploadFileView: React.FC = () => {
         onChange={handleFileChange}
         style={{ display: "none" }}
       />
-      <Button label="Upload Data >" onClick={() => { handleButtonClick(); }} />
+      <Button label="get started >" onClick={() => { handleButtonClick(); }} />
     </div>
   );
 };

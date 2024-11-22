@@ -23,11 +23,16 @@ section {
   height: auto;
 }
 
-.center-container {
+.arrow-container {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 200px;
+}
+
+.process-container {
+  padding-left: 300px;
+  padding-right: 300px;
 }
 
 .main-page {

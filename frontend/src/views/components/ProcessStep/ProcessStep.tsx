@@ -11,14 +11,12 @@ type ProcessStepProps = {
 
 const ProcessStep:React.FC<ProcessStepProps> = ({ title , body, stepnum}) => {
     return (
-        <div className='process-step'><div 
-            className="process-header">
+        <div className="process-header">
             {stepnum}. {title}
+            <div className="process-body">
+                {body}
+            </div>
         </div>
-        <div 
-            className="process-body">
-            {body}
-        </div></div>
 
     );
 };

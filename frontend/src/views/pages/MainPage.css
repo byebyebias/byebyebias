@@ -38,7 +38,7 @@ section {
 .main-page {
   display: flex;
   flex-direction: column;
-  min-height: 100vh; /* Ensure the app takes full height */
+  min-height: 100vh;
   background-image: url('../assets/PurpleGradient.png');
 }
 
@@ -50,3 +50,14 @@ section {
   padding-bottom: 20vh;
 }
 
+.sticky-logo {
+  position: fixed; 
+  top: 30px; 
+  right: 50px; 
+  z-index: 1000; 
+}
+
+.sticky-logo img {
+  width: 60px;
+  height: auto; 
+}

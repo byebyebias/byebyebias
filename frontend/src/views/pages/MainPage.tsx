@@ -7,14 +7,16 @@ import Table from "../components/Table/Table"
 import Title from "../components/Title/Title";
 import GraphImage from "../assets/GraphImage.png"
 import DownArrow from "../assets/DownArrow.png"
-
-const apiUrl = import.meta.env.VITE_API_URL;
+import Logo from "../assets/CashAppLogo.png"; 
 
 const MainPage: React.FC = () => {
 
   return (
     <div className="main-page">
-      {/* Hero Section */}
+
+      <div className="sticky-logo">
+        <img src={Logo} alt="Logo" />
+      </div>
 
       <Title label="BYE BYE BIAS"/>
 

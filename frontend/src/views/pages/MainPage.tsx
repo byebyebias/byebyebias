@@ -1,0 +1,87 @@
+// src/App.tsx
+
+import React, { useEffect, useState } from "react";
+import "./MainPage.css";
+import Footer from "../components/Footer/Footer";
+import HeroSection from "../components/HeroSection/HeroSection";
+import ProcessStep from "../components/ProcessStep/ProcessStep";
+import Table from "../components/Table/Table"
+import logo from '@/assets/Square_Cash_app_logo.png'; 
+const apiUrl = import.meta.env.VITE_API_URL;
+
+const MainPage: React.FC = () => {
+  useEffect(() => {
+    // Function to add title to Pericles iframe for Lighthouse score
+    const addTitleToPericlesIframe = () => {
+      const iframe = document.getElementById('_pericles_content_iframe');
+      if (iframe && iframe instanceof HTMLIFrameElement && !iframe.title) {
+        iframe.title = 'Homepage Content Frame';
+      }
+    };
+
+    addTitleToPericlesIframe();
+
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.addedNodes.length) {
+          addTitleToPericlesIframe();
+        }
+      });
+    });
+
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true
+    });
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+  return (
+    <div className="MainPage">
+      <div className="App">
+
+      <header>
+      <div className="sticky-logo">
+        <img src={logo} alt="Logo" />
+      </div>
+      </header>
+      
+      <main>
+      {/* Hero Section */}
+      <HeroSection
+        heading="Target fraud detection bias at the source."
+        body="Some sort of subtitle text here. Check out our handy guide ↓ if you need any help!"
+      />
+      </main>
+
+      <aside aria-labelledby="user-guide-heading">
+      {/* Process Step / Instruction Section */}
+      <ProcessStep
+        title="Upload your dataset."
+        stepnum={1}
+        body="The format of the dataset must be a parquet file with the following mandatory columns highlighted in the table below."
+      />
+      <Table />
+      <ProcessStep
+        title="View our feedback."
+        stepnum={2}
+        body="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean molestie mi id sapien posuer."
+      />
+      <ProcessStep
+        title="Adjust and try again!"
+        stepnum={3}
+        body="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean molestie mi id sapien posuer."
+      />
+    </aside>
+
+      <Footer label="© 2024 Team TripleB" />
+
+    </div>
+
+    </div>
+  );
+};
+
+export default MainPage;

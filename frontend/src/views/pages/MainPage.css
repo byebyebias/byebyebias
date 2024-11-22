@@ -131,15 +131,3 @@ button:focus-visible {
   font-size: 18px;
   color: #ff1b1b; 
 }
-
-.sticky-logo {
-  position: fixed; 
-  top: 30px; 
-  right: 50px; 
-  z-index: 1000; 
-}
-
-.sticky-logo img {
-  width: 60px;
-  height: auto; 
-}

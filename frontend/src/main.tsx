@@ -1,6 +1,6 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import App from './App.js'
+import App from './MainPage.js'
 
 // Trying react router stuff here
 import DashBoardPage from "./pages/Dashboard"

@@ -6,7 +6,7 @@ interface BarChartProps {
 }
 
 const BarChart = ({ data }: BarChartProps) => {
-    console.log("Data passed to BarChart:", data); // Log the data here
+    // console.log("Data passed to BarChart:", data); 
 
     return (
         <div style={{ height: "300px" }}>

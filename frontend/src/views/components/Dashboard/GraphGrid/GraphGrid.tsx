@@ -32,7 +32,7 @@ const GraphGrid: React.FC<GraphGridProps> = ({ graphsInfo }) => {
             score: item.score,
           }));
 
-          console.log("Chart Data for", graphTitle, chartData);
+          // console.log("Chart Data for", graphTitle, chartData);
 
           return (
             <Grid item key={index}>

@@ -7,7 +7,7 @@ import BiasScore from "../components/Dashboard/BiasScore/BiasScore";
 function DashboardPage() {
   const location = useLocation();
   const { dashboardData } = location.state;
-  console.log("Metric Results:", dashboardData.metricResults);
+  // console.log("Metric Results:", dashboardData.metricResults);
 
   return (
     <Stack>

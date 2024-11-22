@@ -1,26 +1,47 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap');
 
-html, body {
+html {
   margin: 0; 
+  scroll-behavior: smooth;
 }
 
-.MainPage {
+body {
+  margin: 0;
+}
+
+section {
+  min-height: 100vh;
+}
+
+#graph-image {
+  width: 60%;
+  height: auto;
+}
+
+#down-arrow {
+  width: 79%;
+  height: auto;
+}
+
+.center-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+}
+
+.main-page {
   display: flex;
   flex-direction: column;
   min-height: 100vh; /* Ensure the app takes full height */
-  background-image: url('PurpleGradient.png');
+  background-image: url('../assets/PurpleGradient.png');
 }
 
 .flex-container {
   display: flex;
   gap: 90px;
   width: 100vh;
-  margin-top: 0;
-  margin-bottom: 140px;
-}
-
-img {
-  width: 60%;
-  height: auto;
+  padding-top: 20vh;
+  padding-bottom: 20vh;
 }
 

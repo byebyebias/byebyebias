@@ -6,46 +6,53 @@ import ProcessStep from "../components/ProcessStep/ProcessStep";
 import Table from "../components/Table/Table"
 import Title from "../components/Title/Title";
 import GraphImage from "../assets/GraphImage.png"
+import DownArrow from "../assets/DownArrow.png"
 
 const apiUrl = import.meta.env.VITE_API_URL;
 
 const MainPage: React.FC = () => {
 
   return (
-    <div className="MainPage">
+    <div className="main-page">
       {/* Hero Section */}
 
       <Title label="BYE BYE BIAS"/>
 
-      <div className="flex-container">
-        <HeroSection
-          heading={
-            <>
-            Target <span className="highlight">fraud detection</span> bias at the source.
-            </>
-          }
-          body="Visualize and alleviate bias in transaction datasets fed into fraud detection AI models. Check out our handy guide ↓ if you need any help!"
-        />
-        <img src={GraphImage} alt="Graph Image" />
-        
+      <div className="center-container">
+       <a href="#about">
+          <img src={DownArrow} alt="Down Arrow" id="down-arrow" />
+        </a>
       </div>
 
-      {/* Process Step / Instruction Section */}
+      <section id="about">
+        <div className="flex-container">
+          <HeroSection
+            heading={
+              <>
+              Target <span className="highlight">fraud detection</span> bias at the source.
+              </>
+            }
+            body="Visualize and alleviate bias in transaction datasets fed into fraud detection AI models. Check out our handy guide ↓ if you need any help!"
+          />
+          <img src={GraphImage} alt="Graph Image" id="graph-image" />
+        </div>
+      </section>
+
       <ProcessStep
-        title="Upload your dataset."
+        title="Upload Dataset"
         stepnum={1}
-        body="The format of the dataset must be a parquet file with the following mandatory columns highlighted in the table below."
+        body="The format of the dataset must be a parquet file with the mandatory columns highlighted in the table below."
       />
       <Table />
       <ProcessStep
-        title="View our feedback."
+        title="View Results"
         stepnum={2}
-        body="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean molestie mi id sapien posuer."
+        body="Look at overall fairness score and bias metric results"
       />
       <ProcessStep
-        title="Adjust and try again!"
+        title="Adjust and Try Again"
         stepnum={3}
-        body="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean molestie mi id sapien posuer."
+        body="Modify the dataset according to the bias results and submit the file again."
       />
 
       <Footer label="© 2024 Team TripleB" />

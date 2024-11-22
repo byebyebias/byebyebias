@@ -11,8 +11,6 @@ import {
   }
 
 function Overview( { data }: OverviewProps) {
-    //TODO add improvement areas dynamically
-
     return (
         <Card variant="outlined"  sx={{flex: "2"}}>
 

@@ -1,9 +1,15 @@
 import { Container, Grid, Card, CardContent, CardHeader } from "@mui/material";
 import BarChart from "../BarChart/BarChart";
-import InfoButton from "../InfoButton/InfoButton"; // Import the InfoButton component
+import InfoButton from "../InfoButton/InfoButton";
 
 interface GraphGridProps {
-  graphsInfo: { title: string; values: number[] }[];
+  graphsInfo: { 
+    title: string; 
+    values: { 
+      protected_attribute: string; 
+      score: number; 
+    }[]; 
+  }[];
 }
 
 const GraphGrid: React.FC<GraphGridProps> = ({ graphsInfo }) => {
@@ -21,13 +27,20 @@ const GraphGrid: React.FC<GraphGridProps> = ({ graphsInfo }) => {
           const graphTitle = graphInfo.title;
           const description = descriptors[graphTitle] || 'No description available';
 
+          const chartData = graphInfo.values.map((item, idx) => ({
+            protected_attribute: idx === 0 ? 'sender_gender' : 'sender_race',
+            score: item.score,
+          }));
+
+          console.log("Chart Data for", graphTitle, chartData);
+
           return (
             <Grid item key={index}>
               <Card style={{ position: "relative", width: "400px" }}>
                 <CardHeader title={graphTitle} />
                 <CardContent>
                   <InfoButton description={description} />
-                  <BarChart data={graphInfo.values} />
+                  <BarChart data={chartData} />
                 </CardContent>
               </Card>
             </Grid>

@@ -7,16 +7,14 @@ import Table from "../components/Table/Table"
 import Title from "../components/Title/Title";
 import GraphImage from "../assets/GraphImage.png"
 import DownArrow from "../assets/DownArrow.png"
-import Logo from "../assets/CashAppLogo.png"; 
+import Header from "../components/Header/Header";
 
 const MainPage: React.FC = () => {
 
   return (
-    <div className="main-page">
 
-      <div className="sticky-logo">
-        <img src={Logo} alt="Logo" />
-      </div>
+    <div className="main-page">
+      <Header />
 
       <Title label="BYE BYE BIAS"/>
 

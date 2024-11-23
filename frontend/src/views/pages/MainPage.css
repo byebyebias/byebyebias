@@ -49,15 +49,3 @@ section {
   padding-top: 20vh;
   padding-bottom: 20vh;
 }
-
-.sticky-logo {
-  position: fixed; 
-  top: 30px; 
-  right: 50px; 
-  z-index: 1000; 
-}
-
-.sticky-logo img {
-  width: 60px;
-  height: auto; 
-}

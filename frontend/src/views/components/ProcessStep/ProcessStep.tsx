@@ -3,7 +3,7 @@ import React from "react";
 import './ProcessStep.css';
 
 type ProcessStepProps = {
-    title: string;
+    title: React.ReactNode;
     stepnum: number;
     body: string;
 

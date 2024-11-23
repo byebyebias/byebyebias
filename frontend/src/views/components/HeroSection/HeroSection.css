@@ -37,3 +37,8 @@
 
     color: #000000;
 }
+
+.hero-body .highlight {
+    color: #9921D2;
+    text-decoration: underline;
+}

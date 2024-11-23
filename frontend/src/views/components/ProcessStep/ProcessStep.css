@@ -13,8 +13,12 @@
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 300;
-    font-size: 25px;
-    line-height: 43px;
+    font-size: 24px;
+    line-height: 35px;
     color: #000000;
     text-align: left;
+}
+
+.process-header .highlight {
+    color: #9921D2;
 }

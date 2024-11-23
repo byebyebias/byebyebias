@@ -1,20 +1,15 @@
 
 
 .footer {
-    /* Footer Container */
-    height: 70px; /* Height of the footer */
-    width: 100%; /* Full width */
-
-    /* Text */
+    width: 100%;
     font-family: 'Montserrat';
     font-style: normal;
-    font-weight: 300;
+    font-weight: 500;
     font-size: 20px;
     line-height: 42px;
     text-align: center;
-
     color: #000000;
 
-    margin-top: auto; /* Pushes footer to the bottom */
-    padding-top: 150px;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }

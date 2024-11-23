@@ -9,11 +9,6 @@ import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import './Table.css'
 
-// transaction_id', 'transaction_amount', 'transaction_date', 'sender_id',
-//  'sender_zip_code', 'sender_race', 'sender_age', 'sender_gender',
-//  'receiver_id', 'receiver_zip_code', 'receiver_race', 'receiver_age',
-//  'receiver_gender', 'predicted_fraud', 'is_fraud'
-
 interface Column {
   id: 'transaction_id' | 'transaction_amount' | 'transaction_date' | 'sender_id' |
        'sender_zip_code' | 'sender_race' | 'sender_age' | 'sender_gender' |
@@ -98,7 +93,7 @@ function createData(
 }
 
 const rows = [
-  createData('TX_0_1', 6087.48, '2023-07-07 13:59:48.275141', 0, 56126, 'Black', 39, 'Man', 'Rec_8564', 93889, 'Hispanic', 52, 'Woman', 0, 1),
+  createData('TX_0_1', 6087.48, '2023-07-07 13:59:48.275141', 0, 56126, 'Black', 39, 'Male', 'Rec_8564', 93889, 'Hispanic', 52, 'Female', 0, 1),
 ];
 
 export default function StickyHeadTable() {
@@ -115,7 +110,7 @@ export default function StickyHeadTable() {
   };
 
   return (
-    <Paper sx={{ width: '92.5%', overflow: 'hidden' }} className="paper-container">
+    <Paper sx={{ width: '100%', overflow: 'hidden' }} className="paper-container">
       <TableContainer sx={{ maxHeight: 440, }} className="table-container">
         <Table stickyHeader aria-label="sticky table">
           <TableHead>

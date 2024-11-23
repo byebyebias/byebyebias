@@ -6,7 +6,7 @@ type setState = (filename: string) => void;
 
 type HeroSectionProps = {
     heading: React.ReactNode;
-    body: string;
+    body: React.ReactNode;
 };
 
 const HeroSection: React.FC<HeroSectionProps> = ({ heading, body }) => {

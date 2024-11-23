@@ -30,6 +30,9 @@ class FileConverter:
         self.df['receiver_gender'] = self.df['receiver_gender'].map(gender_map)
         self.df['sender_gender'] = self.df['sender_gender'].map(gender_map)
 
+        print(self.df['sender_gender'])
+        print(self.df['sender_race'])
+
         self.df = self.df.drop(columns=[c for c in self.df.columns if c not in ['sender_gender', 'receiver_gender', 'sender_race', 'receiver_race', 'is_fraud', 'predicted_fraud']])
 
         self.df = self.df.dropna()
@@ -48,6 +51,9 @@ class FileConverter:
     def find_priv(self, column: str):
         # column in table, eg. sender_gender, sender_race 
         # finds the group with the most number of FPs
-        fp_count = self.df[(self.df['is_fraud'] == 0) & (self.df['predicted_fraud'] == 1)].groupby(column).size().sort_values(ascending=False)
+        fp_count = self.df[(self.df['is_fraud'] == 0) & (self.df['predicted_fraud'] == 1)].groupby(column).size().sort_values(ascending=True)
+
+        # if more than one group has zero false positives
+
         return fp_count.index[0]
         

@@ -79,10 +79,12 @@ class BiasMetrics:
 
         return self.calculate_bias_metrics(protected_attribute)
 
-    def calculate_bias_metrics(self, protected_attribute) -> dict[str: float]:
+    def calculate_bias_metrics(self, protected_attribute: str) -> dict[str: float]:
         metrics = {}
         true_dataset = BinaryLabelDataset(favorable_label=1, unfavorable_label=0, df=self.true_df, label_names=['fraud_result'], protected_attribute_names=[protected_attribute])
+
         pred_dataset = BinaryLabelDataset(favorable_label=1, unfavorable_label=0, df=self.pred_df, label_names=['fraud_result'], protected_attribute_names=[protected_attribute])
+        
         metric = MDSSClassificationMetric(true_dataset, pred_dataset, privileged_groups=[{protected_attribute: 1.0}], unprivileged_groups=[{protected_attribute: 0.0}])
 
         metrics['Disparate Impact'] = round(float(metric.disparate_impact()), 2)

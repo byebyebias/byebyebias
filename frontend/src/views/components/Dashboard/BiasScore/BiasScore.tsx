@@ -1,7 +1,7 @@
 import { Card, CardContent, CardHeader, Typography } from "@mui/material";
 
 // Function to calculate luminance - helps with accessibility and looks better visually, formula from https://www.w3.org/TR/WCAG20/#relativeluminancedef
-const getLuminance = (r, g, b) => {
+const getLuminance = (r: number, g: number, b: number) => {
   const a = [r, g, b].map((v) => {
     v /= 255;
     return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
@@ -10,12 +10,17 @@ const getLuminance = (r, g, b) => {
 };
 
 // Function to determine text color based on luminance
-const getTextColor = (r, g, b) => {
+const getTextColor = (r: number, g: number, b: number) => {
   const luminance = getLuminance(r, g, b);
   return luminance > 0.5 ? "#000" : "#FFF"; // Black for light backgrounds, white for dark
 };
 
-function BiasScore({ score, percentage }) {
+type BiasScoreProps = {
+  score: string;
+  percentage: number;
+};
+
+function BiasScore({ score, percentage }: BiasScoreProps) {
   // Function to calculate background color based on percentage with aesthetic color ranges
   /*
     Algorithm:
@@ -25,7 +30,7 @@ function BiasScore({ score, percentage }) {
     4. Use that value to blend the start and end colors.
     5. Return the final color.
   */
-  const getBackgroundColor = (percentage) => {
+  const getBackgroundColor = (percentage: number) => {
     // Define the color ranges with aesthetic RGB values
     const ranges = [
       {

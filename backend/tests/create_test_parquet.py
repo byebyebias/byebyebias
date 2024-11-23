@@ -20,6 +20,3 @@ class CreateTestParquet:
     def destroy_parquet(self):
         if os.path.exists(self.parquet_file_path):
             os.remove(self.parquet_file_path)
-
-# SENDER RACE
-# num_pos_priv = 

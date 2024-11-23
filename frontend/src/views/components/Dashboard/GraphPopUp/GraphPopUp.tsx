@@ -9,7 +9,7 @@ type GraphPopUpProps = {
     handleClose: (...args: any[]) => any;
 }
 
-function GraphPopUp({title, data, open, handleClose, }: GraphPopUpProps) {
+const GraphPopUp = ({title, data, open, handleClose, }: GraphPopUpProps) => {
 
     return (
         <Modal aria-label="Popup with enlarged ${title} graph" open={open} onClose={handleClose}>
@@ -31,7 +31,7 @@ function GraphPopUp({title, data, open, handleClose, }: GraphPopUpProps) {
                     <Typography style= {{textAlign: 'left', paddingLeft: '30px', paddingTop: '20px', fontFamily: 'Montserrat', fontSize:'20px', fontWeight: 400, fontStyle: 'italic'}}>{title}</Typography>
                     <Card tabIndex={0} sx={{width: "90%", borderRadius: '35px', backgroundColor: '#F8FEFA'}} >
                         <CardContent sx={{display:'flex'}}>
-                            <BarChart data={data} height="400px" width="50%" />
+                            <BarChart data={data} height="600px" width="50%"/>
                             <IconButton component="div" tabIndex={0} aria-label="Close popup" sx={{position: 'absolute', zIndex: 1, top:30, right: 100}}>
                                 <CloseIcon/>
                             </IconButton>

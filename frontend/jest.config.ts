@@ -6,12 +6,15 @@ module.exports = {
   },
   
   preset: 'ts-jest',
+
+  transform: {
+    '^.+\\.(ts|tsx)$': 'ts-jest', // Handle TypeScript files with ts-jest
+    '^.+\\.(js|jsx)$': 'babel-jest', // Handle JavaScript/JSX files with Babel
+  },
   testEnvironment: 'jsdom',
   // setupFilesAfterEnv: ['node_modules/@testing-library/jest-dom/extend-expect'],
   // setupFilesAfterEnv: ['frontend/src/setupTests.ts'],
-  transform: {
-    '^.+\\.tsx?$': 'ts-jest',
-  },
+  
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
   
 };

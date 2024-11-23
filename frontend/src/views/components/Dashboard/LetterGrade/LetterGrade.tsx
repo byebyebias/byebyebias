@@ -9,7 +9,7 @@ import {
  }
 
 
-function LetterGrade( { score, ...props } ) {
+function LetterGrade( { score, ...props }: LetterGradeProps ) {
     //TODO add improvement areas dynamically
 
     return (

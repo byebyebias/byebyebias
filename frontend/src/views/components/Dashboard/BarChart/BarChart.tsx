@@ -3,6 +3,8 @@ import { BarDatum, ResponsiveBar } from "@nivo/bar";
 
 interface BarChartProps {
     data: readonly BarDatum[];
+    height: string; 
+    width: string;
 }
 const colorMap : {[key: string]: string} = {
     "sender_gender": "#271DE0",
@@ -11,11 +13,11 @@ const colorMap : {[key: string]: string} = {
     "receiver_race": "#EE55E7",
 };
 
-const BarChart = ({ data, width = '100%', height = '400px'}: BarChartProps) => {
+const BarChart = ({data, width = '100%', height = '400px'}: BarChartProps) => {
     // console.log("Data passed to BarChart:", data); 
 
     return (
-        <div style={{ height: height, width: width }}>
+        <div style={{height: height, width: width }}>
             <ResponsiveBar
                 isFocusable={true}
                 barAriaLabel={({ id, value, indexValue }) =>
@@ -81,8 +83,6 @@ const BarChart = ({ data, width = '100%', height = '400px'}: BarChartProps) => {
                 }}
                 labelSkipWidth={12}
                 labelSkipHeight={12}
-                labelTextColor="#FFFFFF"
-                
                 labelTextColor={{
                     from: 'color',
                     modifiers: [['darker', 1.6]],

@@ -1,9 +1,10 @@
-import { Container, Grid, Card, CardContent, Typography, Modal, Box, IconButton } from "@mui/material";
+import { Container, Card, Grid2, CardContent, Typography, Modal, Box, IconButton } from "@mui/material";
 import BarChart from "../BarChart/BarChart";
 import { useState } from "react";
 import CloseIcon from '@mui/icons-material/Close';
 import OpenInFullIcon from '@mui/icons-material/OpenInFull';
 import InfoButton from "../InfoButton/InfoButton";
+import GraphPopUp from "../GraphPopUp/GraphPopUp";
 
 interface GraphGridProps {
   graphsInfo: { 
@@ -15,8 +16,17 @@ interface GraphGridProps {
   }[];
 }
 
+interface GraphProps {
+    title: string; 
+    values: { 
+        protected_attribute: string; 
+        score: number; 
+      }[]; 
+    
+  }
 
-function Graph({data, title}) {
+
+function Graph({values, title}:GraphProps) {
 
     const [open, setOpen] = useState(false);
     const handleOpen = () => {
@@ -32,19 +42,17 @@ function Graph({data, title}) {
 
     return (
 
-        
         <><Card aria-label={`This graph displays the ${title} metric for each of your selected attributes`} tabIndex={0} sx={{ width: "30%", borderRadius: '35px', background: "#F8FEFA", alignItems: 'center'}} >
             
             <CardContent sx={{justifyContent: 'center', alignItems: 'center', width: '100%'}}>
-                <BarChart data={data}/>
+                <BarChart data={values} height="350px" width="100%"/>
                 <IconButton tabIndex={0} aria-label="enlarge graph" onClick={handleOpen}>
                     <OpenInFullIcon/>
                 </IconButton>
             </CardContent>
         </Card>
 
-        <Modal open={open} onClose={handleClose}>
-            
+        <Modal open={open} onClose={handleClose}>  
             <Box 
             p={6} aria-label={`Enlarged version of the ${title} graph`} tabIndex={0} 
             sx={{
@@ -64,7 +72,7 @@ function Graph({data, title}) {
                     <Typography style= {{textAlign: 'left', paddingLeft: '50px', paddingTop: '30px', fontFamily: 'Montserrat', fontSize:'30px', fontWeight: 400, fontStyle: 'italic'}}>{title}</Typography>
 
                     <CardContent sx={{display:'flex'}}>
-                        <BarChart data={data} height="500px" width="50%" />
+                        <BarChart data={values} height="500px" width="50%"/>
                         <IconButton onClick={handleClose} aria-label="close popup" sx={{position: 'absolute', zIndex: 1, top:30, right: 100}}>
                             <CloseIcon/>
                         </IconButton>
@@ -72,7 +80,8 @@ function Graph({data, title}) {
                 </Card>
                 
             </Box>
-        </Modal></>
+        </Modal> 
+        </>
 
         
     )
@@ -94,13 +103,13 @@ const GraphGrid: React.FC<GraphGridProps> = ({ graphsInfo }) => {
     
     return (
     <Container style={{display: 'flex', justifyContent:"center", maxWidth:"none"}}>
-        <Grid container rowSpacing={8} columnSpacing={6} pt={4}>
+        <Grid2 container rowSpacing={8} columnSpacing={6} pt={4}>
             {graphsInfo.map( (graphInfo: { values: any; title: any; }) => 
-                <Graph data={graphInfo.values} title={graphInfo.title}/>
-               
+                <Graph values={graphInfo.values} title={graphInfo.title}/>
+
             )}
 
-        </Grid>
+        </Grid2>
     </Container>
     )    
 }

@@ -36,7 +36,6 @@ const BarChart:React.FC<BarProps> = ({ xaxis, yaxis, data, onClick, height, widt
               tickSize: 5,
               tickPadding: 5,
               tickRotation: 0,
-              legend: 'Statistical Parity Difference',
               legendPosition: 'middle',
               legendOffset: 32,
             }}
@@ -44,7 +43,6 @@ const BarChart:React.FC<BarProps> = ({ xaxis, yaxis, data, onClick, height, widt
               tickSize: 5,
               tickPadding: 5,
               tickRotation: 0,
-              legend: 'Value',
               legendPosition: 'middle',
               legendOffset: -40,
             }}

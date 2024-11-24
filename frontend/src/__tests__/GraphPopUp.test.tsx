@@ -1,7 +1,5 @@
 import GraphGrid from "../views/components/Dashboard/GraphGrid/GraphGrid";
 import GraphPopUp from "../views/components/Dashboard/GraphPopUp/GraphPopUp";
-
-import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 

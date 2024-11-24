@@ -1,12 +1,20 @@
-import { render, screen } from "@testing-library/react";
+import { fireEvent, queryByLabelText, render, screen } from "@testing-library/react";
 import Graph from "../views/components/Dashboard/Graph/Graph";
 import '@testing-library/jest-dom';
+import OpenInFullIcon from '@mui/icons-material/OpenInFull';
 
 
 jest.mock('../views/components/BarChart/BarChart',() => () => <div>BarChart Component</div>);
 jest.mock('@nivo/bar', () => ({
     ResponsiveBar: jest.fn(() => <div>Mocked ResponsiveBar</div>),
 }));
+
+jest.mock('@mui/icons-material/OpenInFull', () => ({
+    OpenInFullIcon: jest.fn(() => <div>Mocked Icon</div>),
+}));
+
+jest.mock('@mui/material/Modal', () => ({ children }: any) => <div>{children}</div>);
+
 
 let graphsInfo=
         [{'title': 'Disparate Impact', 'values': [{'protected_attribute': 'sender_gender', 'score': 0.03}]}, 

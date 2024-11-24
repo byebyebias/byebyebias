@@ -6,36 +6,17 @@ import Footer from "../components/Footer/Footer";
 import HeroSection from "../components/HeroSection/HeroSection";
 import ProcessStep from "../components/ProcessStep/ProcessStep";
 import Table from "../components/Table/Table"
-
+import logo from '@/assets/Square_Cash_app_logo.png'; 
 const apiUrl = import.meta.env.VITE_API_URL;
 
 const MainPage: React.FC = () => {
-  // const [filename, setFilename] = useState<string>("")
-  // const navigate = useNavigate();
-
-  // const fetchDashboardData = async () => {
-  //   // Simulating a backend call
-  //   const response = await fetch(`http://127.0.0.1:8000/api/metrics`, {
-  //     method: 'GET',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //     },
-  //     body: JSON.stringify({filename: 'value'}),
-  //   });
-
-  //   const dashboardData = await response.json()
-  //   navigate('/dashboard', { dashboardData: { dashboardData } });
-  // };
-
-  // useEffect(
-  //   fetchDashboardData,
-  //   [filename]
-  // )
-
-  // console.log(filename)
 
   return (
     <div className="MainPage">
+      <div className="App">
+      <div className="sticky-logo">
+        <img src={logo} alt="Logo" />
+      </div>
       {/* Hero Section */}
       <HeroSection
         heading="Target fraud detection bias at the source."
@@ -61,6 +42,7 @@ const MainPage: React.FC = () => {
       />
 
       <Footer label="© 2024 Team TripleB" />
+    </div>
     </div>
   );
 };

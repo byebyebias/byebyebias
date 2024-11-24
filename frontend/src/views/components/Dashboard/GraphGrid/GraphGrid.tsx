@@ -1,30 +1,41 @@
-import Grid from "@mui/material/Grid2";
-import { Container, Card, CardContent, CardHeader } from "@mui/material";
+import { Container, Grid, Card, CardContent, CardHeader } from "@mui/material";
 import BarChart from "../BarChart/BarChart";
+import InfoButton from "../InfoButton/InfoButton"; // Import the InfoButton component
 
-function Graph({data, title}) {
-    return (
-        <Card p={3} style={{ width: "325px" }}>
-            <CardHeader title={title}/>
-            <CardContent>
-                <BarChart data={data}/>
-            </CardContent>
-        </Card>
-    )
+interface GraphGridProps {
+  graphsInfo: { title: string; values: number[] }[];
 }
 
+const GraphGrid: React.FC<GraphGridProps> = ({ graphsInfo }) => {
+  const descriptors: { [key: string]: string } = {
+    'Disparate Impact': 'Shows the ratio of outcomes for different groups, highlighting potential bias in decision-making processes.',
+    'Statistical Parity Difference': 'Measures the difference in selection rates between groups to assess fairness.',
+    'Average Odds Difference': 'Compares the true positive and false positive rates between groups to evaluate model consistency.',
+    'Equal Opportunity Difference': 'Focuses on the difference in true positive rates to ensure equitable opportunities across groups.',
+  };
 
-function GraphGrid({graphsInfo}) {
-        return (
-        <Container style={{display: 'flex', justifyContent:"center", maxWidth:"none"}}>
-            <Grid container rowSpacing={8} columnSpacing={8} pt={8}>
-                {graphsInfo.map( (graphInfo) => 
-                    <Graph data={graphInfo.values} title={graphInfo.title}/>
-                )}
+  return (
+    <Container style={{ display: 'flex', justifyContent: "center", maxWidth: "none" }}>
+      <Grid container rowSpacing={8} columnSpacing={8} pt={8}>
+        {graphsInfo.map((graphInfo, index) => {
+          const graphTitle = graphInfo.title;
+          const description = descriptors[graphTitle] || 'No description available';
 
+          return (
+            <Grid item key={index}>
+              <Card style={{ position: "relative", width: "400px" }}>
+                <CardHeader title={graphTitle} />
+                <CardContent>
+                  <InfoButton description={description} />
+                  <BarChart data={graphInfo.values} />
+                </CardContent>
+              </Card>
             </Grid>
-        </Container>
-    )    
-}
+          );
+        })}
+      </Grid>
+    </Container>
+  );
+};
 
-export default GraphGrid
+export default GraphGrid;

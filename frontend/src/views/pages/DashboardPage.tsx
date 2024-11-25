@@ -10,27 +10,35 @@ function DashboardPage() {
   const { dashboardData } = location.state;
 
   return (
-    <>
-    <Stack>
-      <Typography tabIndex={0} aria-label={`File path displayed as ${dashboardData.filePath.split('/').pop()}`} p={14} sx={{textAlign:'left', fontFamily: 'Montserrat', color: "#9921D2", fontWeight: 500, fontSize: '15pt'}} pb={3}>
+    <main role="main">
+
+    <Box role="region" aria-live="polite" sx={{ position: 'absolute', left: '-9999px' }}>
+      You are on the Dashboard page.
+    </Box>
+    
+    
+    <Typography variant="h1" aria-label="Dashboard" tabIndex={0} sx={{paddingTop: "20px", paddingLeft: "75px", textAlign:'left', fontFamily: 'Montserrat', fontWeight: 700, fontSize: '45pt'}}>Dashboard</Typography>
+    <Typography tabIndex={0} aria-label={`File path displayed as ${dashboardData.filePath.split('/').pop()}`} sx={{paddingBottom: "15px", paddingLeft: "75px", textAlign:'left', fontFamily: 'Montserrat', color: "#9921D2", fontWeight: 500, fontSize: '15pt'}} >
         {dashboardData.filePath.split('/').pop()}
       </Typography>
 
-      <Stack sx={{backgroundColor: '#E6EEF5'}}>
+    <Stack sx={{backgroundColor: '#E6EEF5'}} p = {3}>
       
-      <Box bgcolor="#E6EEF5" p={6}>
-        <Stack direction="row" spacing={2}>
-          <Typography sx={{fontFamily: 'Montserrat', fontSize:'15px', fontWeight: 300, color:"#9921D2"}}>{dashboardData.fileName}</Typography>
-          <LetterGrade tabIndex={0} aria-label={`Letter grade is ${dashboardData.overview?.score || "A+"}`} score={dashboardData.overview?.score || "A+"} />
-          <Overview data={dashboardData.overview || { score: 0, top_category: 'Sender_Gender' }} />
-        </Stack>
-        <GraphGrid graphsInfo={dashboardData.metricResults} />
-      </Box>
-    </Stack>
+      <Stack>
+        
+        <Box bgcolor="#E6EEF5" sx={{paddingLeft: "30px"}}p={0}>
+          <Stack direction="row" spacing={2}>
+            <Typography sx={{fontFamily: 'Montserrat', fontSize:'15px', fontWeight: 300, color:"#9921D2"}}>{dashboardData.fileName}</Typography>
+            <LetterGrade tabIndex={0} aria-label={`Letter grade is ${dashboardData.overview?.score || "A+"}`} score={dashboardData.overview?.score || "A+"} />
+            <Overview data={dashboardData.overview || { score: 0, top_category: 'Sender_Gender' }} />
+          </Stack>
+          <GraphGrid graphsInfo={dashboardData.metricResults} />
+        </Box>
+      </Stack>
 
     </Stack>
     
-    <Footer label="© 2024 Team TripleB" /></>
+    <Footer label="© 2024 Team TripleB" /></main>
   );
 }
 

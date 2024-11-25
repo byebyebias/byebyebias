@@ -1,0 +1,66 @@
+.title-section {
+    position: relative;
+    margin-top: calc((100vh - 480px) / 2);
+    margin-bottom: 5vh;
+}
+
+.glitch {
+    position: relative;
+    cursor: pointer;
+
+    font-family: 'Montserrat', sans-serif;
+    font-size: 100px;
+    letter-spacing: 6px;
+    text-align: center;
+    line-height: 1;
+}
+
+.glitch::before, .glitch::after {
+    content: 'BYE BYE BIAS';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    line-height: 1;
+}
+
+.glitch:hover::before {
+    animation: glitch 0.3s linear 6;
+    color: #9921D2;
+    z-index: -2;
+}
+
+.glitch:hover::after {
+    animation: glitch 0.3s linear 6 reverse;
+    color: #00D632;
+    z-index: -1;
+}
+
+@keyframes glitch {
+    0% {
+        top: 0;
+        left: 0;
+    }
+    20% {
+        top: -5px;
+        left: -5px;
+    }
+    40% {
+        top: 5px;
+        left: 5px;
+    }
+    60% {
+        top: -5px;
+        left: 5px;
+    }
+    80% {
+        top: 5px;
+        left: -5px;
+    }
+    100% {
+        top: 0;
+        left: 0;
+    }
+}

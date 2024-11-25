@@ -75,7 +75,7 @@ const MainPage: React.FC = () => {
               </>
             }
             stepnum={3}
-            body="Modify the dataset based on the bias results. Submit the updated file for analysis to determine
+            body="Modify the dataset based on results. Submit the updated file for analysis to determine
             if fairness has improved."
           />
         </div>

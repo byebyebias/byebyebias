@@ -1,4 +1,5 @@
 from backend.core.entities.bias_metrics import BiasMetrics
+from aif360.algorithms.preprocessing import DisparateImpactRemover
 
 class CalculateMetricsInteractor:
     def calculate(self, true_df, pred_df, protected_attributes):
@@ -14,6 +15,31 @@ class CalculateMetricsInteractor:
             "bias_score": bias_score
         }
     
+    def apply_di_remover(self, true_df, pred_df, protected_attributes, repair_level=1.0): 
+        di_remover = DisparateImpactRemover(repair_level, sensitive_attribute=protected_attributes[0])
+
+        true_df_repaired = di_remover.fit_transform(true_df)
+        pred_df_repaired = di_remover.fit_transform(pred_df)
+
+        bias_metrics = BiasMetrics(true_df_repaired, pred_df_repaired, protected_attributes)
+
+        all_metrics = bias_metrics.get_all_bias_metrics()
+        bias_score = bias_metrics.get_score(all_metrics)
+
+        formatted_metrics = self.reformat_metrics(all_metrics)
+
+
+        response =  {
+            "formatted_metrics": formatted_metrics,
+            "bias_score": bias_score
+        }
+
+        print("apply_di_remover response:", response)
+
+        return response
+
+
+
     def reformat_metrics(self, metrics_data):
         formatted_graph_data = []
 

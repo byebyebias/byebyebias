@@ -5,6 +5,7 @@ export class UploadFilePresenter {
 
   presentUploadResult(data: any) {
     console.log("File uploaded and metrics fetched successfully");
+    console.log(data);
     this.navigate("/dashboard", {
       state: {
         dashboardData: {

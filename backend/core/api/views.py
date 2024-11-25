@@ -21,7 +21,7 @@ def upload_file(request):
         file_name, file_path = file_repo.save_file(uploaded_file)
         protected_attributes = ['sender_gender', 'sender_race']
         true_df, pred_df = convert_file.convert(file_path, protected_attributes)
-        results = calculate_metrics.calculate(true_df, pred_df, protected_attributes)
+        results = calculate_metrics.apply_di_remover(true_df, pred_df, protected_attributes)
 
         if os.path.exists(file_path):
             os.remove(file_path)

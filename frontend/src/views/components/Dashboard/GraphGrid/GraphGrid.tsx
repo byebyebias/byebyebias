@@ -1,12 +1,13 @@
-import Grid from "@mui/material/Grid2";
-import { Container, Card, CardContent, CardHeader, Typography } from "@mui/material";
+import { Container, Card, CardContent, CardHeader, Typography, Grid2 } from "@mui/material";
 import { ResponsiveBar } from "@nivo/bar";
 import { colorSchemes } from '@nivo/colors';
 import BarChart from "../BarChart/BarChart";
+import InfoButton from "../InfoButton/InfoButton"; // Import the InfoButton component
+
 
 function Graph({data, title}) {
     return (
-        <Card component="div" aria-label={`This graph displays the ${title} metric for each of your selected attributes`} tabIndex={0} sx={{ border: '0.5px solid #000000', width: "30%", borderRadius: '35px', background: "#F8FEFA", alignItems: 'center'}} >
+        <Card component="div" aria-label={`This graph displays the ${title} metric for each of your selected attributes`} tabIndex={0} sx={{ border: '0.5px solid #000000',width: "30%", borderRadius: '35px', background: "#F8FEFA", alignItems: 'center'}} >
             <Typography style= {{textAlign: 'left', paddingLeft: '30px', paddingTop: '20px', fontFamily: 'Montserrat', fontSize:'20px', fontWeight: 400, fontStyle: 'italic'}}>{title}</Typography>
             <CardContent sx={{justifyContent: 'center', alignItems: 'center', width: '100%'}}>
                 <BarChart data={data} />
@@ -15,24 +16,41 @@ function Graph({data, title}) {
     )
 }
 
-
-function GraphGrid({graphsInfo}) {
-
-    if (!graphsInfo || !Array.isArray(graphsInfo)) {
-        return <p>No data available</p>; 
-    }
-    
+interface GraphGridProps {
+    graphsInfo: { title: string; values: number[] }[];
+  }
+  
+const GraphGrid: React.FC<GraphGridProps> = ({ graphsInfo }) => {
+    const descriptors: { [key: string]: string } = {
+      'Disparate Impact': 'Shows the ratio of outcomes for different groups, highlighting potential bias in decision-making processes.',
+      'Statistical Parity Difference': 'Measures the difference in selection rates between groups to assess fairness.',
+      'Average Odds Difference': 'Compares the true positive and false positive rates between groups to evaluate model consistency.',
+      'Equal Opportunity Difference': 'Focuses on the difference in true positive rates to ensure equitable opportunities across groups.',
+    };
     return (
-    <Container style={{display: 'flex', justifyContent:"center", maxWidth:"none"}}>
-        <Grid container rowSpacing={8} columnSpacing={6} pt={4}>
-            {graphsInfo.map( (graphInfo: { values: any; title: any; }) => 
-                <Graph data={graphInfo.values} title={graphInfo.title}/>
-               
-            )}
+        <Container style={{ display: 'flex', justifyContent: "center", maxWidth: "none" }}>
+          <Grid2 container rowSpacing={8} columnSpacing={8} pt={8}>
+            {graphsInfo.map((graphInfo, index) => {
+              const graphTitle = graphInfo.title;
+              const description = descriptors[graphTitle] || 'No description available';
+    
+              return (
+                <Grid2 item key={index}>
+                  <Card style={{ position: "relative", width: "400px" }}>
+                    <CardHeader title={graphTitle} />
+                    <CardContent>
+                      <InfoButton description={description} />
+                      <BarChart data={graphInfo.values} />
+                    </CardContent>
+                  </Card>
+                </Grid2>
+              );
+            })}
+          </Grid2>
+        </Container>
+      );
+};
 
-        </Grid>
-    </Container>
-    )    
-}
+
 
 export default GraphGrid

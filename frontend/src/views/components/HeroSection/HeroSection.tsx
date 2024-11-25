@@ -6,8 +6,8 @@ import { Link } from 'react-router-dom';
 type setState = (filename: string) => void;
 
 type HeroSectionProps = {
-    heading: string;
-    body: string;
+    heading: React.ReactNode;
+    body: React.ReactNode;
 };
 
 const HeroSection: React.FC<HeroSectionProps> = ({ heading, body }) => {
@@ -16,7 +16,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ heading, body }) => {
             <h1 className="hero-heading">{heading}</h1>
             <p className="hero-body">{body}</p>
             <Link to="upload" style={{ textDecoration: 'none' }}>  
-                <Button onClick={() => null} label="get started >"/>
+                <Button onClick={() => null} label="Get Started >"/>
             </Link>
         </div>
     );

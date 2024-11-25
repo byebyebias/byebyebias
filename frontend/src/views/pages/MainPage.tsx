@@ -20,7 +20,7 @@ const MainPage: React.FC = () => {
 
       <div className="arrow-container">
        <a href="#about">
-          <img src={DownArrow} alt="Down Arrow" id="down-arrow" />
+          <img src={DownArrow} id="down-arrow" />
         </a>
       </div>
 

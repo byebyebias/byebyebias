@@ -12,7 +12,6 @@ import requests
 @api_view(['POST'])
 def process_link(request):
     s3_link = request.data.get('link')
-    print(s3_link)
     if not s3_link:
         return Response({"error": "No link provided"})
 

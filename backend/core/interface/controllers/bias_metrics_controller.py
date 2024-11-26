@@ -11,11 +11,11 @@ class BiasMetricsController:
                  convert_file_interactor: ConvertFileInteractor,
                  upload_file_interactor: UploadFileInteractor
                 ):
-        self.calculate_metrics_interactor = calculate_metrics_interactor()
-        self.convert_file_interactor = convert_file_interactor()
-        self.upload_file_interactor = upload_file_interactor()
+        self.calculate_metrics_interactor = calculate_metrics_interactor
+        self.convert_file_interactor = convert_file_interactor
+        self.upload_file_interactor = upload_file_interactor
 
-    def get_bias_metrics(self, request):
+    def execute(self, request):
         if 'file' not in request.FILES:
             return Response(
                 {
@@ -25,9 +25,8 @@ class BiasMetricsController:
             )
     
         uploaded_file = request.FILES['file']
-
         # THIS SHOULD BECOME A PART OF BODY RESPONSE TO PARSE
-        protected_attributes = ['sender_gender', 'sender_race']
+        protected_attributes = ['sender_gender', 'sender_race', 'receiver_gender', 'receiver_race']
 
         try:
             file_name, file_path = self.upload_file_interactor.post(uploaded_file)

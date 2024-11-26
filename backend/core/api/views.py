@@ -12,11 +12,12 @@ from backend.core.interface.controllers.bias_metrics_controller import BiasMetri
 @csrf_exempt
 @api_view(['POST'])
 def upload_file(request):
+    print(request)
     return BiasMetricsController(
             CalculateMetricsInteractor(), 
             ConvertFileInteractor(), 
             UploadFileInteractor(FileRepository())
-        ).get_bias_metrics(request)
+        ).execute(request)
 
     # if 'file' not in request.FILES:
     #     return Response({'status': 'error', 'message': 'No file provided or invalid request'})

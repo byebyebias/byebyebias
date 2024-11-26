@@ -5,11 +5,8 @@ import os
 class FileRepository:
 
     def save_file(self, uploaded_file):
-        print("input", uploaded_file)
         file_name = default_storage.save(uploaded_file.name, uploaded_file)
-        print("name", file_name)
         file_path = default_storage.path(file_name)
-        print("path", file_path)
         return (file_name, file_path)
     
     def retrieve_s3_file(self, response):

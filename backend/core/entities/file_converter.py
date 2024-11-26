@@ -60,6 +60,13 @@ class FileConverter:
     def find_priv(self, column: str):
         # column in table, eg. sender_gender, sender_race 
         # finds the group with the most number of FPs
-        fp_count = self.df[(self.df['is_fraud'] == 0) & (self.df['predicted_fraud'] == 1)].groupby(column).size().sort_values(ascending=False)
+        fp_count = self.df[(self.df['is_fraud'] == 0) & (self.df['predicted_fraud'] == 1)].groupby(column).size().sort_values(ascending=True)
+
+        # outlier if top two rows are equal or 0
+        if fp_count.index[0] == fp_count.index[1]:
+            # break tie with false negative comparison
+            fn_count = self.df[(self.df['is_fraud'] == 1) & (self.df['predicted_fraud'] == 0)].groupby(column).size().sort_values(ascending=True)
+            return fn_count.index[0]
+        
         return fp_count.index[0]
         

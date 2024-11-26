@@ -11,7 +11,12 @@ import { UploadFileController } from "../../../controllers/UploadFileController"
 import { UploadFileInteractor } from "../../../usecases/UploadFileInteractor";
 import { UploadFilePresenter } from "../../../presenters/UploadFilePresenter";
 
+import { S3LinkUploadController } from "../../../controllers/S3LinkUploadController"
+import { S3LinkUploadInteractor } from "../../../usecases/S3LinkUploadInteractor";
+import { S3LinkUploadPresenter } from "../../../presenters/S3LinkUploadPresenter";
+
 import UploadFileView from "../../UploadFileView";
+import S3LinkUploadView from "../../S3LinkUploadView";
 import styles from "./UploadPage.module.css"
 import Footer from "../../components/Footer/Footer";
 
@@ -23,9 +28,13 @@ function UploadPage() {
     const [link, setLink] = useState<string>("")
     const linkRef = useRef<HTMLInputElement | null>(null)
 
-    const presenter = new UploadFilePresenter();
-    const interactor = new UploadFileInteractor();
-    const controller = new UploadFileController(interactor, presenter);
+    const file_presenter = new UploadFilePresenter();
+    const file_interactor = new UploadFileInteractor();
+    const file_controller = new UploadFileController(file_interactor, file_presenter);
+
+    const s3_presenter = new S3LinkUploadPresenter();
+    const s3_interactor = new S3LinkUploadInteractor();
+    const s3_controller = new S3LinkUploadController(s3_interactor, s3_presenter);
 
     const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const newFile = event.target.files?.[0];
@@ -38,12 +47,18 @@ function UploadPage() {
             linkRef.current?.reportValidity()
         } else if (file) {
             setPage(2)
+        } else if (link) {
+            if (link.trim() != "") {
+                s3_controller.handleS3Link(link);
+              } else {
+                alert("Provide a valid S3 Link.")
+              }
         } else if (linkRef.current?.reportValidity()) {
             setPage(2)
         } 
 
     };
-    const handleViewResults = () => {if (file != null) return controller.handleFileUpload(file)};
+    const handleViewResults = () => {if (file != null) return file_controller.handleFileUpload(file)};
 
     const onLinkChange = (e: React.ChangeEvent<HTMLInputElement>) => setLink(e.target.value)
 

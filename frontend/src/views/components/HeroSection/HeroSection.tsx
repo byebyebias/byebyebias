@@ -21,6 +21,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ heading, body }) => {
             <Link to="upload" style={{ textDecoration: 'none' }}>  
                 <Button onClick={() => null} label="Get Started >"/>
             </Link>
+            <S3LinkUploadView/>
         </div>
     );
 };

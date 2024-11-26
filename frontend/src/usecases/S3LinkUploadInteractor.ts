@@ -5,7 +5,7 @@ export class S3LinkUploadInteractor {
     const formData = new FormData()
     formData.append("link", s3Link);
 
-    const response = await apiService.post("/process_s3_link/", formData);
+    const response = await apiService.post("/process_link/", formData);
     if (response.ok) {
       const data = await response.json();
       return {

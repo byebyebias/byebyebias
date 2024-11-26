@@ -11,7 +11,7 @@ class BiasMetricsViewSet(ViewSet):
     def controller(self) -> BiasMetricsController:
         return self.viewset_factory.create()
 
-    def convert(self, request: Request, *args, **kwargs) -> Response:
-        query_params = request.query_params
-        payload, status = self.controller.convert(query_params)
+    def get_bias_metrics(self, request: Request, *args, **kwargs) -> Response:
+        request_files = request.FILES
+        payload, status = self.controller.get_bias_metrics(request_files)
         return Response(data=payload, status=status)

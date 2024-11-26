@@ -6,4 +6,4 @@ class UploadFileInteractor:
 
     def post(self, raw_file):
         # file_name and file_path from file_repo
-        return self.file_repo.save_file(raw_file)
+        return self.file_repo.save_file(uploaded_file=raw_file)

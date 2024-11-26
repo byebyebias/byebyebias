@@ -2,6 +2,8 @@ from backend.core.use_cases.calculate_metrics_interactor import CalculateMetrics
 from backend.core.use_cases.convert_file_interactor import ConvertFileInteractor
 from backend.core.use_cases.upload_file_interactor import UploadFileInteractor
 
+from http import HTTPStatus
+
 import os
 from rest_framework.response import Response
 
@@ -15,16 +17,12 @@ class BiasMetricsController:
         self.convert_file_interactor = convert_file_interactor
         self.upload_file_interactor = upload_file_interactor
 
-    def execute(self, request):
-        if 'file' not in request.FILES:
-            return Response(
-                {
-                    'status': 'error', 
-                    'message': 'No file provided or invalid request'
-                }
-            )
+    def get_bias_metrics(self, request_files):
+        if 'file' not in request_files:
+            return {'message': 'No file provided or invalid request'}, HTTPStatus.BAD_REQUEST.value
     
-        uploaded_file = request.FILES['file']
+
+        uploaded_file = request_files['file']
         # THIS SHOULD BECOME A PART OF BODY RESPONSE TO PARSE
         protected_attributes = ['sender_gender', 'sender_race', 'receiver_gender', 'receiver_race']
 
@@ -36,7 +34,7 @@ class BiasMetricsController:
             if os.path.exists(file_path):
                 os.remove(file_path)
 
-            return Response({
+            data = {
                 "file_name": file_name,
                 "file_path": file_path,
                 "overview": {
@@ -44,7 +42,9 @@ class BiasMetricsController:
                     "top_category": "ABC",
                 },
                 "metric_results": results["formatted_metrics"],
-            })
+            }
+
+            return data, HTTPStatus.OK.value
 
         except Exception as e:
-            return Response({'status': 'error', 'message': str(e)})
+            return {'message': str(e)}, HTTPStatus.BAD_REQUEST.value

@@ -1,11 +1,11 @@
 from backend.core.entities.bias_metrics import BiasMetrics
 
 class CalculateMetricsInteractor:
-    def calculate(self, true_df, pred_df, protected_attributes):
-        bias_metrics = BiasMetrics(true_df, pred_df, protected_attributes)
+    def calculate(self, df, true_df, pred_df, protected_attributes):
+        bias_metrics = BiasMetrics(df, true_df, pred_df, protected_attributes)
 
         all_metrics = bias_metrics.get_all_bias_metrics()
-        bias_score = bias_metrics.get_score(all_metrics)
+        bias_score = bias_metrics.get_score()
 
         formatted_metrics = self.reformat_metrics(all_metrics)
 

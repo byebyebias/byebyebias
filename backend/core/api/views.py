@@ -20,8 +20,8 @@ def upload_file(request):
     try:
         file_name, file_path = file_repo.save_file(uploaded_file)
         protected_attributes = ['sender_gender', 'sender_race', 'receiver_gender', 'receiver_race']
-        true_df, pred_df = convert_file.convert(file_path, protected_attributes)
-        results = calculate_metrics.calculate(true_df, pred_df, protected_attributes)
+        true_df, pred_df, df = convert_file.convert(file_path, protected_attributes)
+        results = calculate_metrics.calculate(df, true_df, pred_df, protected_attributes)
 
         if os.path.exists(file_path):
             os.remove(file_path)

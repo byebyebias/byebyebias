@@ -7,7 +7,8 @@ class BiasMetrics:
     BiasMetrics object contains bias metrics.
     '''
 
-    def __init__(self, true_df: pd.DataFrame, pred_df: pd.DataFrame, protected_attributes: list[str]):
+    def __init__(self, df: pd.DataFrame, true_df: pd.DataFrame, pred_df: pd.DataFrame, protected_attributes: list[str]):
+        self.df = df
         self.true_df = true_df
         self.pred_df = pred_df
         self.protected_attributes = protected_attributes
@@ -26,26 +27,30 @@ class BiasMetrics:
         
         return metric_to_protected_attribute
 
-    def get_score(self, all_bias_metrics) -> str:
-        num_of_fairs = []
+    def get_score(self) -> str:
+        # num_of_fairs = []
 
-        for metric, protected_attribute_to_value in all_bias_metrics.items():
-            values = list(protected_attribute_to_value.values())
-            if metric == 'Disparate Impact':
-                for value in values:
-                    if 0.8 <= value <= 1.25:
-                        num_of_fairs.append(1)
-                    else:
-                        num_of_fairs.append(0)
-            else:
-                for value in values:
-                    if -0.1 <= value <= 0.1:
-                        num_of_fairs.append(1)
-                    else:
-                        num_of_fairs.append(0)
+        # for metric, protected_attribute_to_value in all_bias_metrics.items():
+        #     values = list(protected_attribute_to_value.values())
+        #     if metric == 'Disparate Impact':
+        #         for value in values:
+        #             if 0.8 <= value <= 1.25:
+        #                 num_of_fairs.append(1)
+        #             else:
+        #                 num_of_fairs.append(0)
+        #     else:
+        #         for value in values:
+        #             if -0.1 <= value <= 0.1:
+        #                 num_of_fairs.append(1)
+        #             else:
+        #                 num_of_fairs.append(0)
 
-        percent = sum(num_of_fairs) / len(num_of_fairs) * 100
+        # percent = sum(num_of_fairs) / len(num_of_fairs) * 100
+
         # assign letter grade
+        accuracy = (self.df["is_fraud"] == self.df["predicted_fraud"]).mean()
+        percent = accuracy * 100
+
         if 90 <= percent <= 100:
             return 'A+'
         elif 85 <= percent:

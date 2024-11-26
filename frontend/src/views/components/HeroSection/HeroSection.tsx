@@ -1,7 +1,5 @@
 import React from 'react';
 import './HeroSection.css';
-import UploadFileView from '../../UploadFileView';
-import S3LinkUploadView from '../../S3LinkUploadView';
 import Button from '../Button/Button';
 import { Link } from 'react-router-dom';
 
@@ -21,7 +19,6 @@ const HeroSection: React.FC<HeroSectionProps> = ({ heading, body }) => {
             <Link to="upload" style={{ textDecoration: 'none' }}>  
                 <Button onClick={() => null} label="Get Started >"/>
             </Link>
-            <S3LinkUploadView/>
         </div>
     );
 };

@@ -19,8 +19,8 @@ const MainPage: React.FC = () => {
       <Title label="BYE BYE BIAS"/>
 
       <div className="arrow-container">
-       <a href="#about">
-          <img src={DownArrow} id="down-arrow" />
+       <a href="#about" tabIndex={-1}>
+          <img src={DownArrow} alt="down-arrow" id="down-arrow" />
         </a>
       </div>
 

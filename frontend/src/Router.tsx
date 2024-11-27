@@ -8,6 +8,7 @@ import UploadPage from "./views/pages/UploadPage/UploadPage.js";
 import ChatbotPage from "./views/pages/ChatbotPage.js";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
+
 const router = createBrowserRouter([
   {
     path: "/",

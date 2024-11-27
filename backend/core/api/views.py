@@ -8,7 +8,6 @@ import os
 
 from .data import PROCESSING_TECHNIQUES
 
-@csrf_exempt
 @api_view(['POST'])
 def upload_file(request):
     if 'file' not in request.FILES:
@@ -25,15 +24,13 @@ def upload_file(request):
         true_df, pred_df = convert_file.convert(file_path, protected_attributes)
         results = calculate_metrics.calculate(true_df, pred_df, protected_attributes)
 
-        if os.path.exists(file_path):
-            os.remove(file_path)
-
         return Response({
             "file_name": file_name,
             "file_path": file_path,
             "overview": {
-                "score": results["bias_score"],
-                "top_category": "ABC",
+                "score": results["letter_grade"],
+                "percentage": results["bias_score"],
+                "top_category": "ABC"
             },
             "metric_results": results["formatted_metrics"],
         })

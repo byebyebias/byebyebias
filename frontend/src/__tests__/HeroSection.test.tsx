@@ -32,25 +32,25 @@ describe("let this pass plz orz", () => {
       
 //     });
     
-    // test('renders hero section with button', () => {
+//     test('renders hero section with button', () => {
     
-    //     const buttonElement = screen.getByText(/Click Me/i);
-    //     expect(buttonElement).toBeInTheDocument();
+//         const buttonElement = screen.getByText(/Click Me/i);
+//         expect(buttonElement).toBeInTheDocument();
     
-    // });
+//     });
     
-    // test('renders hero section with correct button label', () => {
+//     test('renders hero section with correct button label', () => {
         
-    //     const buttonElement = screen.getByText(/Click Me/i);
-    //     expect(buttonElement).toHaveTextContent("Click Me");
+//         const buttonElement = screen.getByText(/Click Me/i);
+//         expect(buttonElement).toHaveTextContent("Click Me");
     
-    // });
+//     });
 
-    // test('button click calls handleClick', () => {
+//     test('button click calls handleClick', () => {
 
-    //     const buttonElement = screen.getByText(/Click Me/i);
-    //     buttonElement.click(); // Simulate a click
-    //     expect(handleClick).toHaveBeenCalled(); 
+//         const buttonElement = screen.getByText(/Click Me/i);
+//         buttonElement.click(); // Simulate a click
+//         expect(handleClick).toHaveBeenCalled(); 
 
-    // });
+//     });
 // })

@@ -4,7 +4,7 @@ from backend.core.data_access.file_repository import FileRepository
 from backend.core.use_cases.calculate_metrics_interactor import CalculateMetricsInteractor
 from backend.core.use_cases.convert_file_interactor import ConvertFileInteractor
 
-@api_view(['POST'])
+@api_view(['GET', 'POST'])
 def upload_file(request):
     if 'file' not in request.FILES:
         return Response({'status': 'error', 'message': 'No file provided or invalid request'})
@@ -24,8 +24,9 @@ def upload_file(request):
             "file_name": file_name,
             "file_path": file_path,
             "overview": {
-                "score": results["bias_score"],
-                "top_category": "ABC",
+                "score": results["letter_grade"],
+                "percentage": results["bias_score"],
+                "top_category": "ABC"
             },
             "metric_results": results["formatted_metrics"],
         })

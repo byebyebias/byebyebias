@@ -3,18 +3,21 @@ import { BarDatum, ResponsiveBar } from "@nivo/bar";
 
 interface BarChartProps {
     data: readonly BarDatum[];
+    height: string; 
+    width: string;
 }
-
-// hard-coded colour chart
-const colorMap = {
+const colorMap : {[key: string]: string} = {
     "sender_gender": "#271DE0",
     "sender_race": "#6820EA",
     "receiver_gender": "#00D632", 
     "receiver_race": "#EE55E7",
 };
 
-const BarChart = ({ data }: BarChartProps) => (
-        <div style={{height: "300px", width: "100%"}}>
+const BarChart = ({data, width = '100%', height = '400px'}: BarChartProps) => {
+    // console.log("Data passed to BarChart:", data); 
+
+    return (
+        <div style={{height: height, width: width }}>
             <ResponsiveBar
                 isFocusable={true}
                 barAriaLabel={({ id, value, indexValue }) =>
@@ -27,22 +30,24 @@ const BarChart = ({ data }: BarChartProps) => (
                             fontFamily: 'Montserrat',
                             fontWeight: '400',
                             fill: '#333',
+                            
                         },
                     },
                     axis: {
                         ticks: {
                             text: {
-                                fontSize: 12,        // Font size for tick labels
-                                fontFamily: 'Montserrat', // Font family for ticks
-                                fill: '#333',         // Tick color
+                                fontSize: 12,        
+                                fontFamily: 'Montserrat',
+                                fill: '#333',   
+                                maxWidth: '20px',
                             },
                         },
                         legend: {
                             text: {
-                                fontSize: 14,        // Font size for legends
-                                fontFamily: 'Montserrat', // Font family for legends
-                                fontWeight: 'bold',    // Font weight for legends
-                                fill: '#333',         // Legend color
+                                fontSize: 14,        
+                                fontFamily: 'Montserrat', 
+                                fontWeight: 'bold',   
+                                fill: '#333',       
                             },
                         },
                     },
@@ -50,7 +55,7 @@ const BarChart = ({ data }: BarChartProps) => (
                 data={data}
                 keys={['score']}
                 indexBy="protected_attribute"
-                margin={{ top: 50, right:50, bottom: 50, left: 80 }}
+                margin={{ top: 50, right: 50, bottom: 50, left: 80 }}
                 padding={0.3}
                 valueScale={{ type: 'linear' }}
                 indexScale={{ type: 'band', round: true }}
@@ -68,6 +73,8 @@ const BarChart = ({ data }: BarChartProps) => (
                     legend: 'protected_attribute',
                     legendPosition: 'middle',
                     legendOffset: 32,
+                    truncateTickAt: 0,
+                    ariaHidden: true
                 }}
                 axisLeft={{
                     tickSize: 5,
@@ -76,16 +83,18 @@ const BarChart = ({ data }: BarChartProps) => (
                     legend: 'Score',
                     legendPosition: 'middle',
                     legendOffset: -60,
-                    truncateTickAt: 0
+                    ariaHidden: true
                 }}
                 labelSkipWidth={12}
                 labelSkipHeight={12}
-                labelTextColor="#FFFFFF"
-                
+                labelTextColor={{
+                    from: 'color',
+                    modifiers: [['darker', 1.6]],
+                }}
                 role="application"
             />
         </div>
     );
-
+};
 
 export default BarChart;

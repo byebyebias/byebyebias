@@ -27,7 +27,7 @@ class BiasMetrics:
         
         return metric_to_protected_attribute
 
-    def get_score(self, all_bias_metrics) -> str:
+    def get_score(self, all_bias_metrics) -> tuple[str, float]:
         num_of_fairs = []
 
         for metric, protected_attribute_to_value in all_bias_metrics.items():
@@ -62,31 +62,33 @@ class BiasMetrics:
         # assign letter grade
 
         if 90 <= percent <= 100:
-            return 'A+'
+            letter_grade = 'A+'
         elif 85 <= percent:
-            return 'A'
+            letter_grade = 'A'
         elif 80 <= percent:
-            return 'A-'
+            letter_grade = 'A-'
         elif 77 <= percent:
-            return 'B+'
+            letter_grade = 'B+'
         elif 73 <= percent:
-            return 'B'
+            letter_grade = 'B'
         elif 70 <= percent:
-            return 'B-'
+            letter_grade = 'B-'
         elif 67 <= percent:
-            return 'C+'
+            letter_grade = 'C+'
         elif 63 <= percent:
-            return 'C'
+            letter_grade = 'C'
         elif 60 <= percent:
-            return 'C-'
+            letter_grade = 'C-'
         elif 57 <= percent:
-            return 'D+'
+            letter_grade = 'D+'
         elif 53 <= percent:
-            return 'D'
-        elif 50 < percent:
-            return 'D-'
+            letter_grade = 'D'
+        elif 50 <= percent:
+            letter_grade = 'D-'
         else:
-            return 'F'
+            letter_grade = 'F'
+        
+        return (letter_grade, round(percent,2))
 
     def get_bias_metrics(self, protected_attribute: str) -> dict[str: float]:
         self.true_df.rename(columns={'is_fraud':'fraud_result'}, inplace=True)

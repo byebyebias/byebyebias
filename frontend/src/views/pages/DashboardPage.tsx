@@ -8,7 +8,6 @@ import Footer from "../components/Footer/Footer";
 function DashboardPage() {
   const location = useLocation();
   const { dashboardData } = location.state;
-  // console.log("Metric Results:", dashboardData.metricResults);
 
   return (
     <main role="main">
@@ -30,7 +29,7 @@ function DashboardPage() {
         <Box bgcolor="#E6EEF5" sx={{paddingLeft: "30px"}}p={0}>
           <Stack direction="row" spacing={2}>
             <Typography sx={{fontFamily: 'Montserrat', fontSize:'15px', fontWeight: 300, color:"#9921D2"}}>{dashboardData.fileName}</Typography>
-            <LetterGrade aria-label={`Letter grade is ${dashboardData.overview?.score || "A+"}`} score={dashboardData.overview?.score || "A+"} />
+            <LetterGrade aria-label={`Letter grade is ${dashboardData.overview?.score || "A+"}`} score={dashboardData.overview?.score || "A+"} percentage={dashboardData.overview.percentage} />
             <Overview data={dashboardData.overview || { score: 0, top_category: 'Sender_Gender' }} />
           </Stack>
           <GraphGrid graphsInfo={dashboardData.metricResults} />

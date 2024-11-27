@@ -7,6 +7,7 @@ import DashBoardPage from "./views/pages/DashboardPage.js"
 import UploadPage from './views/pages/UploadPage/UploadPage.js'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
+
 const router = createBrowserRouter([
   {
     path: "/",

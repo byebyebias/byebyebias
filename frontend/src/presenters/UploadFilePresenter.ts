@@ -4,7 +4,7 @@ export class UploadFilePresenter {
   private navigate = useNavigate();
 
   presentUploadResult(data: any) {
-    console.log("File uploaded and metrics fetched successfully");
+    // console.log("File uploaded and metrics fetched successfully");
     this.navigate("/dashboard", {
       state: {
         dashboardData: {
@@ -14,6 +14,7 @@ export class UploadFilePresenter {
         },
       },
     });
+    
   }
 
   presentError(message: string) {

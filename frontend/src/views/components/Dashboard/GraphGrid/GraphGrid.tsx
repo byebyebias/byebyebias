@@ -1,4 +1,6 @@
-import { Container, Grid, Card, CardContent, CardHeader } from "@mui/material";
+import { Container, Card, CardContent, CardHeader, Typography, Grid2 } from "@mui/material";
+import { BarDatum, ResponsiveBar } from "@nivo/bar";
+import { colorSchemes } from '@nivo/colors';
 import BarChart from "../BarChart/BarChart";
 import InfoButton from "../InfoButton/InfoButton";
 
@@ -12,43 +14,56 @@ interface GraphGridProps {
   }[];
 }
 
+interface GraphProps {
+  title: string; 
+  data: { 
+      protected_attribute: string; 
+      score: number; 
+    }[]; 
+  desc: string;
+}
+
+function Graph({data, title, desc}: GraphProps) {
+    return (
+        <Card component="div" aria-label={`This graph displays the ${title} metric for each of your selected attributes`} tabIndex={0} sx={{ position: 'relative', border: '0.5px solid #000000',width: "390px", borderRadius: '35px', background: "#F8FEFA", alignItems: 'center'}} >
+            <Typography variant="h3" style= {{textAlign: 'left', paddingLeft: '30px', paddingTop: '20px', fontFamily: 'Montserrat', fontSize:'20px', fontWeight: 400, fontStyle: 'italic'}}>{title}</Typography>
+            <div style={{zIndex: 10, position: 'absolute', top: "325px", right: "5px"}}><InfoButton description={desc} /></div>
+
+            <CardContent sx={{justifyContent: 'center', alignItems: 'center', width: '100%'}}>
+                <BarChart data={data} />
+            </CardContent>
+        </Card>
+    )
+}
+
+  
 const GraphGrid: React.FC<GraphGridProps> = ({ graphsInfo }) => {
-  const descriptors: { [key: string]: string } = {
-    'Disparate Impact': 'Shows the ratio of outcomes for different groups, highlighting potential bias in decision-making processes.',
-    'Statistical Parity Difference': 'Measures the difference in selection rates between groups to assess fairness.',
-    'Average Odds Difference': 'Compares the true positive and false positive rates between groups to evaluate model consistency.',
-    'Equal Opportunity Difference': 'Focuses on the difference in true positive rates to ensure equitable opportunities across groups.',
-  };
+    const descriptors: { [key: string]: string } = {
+      'Disparate Impact': 'Shows the ratio of outcomes for different groups, highlighting potential bias in decision-making processes.',
+      'Statistical Parity Difference': 'Measures the difference in selection rates between groups to assess fairness.',
+      'Average Odds Difference': 'Compares the true positive and false positive rates between groups to evaluate model consistency.',
+      'Equal Opportunity Difference': 'Focuses on the difference in true positive rates to ensure equitable opportunities across groups.',
+    };
+    return (
+        <Container style={{ display: 'flex', justifyContent: "center", maxWidth: "none" }}>
+          <Grid2 container rowSpacing={5} columnSpacing={5} pt={8}>
+            {graphsInfo.map((graphInfo, index) => {
+              const graphTitle = graphInfo.title;
+              const description = descriptors[graphTitle] || 'No description available';
+    
+              return (
+                <Grid2 item key={index}>
 
-  return (
-    <Container style={{ display: 'flex', justifyContent: "center", maxWidth: "none" }}>
-      <Grid container rowSpacing={8} columnSpacing={8} pt={8}>
-        {graphsInfo.map((graphInfo, index) => {
-          const graphTitle = graphInfo.title;
-          const description = descriptors[graphTitle] || 'No description available';
+                  <Graph data={graphInfo.values} title={graphTitle} desc={description}/>
 
-          const chartData = graphInfo.values.map((item, idx) => ({
-            protected_attribute: idx === 0 ? 'sender_gender' : 'sender_race',
-            score: item.score,
-          }));
-
-          // console.log("Chart Data for", graphTitle, chartData);
-
-          return (
-            <Grid item key={index}>
-              <Card style={{ position: "relative", width: "400px" }}>
-                <CardHeader title={graphTitle} />
-                <CardContent>
-                  <InfoButton description={description} />
-                  <BarChart data={chartData} />
-                </CardContent>
-              </Card>
-            </Grid>
-          );
-        })}
-      </Grid>
-    </Container>
-  );
+                </Grid2>
+              );
+            })}
+          </Grid2>
+        </Container>
+      );
 };
 
-export default GraphGrid;
+
+
+export default GraphGrid

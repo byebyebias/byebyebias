@@ -47,7 +47,7 @@ function UploadPage() {
 
     const handleAttributeClick = (event: React.ChangeEvent<HTMLInputElement>) => {
         const buttonValue = event.target.textContent!
-        
+
         if((selectedButtons.includes(buttonValue))) {
             setSelectedButtons(selectedButtons.filter((attribute) => attribute != buttonValue ))
         } else {
@@ -143,7 +143,11 @@ function UploadPage() {
                                 )}
                             </Grid>
 
-                            <Button variant="contained" onClick={handleViewResults}>
+                            <Button 
+                                variant="contained" 
+                                onClick={handleViewResults}
+                                className={styles.uploadButton}
+                            >
                                 View Results
                             </Button>
                         </main>

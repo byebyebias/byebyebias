@@ -1,17 +1,14 @@
 import React from 'react';
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import GraphGrid from '../views/components/Dashboard/GraphGrid/GraphGrid';
-import { ResponsiveBar } from '@nivo/bar';
-import Graph from '../views/components/Dashboard/Graph/Graph';
-import BarChart from '../views/components/Dashboard/BarChart/BarChart';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 const theme = createTheme();
 
 // jest.mock('../views/components/BarChart/BarChart',() => () => <div>BarChart Component</div>);
 
-jest.mock('../views/components/Dashboard/Graph/Graph', () => () => <div>Graph Component</div>);
+jest.mock('../views/components/Dashboard/Graph/Graph.tsx', () => () => <div>Graph Component</div>);
 
 const graphsInfo=
         [{'title': 'Disparate Impact', 'values': [{'protected_attribute': 'sender_gender', 'score': 0.03}]}, 
@@ -21,7 +18,11 @@ const graphsInfo=
 describe('GraphGrid', () =>{
 
     beforeEach(() => {
-        render(<GraphGrid graphsInfo={graphsInfo}/>);
+        render(
+            <ThemeProvider theme={theme}>
+                <GraphGrid graphsInfo={graphsInfo}/>
+            </ThemeProvider>
+        )
     })
 
     test('renders the GraphGrid with the correct number of Graphs', () => {

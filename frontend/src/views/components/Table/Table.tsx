@@ -18,6 +18,7 @@ interface Column {
   minWidth?: 150;
   align?: 'right';
   format?: (value: number) => string;
+  required?: boolean;
 }
 
 const columns: readonly Column[] = [
@@ -99,6 +100,8 @@ const rows = [
 export default function StickyHeadTable() {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
+  // Add state for selected rows if you need selection functionality
+  const [selectedRows, setSelectedRows] = React.useState<string[]>([]);
 
   const handleChangePage = (event: unknown, newPage: number) => {
     setPage(newPage);
@@ -107,6 +110,15 @@ export default function StickyHeadTable() {
   const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => {
     setRowsPerPage(+event.target.value);
     setPage(0);
+  };
+
+  // Add handler for row selection if needed
+  const handleRowSelect = (transactionId: string) => {
+    setSelectedRows(prev => 
+      prev.includes(transactionId) 
+        ? prev.filter(id => id !== transactionId)
+        : [...prev, transactionId]
+    );
   };
 
   return (
@@ -131,7 +143,13 @@ export default function StickyHeadTable() {
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((row) => {
                 return (
-                  <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
+                  <TableRow
+                    hover
+                    key={row.transaction_id}
+                    role="row"
+                    aria-selected={selectedRows.includes(row.transaction_id)}
+                    onClick={() => handleRowSelect(row.transaction_id)}
+                  >
                     {columns.map((column) => {
                       const value = row[column.id];
                       return (

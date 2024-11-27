@@ -10,7 +10,34 @@ import DownArrow from "../assets/DownArrow.png"
 import Header from "../components/Header/Header";
 
 const MainPage: React.FC = () => {
+  useEffect(() => {
+    // Function to add title to Pericles iframe for Lighthouse score
+    const addTitleToPericlesIframe = () => {
+      const iframe = document.getElementById('_pericles_content_iframe');
+      if (iframe && iframe instanceof HTMLIFrameElement && !iframe.title) {
+        iframe.title = 'Homepage Content Frame';
+      }
+    };
 
+    addTitleToPericlesIframe();
+
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.addedNodes.length) {
+          addTitleToPericlesIframe();
+        }
+      });
+    });
+
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true
+    });
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
   return (
 
     <div className="main-page">
@@ -81,6 +108,7 @@ const MainPage: React.FC = () => {
         </div>
       </section>
       <Footer label="© 2024 Team TripleB" />
+
     </div>
   );
 };

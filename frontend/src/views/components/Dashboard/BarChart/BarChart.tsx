@@ -71,7 +71,8 @@ const BarChart = ({data, width = '100%', height = '400px'}: BarChartProps) => {
                     legend: 'protected_attribute',
                     legendPosition: 'middle',
                     legendOffset: 32,
-                    truncateTickAt: 0
+                    truncateTickAt: 0,
+                    ariaHidden: true
                 }}
                 axisLeft={{
                     tickSize: 5,

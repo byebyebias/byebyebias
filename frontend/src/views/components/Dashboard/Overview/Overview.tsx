@@ -17,9 +17,6 @@ function Overview( { data } ) {
 
                 <Typography variant="body2" sx= {{paddingLeft: '25px', textAlign: 'left', fontFamily: 'Montserrat', fontStyle: 'normal', fontWeight: 200, fontSize: '27px', color: '#28282C'}}>Your top category is {data.top_category}. Areas for improvement include ABC and BCD</Typography>
 
-                <Link tabIndex={0} sx= {{ marginTop: 'auto', padding: '25px', textAlign: 'left', fontFamily: 'Montserrat', fontStyle: 'italic', fontWeight: 200, fontSize: '15px', color: '#9921D2'}}>Learn More</Link>
-
-
             </CardContent>
         </Card>
     )

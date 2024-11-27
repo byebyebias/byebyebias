@@ -27,29 +27,39 @@ class BiasMetrics:
         
         return metric_to_protected_attribute
 
-    def get_score(self) -> str:
-        # num_of_fairs = []
+    def get_score(self, all_bias_metrics) -> str:
+        num_of_fairs = []
 
-        # for metric, protected_attribute_to_value in all_bias_metrics.items():
-        #     values = list(protected_attribute_to_value.values())
-        #     if metric == 'Disparate Impact':
-        #         for value in values:
-        #             if 0.8 <= value <= 1.25:
-        #                 num_of_fairs.append(1)
-        #             else:
-        #                 num_of_fairs.append(0)
-        #     else:
-        #         for value in values:
-        #             if -0.1 <= value <= 0.1:
-        #                 num_of_fairs.append(1)
-        #             else:
-        #                 num_of_fairs.append(0)
+        for metric, protected_attribute_to_value in all_bias_metrics.items():
+            values = list(protected_attribute_to_value.values())
+            if metric == 'Disparate Impact':
+                for value in values:
+                    if 0.43 <= value <= 1.47:
+                        num_of_fairs.append(1)
+                    else:
+                        num_of_fairs.append(0)
+            elif metric == 'Statistical Parity Difference':
+                for value in values:
+                    if -0.03 <= value <= 0.01:
+                        num_of_fairs.append(1)
+                    else:
+                        num_of_fairs.append(0)
+            elif metric == 'Average Odds Difference':
+                for value in values:
+                    if -0.43 <= value <= 0.12:
+                        num_of_fairs.append(1)
+                    else:
+                        num_of_fairs.append(0)
+            else:
+                for value in values:
+                    if -0.85 <= value <= 0.23:
+                        num_of_fairs.append(1)
+                    else:
+                        num_of_fairs.append(0)
 
-        # percent = sum(num_of_fairs) / len(num_of_fairs) * 100
+        percent = sum(num_of_fairs) / len(num_of_fairs) * 100
 
         # assign letter grade
-        accuracy = (self.df["is_fraud"] == self.df["predicted_fraud"]).mean()
-        percent = accuracy * 100
 
         if 90 <= percent <= 100:
             return 'A+'
@@ -73,7 +83,7 @@ class BiasMetrics:
             return 'D+'
         elif 53 <= percent:
             return 'D'
-        elif 50 <= percent:
+        elif 50 < percent:
             return 'D-'
         else:
             return 'F'
@@ -101,3 +111,8 @@ class BiasMetrics:
             metrics['Equal Opportunity Difference'] = round(float(metric.equal_opportunity_difference()), 2)
 
         return metrics
+
+    # def get_accuracy(self) -> float:
+    #     accuracy = (self.df["is_fraud"] == self.df["predicted_fraud"]).mean()
+    #     percent = round(accuracy * 100, 2)
+    #     return percent

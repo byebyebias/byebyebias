@@ -1,24 +1,13 @@
-import React, { useRef } from "react";
-import { UploadFileController } from "../../../controllers/UploadFileController"
-import { UploadFileInteractor } from "../../../usecases/UploadFileInteractor";
-import { UploadFilePresenter } from "../../../presenters/UploadFilePresenter";
-import Button from "../Button/Button";
-import UploadFile from "./UploadFile/UploadFile"
+import { Button } from "@mui/material";
+import React, { useRef, useState } from "react";
+import UploadIcon from '@mui/icons-material/Upload';
 
-const UploadFileView: React.FC = () => {
+interface Props {
+  handleFileChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
+const UploadFileView: React.FC<Props> = ({handleFileChange}) => {
   const fileInputRef = useRef<HTMLInputElement | null>(null);
-
-  const presenter = new UploadFilePresenter();
-  const interactor = new UploadFileInteractor();
-  const controller = new UploadFileController(interactor, presenter);
-
-  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
-    if (file) {
-        controller.handleFileUpload(file);
-    }
-  };
-
   const handleButtonClick = () => {
     fileInputRef.current?.click();
   };
@@ -31,9 +20,24 @@ const UploadFileView: React.FC = () => {
         ref={fileInputRef}
         onChange={handleFileChange}
         style={{ display: "none" }}
+        aria-label="File upload"
       />
-      
-      <Button label="Upload Data >" onClick={() => { handleButtonClick(); }} />
+      <Button
+        role={undefined}
+        variant="contained"
+        startIcon={<UploadIcon />}
+        onClick={handleButtonClick}
+        sx={{
+          backgroundColor: "#A136D6",
+          textTransform: "none",
+          boxShadow: "none",
+          fontFamily: "Montserrat",
+          fontSize: "20px",
+        }}
+        aria-label="Choose a file to upload"
+      >
+        Choose file
+      </Button>
     </div>
   );
 };

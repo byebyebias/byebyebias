@@ -14,7 +14,7 @@ interface GraphProps {
     
   };
 
-const Graph: React.FC<GraphProps> = ({ title, values }) => {
+export const Graph: React.FC<GraphProps> = ({ title, values }) => {
 
     const [open, setOpen] = useState(false);
     const handleOpen = () => {
@@ -30,7 +30,8 @@ const Graph: React.FC<GraphProps> = ({ title, values }) => {
 
     return (
 
-        <><Card aria-label={`This graph displays the ${title} metric for each of your selected attributes`} tabIndex={0} sx={{ width: "30%", borderRadius: '35px', background: "#F8FEFA", alignItems: 'center'}} >
+        <>
+        <Card aria-label={`This graph displays the ${title} metric for each of your selected attributes`} tabIndex={0} sx={{border: '0.5px solid #000000', width: "30%", borderRadius: '35px', background: "#F8FEFA", alignItems: 'center'}} >
             
             <CardContent sx={{justifyContent: 'center', alignItems: 'center', width: '100%'}}>
                 <Typography style= {{textAlign: 'left', paddingLeft: '30px', paddingTop: '30px', fontFamily: 'Montserrat', fontSize:'20px', fontWeight: 400, fontStyle: 'italic'}}>{title}</Typography>
@@ -76,5 +77,5 @@ const Graph: React.FC<GraphProps> = ({ title, values }) => {
     );
 };
 
-export default Graph;
+
 

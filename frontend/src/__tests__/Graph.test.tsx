@@ -1,6 +1,7 @@
 import { fireEvent, queryByLabelText, render, screen } from "@testing-library/react";
-import Graph from "../views/components/Dashboard/Graph/Graph";
+import {Graph} from "../views/components/Dashboard/Graph/Graph";
 import '@testing-library/jest-dom';
+
 
 
 jest.mock('../views/components/BarChart/BarChart',() => () => <div>BarChart Component</div>);
@@ -8,11 +9,7 @@ jest.mock('@nivo/bar', () => ({
     ResponsiveBar: jest.fn(() => <div>Mocked ResponsiveBar</div>),
 }));
 
-// jest.mock('@mui/icons-material/OpenInFull', () => ({
-//     OpenInFullIcon: jest.fn(() => <div>Mocked Icon</div>),
-// }));
-
-jest.mock('@mui/material/Modal', () => ({ children }: any) => <div>{children}</div>);
+jest.mock('@mui/material/Modal', () => ({ children }: any) => <div>Mocked Modal</div>);
 
 
 let graphsInfo=

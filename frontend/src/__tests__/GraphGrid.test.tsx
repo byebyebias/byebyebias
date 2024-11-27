@@ -3,12 +3,19 @@ import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import GraphGrid from '../views/components/Dashboard/GraphGrid/GraphGrid';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import {Graph} from '../views/components/Dashboard/Graph/Graph';
 
 const theme = createTheme();
 
-// jest.mock('../views/components/BarChart/BarChart',() => () => <div>BarChart Component</div>);
+jest.mock('../views/components/Dashboard/Graph/Graph', () => ({
+    __esModule: true, // This tells Jest that the module uses ES6 exports
+    Graph: jest.fn(() => <div>Mocked Graph Component</div>),
+  }));
 
-jest.mock('../views/components/Dashboard/Graph/Graph.tsx', () => () => <div>Graph Component</div>);
+jest.mock('@nivo/bar', () => ({
+    ResponsiveBar: jest.fn(() => <div>Mocked ResponsiveBar</div>),
+}));
+
 
 const graphsInfo=
         [{'title': 'Disparate Impact', 'values': [{'protected_attribute': 'sender_gender', 'score': 0.03}]}, 
@@ -26,7 +33,7 @@ describe('GraphGrid', () =>{
     })
 
     test('renders the GraphGrid with the correct number of Graphs', () => {
-        expect(screen.getAllByText('Graph Component')).toHaveLength(3);
+        expect(screen.getAllByText('Mocked Graph Component')).toHaveLength(3);
     
     });
 

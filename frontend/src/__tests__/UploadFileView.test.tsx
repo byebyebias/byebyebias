@@ -7,13 +7,14 @@ import { BrowserRouter } from 'react-router-dom';
 
 test('renders the button with the correct label', () => {
 
-    const handleClick = jest.fn();
+    const handleFileChange = jest.fn();
+
     render(
         <BrowserRouter>
-            <UploadFileView />
+            <UploadFileView handleFileChange={handleFileChange}/>
         </BrowserRouter>
     );
     
     const buttonElement = screen.getByRole('button');
-    expect(buttonElement).toHaveTextContent("Upload Data >");  
+    expect(buttonElement).toHaveTextContent("Choose file");  
 });

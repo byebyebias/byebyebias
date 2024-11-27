@@ -1,7 +1,5 @@
 import { Container, Card, Grid2, CardContent, Typography, Modal, Box, IconButton } from "@mui/material";
-import Graph from "../Graph/Graph";
-
-console.log("hi" + {Graph}); 
+import {Graph} from "../Graph/Graph";
 
 interface GraphGridProps {
   graphsInfo: { 
@@ -26,14 +24,11 @@ const GraphGrid: React.FC<GraphGridProps> = ({ graphsInfo }) => {
     }
     
     return (
-    <Container style={{display: 'flex', justifyContent:"center", maxWidth:"none"}}>
-        <Grid2 container rowSpacing={8} columnSpacing={6} pt={4}>
+        <Box sx={{paddingLeft: '20px', paddingTop: '40px', gap:4, display: 'flex', flexDirection: 'row', flexWrap: 'wrap', }}>
             {graphsInfo.map( (graphInfo: { values: any; title: any; }) => 
                 <Graph key={graphInfo.title} values={graphInfo.values} title={graphInfo.title} />
             )}
-
-        </Grid2>
-    </Container>
+        </Box>
     );    
 };
 

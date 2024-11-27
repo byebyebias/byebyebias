@@ -1,12 +1,4 @@
-.process-step {
-    padding-left: 50px;
-    margin: 20px;
-
-
-}
-
 .process-header {
-
     font-family: 'Montserrat';
     font-style: italic;
     font-weight: 700;
@@ -14,16 +6,19 @@
     line-height: 73px;
     color: #000000;
     text-align: left;
-
+    margin-top: 20px;
 }
 
 .process-body {
-
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 300;
     font-size: 25px;
-    line-height: 42px;
+    line-height: 35px;
     color: #000000;
     text-align: left;
+}
+
+.process-header .highlight {
+    color: #9921D2;
 }

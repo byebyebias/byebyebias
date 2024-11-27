@@ -7,9 +7,9 @@ import InfoButton from "../InfoButton/InfoButton"; // Import the InfoButton comp
 
 function Graph({data, title, desc}) {
     return (
-        <Card component="div" aria-label={`This graph displays the ${title} metric for each of your selected attributes`} tabIndex={0} sx={{ position: 'relative', border: '0.5px solid #000000',width: "370px", borderRadius: '35px', background: "#F8FEFA", alignItems: 'center'}} >
-            <Typography style= {{textAlign: 'left', paddingLeft: '30px', paddingTop: '20px', fontFamily: 'Montserrat', fontSize:'20px', fontWeight: 400, fontStyle: 'italic'}}>{title}</Typography>
-            <div style={{position: 'absolute', bottom: "-5px", right: "5px"}}><InfoButton description={desc} /></div>
+        <Card component="div" aria-label={`This graph displays the ${title} metric for each of your selected attributes`} tabIndex={0} sx={{ position: 'relative', border: '0.5px solid #000000',width: "390px", borderRadius: '35px', background: "#F8FEFA", alignItems: 'center'}} >
+            <Typography variant="h3" style= {{textAlign: 'left', paddingLeft: '30px', paddingTop: '20px', fontFamily: 'Montserrat', fontSize:'20px', fontWeight: 400, fontStyle: 'italic'}}>{title}</Typography>
+            <div style={{zIndex: 10, position: 'absolute', top: "325px", right: "5px"}}><InfoButton description={desc} /></div>
 
             <CardContent sx={{justifyContent: 'center', alignItems: 'center', width: '100%'}}>
                 <BarChart data={data} />
@@ -31,7 +31,7 @@ const GraphGrid: React.FC<GraphGridProps> = ({ graphsInfo }) => {
     };
     return (
         <Container style={{ display: 'flex', justifyContent: "center", maxWidth: "none" }}>
-          <Grid2 container rowSpacing={8} columnSpacing={8} pt={8}>
+          <Grid2 container rowSpacing={5} columnSpacing={5} pt={8}>
             {graphsInfo.map((graphInfo, index) => {
               const graphTitle = graphInfo.title;
               const description = descriptors[graphTitle] || 'No description available';

@@ -17,8 +17,8 @@ function DashboardPage() {
     </Box>
     
     
-    <Typography variant="h1" aria-label="Dashboard" tabIndex={0} sx={{paddingTop: "20px", paddingLeft: "75px", textAlign:'left', fontFamily: 'Montserrat', fontWeight: 700, fontSize: '45pt'}}>Dashboard</Typography>
-    <Typography tabIndex={0} aria-label={`File path displayed as ${dashboardData.filePath.split('/').pop()}`} sx={{paddingBottom: "15px", paddingLeft: "75px", textAlign:'left', fontFamily: 'Montserrat', color: "#9921D2", fontWeight: 500, fontSize: '15pt'}} >
+    <Typography variant="h1" sx={{paddingTop: "20px", paddingLeft: "75px", textAlign:'left', fontFamily: 'Montserrat', fontWeight: 700, fontSize: '45pt'}}>Dashboard</Typography>
+    <Typography variant="body1" aria-label={`File path displayed as ${dashboardData.filePath.split('/').pop()}`} sx={{paddingBottom: "15px", paddingLeft: "75px", textAlign:'left', fontFamily: 'Montserrat', color: "#9921D2", fontWeight: 500, fontSize: '15pt'}} >
         {dashboardData.filePath.split('/').pop()}
       </Typography>
 
@@ -29,7 +29,7 @@ function DashboardPage() {
         <Box bgcolor="#E6EEF5" sx={{paddingLeft: "30px"}}p={0}>
           <Stack direction="row" spacing={2}>
             <Typography sx={{fontFamily: 'Montserrat', fontSize:'15px', fontWeight: 300, color:"#9921D2"}}>{dashboardData.fileName}</Typography>
-            <LetterGrade tabIndex={0} aria-label={`Letter grade is ${dashboardData.overview?.score || "A+"}`} score={dashboardData.overview?.score || "A+"} />
+            <LetterGrade aria-label={`Letter grade is ${dashboardData.overview?.score || "A+"}`} score={dashboardData.overview?.score || "A+"} />
             <Overview data={dashboardData.overview || { score: 0, top_category: 'Sender_Gender' }} />
           </Stack>
           <GraphGrid graphsInfo={dashboardData.metricResults} />

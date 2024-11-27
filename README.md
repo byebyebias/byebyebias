@@ -13,6 +13,7 @@ We then
 - Assign a grade from A to F
 
 ## 🧱 Setup Local Environment
+#### Setup
 1. Clone this repository using `git clone https://github.com/byebyebias/byebyebias.git`
 2. Run `pip install -r requirements.txt` to install necessary 'backend' packages
 3. Enter the frontend folder
@@ -26,7 +27,7 @@ We then
 ##  🏃 Running Our Project
 1. At the root of the project, `python manage.py runserver`
 2. Enter fronotend folder and run `npm run dev`
-3. Website is now up and running at `http://localhost:5173/`
+3. Website will now be up and running at `http://localhost:5173/`
 
 ## 🖥 Tech Stack  
 - **Backend:** Django, Python

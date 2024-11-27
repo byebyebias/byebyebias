@@ -30,6 +30,7 @@ const BarChart = ({data, width = '100%', height = '400px'}: BarChartProps) => {
                             fontFamily: 'Montserrat',
                             fontWeight: '400',
                             fill: '#333',
+                            
                         },
                     },
                     axis: {
@@ -37,7 +38,8 @@ const BarChart = ({data, width = '100%', height = '400px'}: BarChartProps) => {
                             text: {
                                 fontSize: 12,        
                                 fontFamily: 'Montserrat',
-                                fill: '#333',        
+                                fill: '#333',   
+                                maxWidth: '20px',
                             },
                         },
                         legend: {

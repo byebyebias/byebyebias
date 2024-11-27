@@ -1,10 +1,4 @@
 import { Container, Card, Grid2, CardContent, Typography, Modal, Box, IconButton } from "@mui/material";
-import BarChart from "../BarChart/BarChart";
-import { useState } from "react";
-import CloseIcon from '@mui/icons-material/Close';
-import OpenInFullIcon from '@mui/icons-material/OpenInFull';
-import InfoButton from "../InfoButton/InfoButton";
-import GraphPopUp from "../GraphPopUp/GraphPopUp";
 import Graph from "../Graph/Graph";
 
 console.log("hi" + {Graph}); 
@@ -17,9 +11,7 @@ interface GraphGridProps {
       score: number; 
     }[]; 
   }[];
-}
-
-
+};
 
 const GraphGrid: React.FC<GraphGridProps> = ({ graphsInfo }) => {
     const descriptors: { [key: string]: string } = {
@@ -38,12 +30,11 @@ const GraphGrid: React.FC<GraphGridProps> = ({ graphsInfo }) => {
         <Grid2 container rowSpacing={8} columnSpacing={6} pt={4}>
             {graphsInfo.map( (graphInfo: { values: any; title: any; }) => 
                 <Graph key={graphInfo.title} values={graphInfo.values} title={graphInfo.title} />
-
             )}
 
         </Grid2>
     </Container>
-    )    
-}
+    );    
+};
 
 export default GraphGrid;

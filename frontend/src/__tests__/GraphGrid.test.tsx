@@ -9,8 +9,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 const theme = createTheme();
 
-
-jest.mock('../views/components/BarChart/BarChart',() => () => <div>BarChart Component</div>);
+// jest.mock('../views/components/BarChart/BarChart',() => () => <div>BarChart Component</div>);
 
 jest.mock('../views/components/Dashboard/Graph/Graph', () => () => <div>Graph Component</div>);
 

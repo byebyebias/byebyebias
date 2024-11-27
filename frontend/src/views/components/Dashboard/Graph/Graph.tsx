@@ -3,8 +3,7 @@ import BarChart from "../BarChart/BarChart";
 import { useState } from "react";
 import CloseIcon from '@mui/icons-material/Close';
 import OpenInFullIcon from '@mui/icons-material/OpenInFull';
-import InfoButton from "../InfoButton/InfoButton";
-import GraphPopUp from "../GraphPopUp/GraphPopUp";
+
 
 interface GraphProps {
     title: string; 
@@ -13,7 +12,7 @@ interface GraphProps {
         score: number; 
       }[]; 
     
-  }
+  };
 
 const Graph: React.FC<GraphProps> = ({ title, values }) => {
 
@@ -74,8 +73,8 @@ const Graph: React.FC<GraphProps> = ({ title, values }) => {
         </>
 
         
-    )
-}
+    );
+};
 
 export default Graph;
 

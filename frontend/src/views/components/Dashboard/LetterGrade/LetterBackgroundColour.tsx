@@ -1,5 +1,3 @@
-import { Card, CardContent, CardHeader, Typography } from "@mui/material";
-
 // Function to calculate luminance - helps with accessibility and looks better visually, formula from https://www.w3.org/TR/WCAG20/#relativeluminancedef
 const getLuminance = (r: number, g: number, b: number) => {
   const a = [r, g, b].map((v) => {
@@ -12,15 +10,15 @@ const getLuminance = (r: number, g: number, b: number) => {
 // Function to determine text color based on luminance
 const getTextColor = (r: number, g: number, b: number) => {
   const luminance = getLuminance(r, g, b);
-  return luminance > 0.5 ? "#000" : "#FFF"; // Black for light backgrounds, white for dark
+  return luminance > 0.5 ? "#000000" : "#FFFFFF"; // Black for light backgrounds, white for dark
 };
 
-type BiasScoreProps = {
+type LetterBackgroundColourProps = {
   score: string;
   percentage: number;
 };
 
-function BiasScore({ score, percentage }: BiasScoreProps) {
+function LetterBackgroundColour({ score, percentage }: LetterBackgroundColourProps) {
   // Function to calculate background color based on percentage with aesthetic color ranges
   /*
     Algorithm:
@@ -83,36 +81,12 @@ function BiasScore({ score, percentage }: BiasScoreProps) {
   };
 
   const { red, green, blue } = getBackgroundColor(percentage);
-  const backgroundColor = `rgb(${red}, ${green}, ${blue})`;
-  const textColor = getTextColor(red, green, blue);
+  const backgroundColour = `rgb(${red}, ${green}, ${blue})`;
+  const textColour = getTextColor(red, green, blue);
 
-  return (
-    <Card
-      sx={{
-        flex: "1",
-        backgroundColor: backgroundColor,
-        color: textColor,
-        padding: "1rem",
-        borderRadius: "8px",
-        boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
-      }}
-    >
-      <CardHeader
-        title="Your Fairness Score"
-        sx={{
-          textAlign: "center",
-          color: textColor,
-          fontSize: "1.5rem",
-          fontWeight: "bold",
-        }}
-      />
-      <CardContent sx={{ textAlign: "center" }}>
-        <Typography variant="h1" sx={{ fontWeight: "bold", fontSize: "3rem" }}>
-          {score}
-        </Typography>
-      </CardContent>
-    </Card>
-  );
+  return {
+    backgroundColour, textColour
+  };
 }
 
-export default BiasScore;
+export default LetterBackgroundColour;

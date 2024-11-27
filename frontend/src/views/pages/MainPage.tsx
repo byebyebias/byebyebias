@@ -1,48 +1,111 @@
-// src/App.tsx
-
 import React, { useEffect, useState } from "react";
 import "./MainPage.css";
 import Footer from "../components/Footer/Footer";
 import HeroSection from "../components/HeroSection/HeroSection";
 import ProcessStep from "../components/ProcessStep/ProcessStep";
 import Table from "../components/Table/Table"
-import logo from '@/assets/Square_Cash_app_logo.png'; 
+import Title from "../components/Title/Title";
+import GraphImage from "../assets/GraphImage.png"
+import DownArrow from "../assets/DownArrow.png"
+import Header from "../components/Header/Header";
+
 const apiUrl = import.meta.env.VITE_API_URL;
 
 const MainPage: React.FC = () => {
+  // const [filename, setFilename] = useState<string>("")
+  // const navigate = useNavigate();
+
+  // const fetchDashboardData = async () => {
+  //   // Simulating a backend call
+  //   const response = await fetch(`http://127.0.0.1:8000/api/metrics`, {
+  //     method: 'GET',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //     body: JSON.stringify({filename: 'value'}),
+  //   });
+
+  //   const dashboardData = await response.json()
+  //   navigate('/dashboard', { dashboardData: { dashboardData } });
+  // };
+
+  // useEffect(
+  //   fetchDashboardData,
+  //   [filename]
+  // )
+
+  // console.log(filename)
 
   return (
-    <div className="MainPage">
-      <div className="App">
-      <div className="sticky-logo">
-        <img src={logo} alt="Logo" />
+
+    <div className="main-page">
+      <Header />
+
+      <Title label="BYE BYE BIAS"/>
+
+      <div className="arrow-container">
+       <a href="#about">
+          <img src={DownArrow} id="down-arrow" />
+        </a>
       </div>
-      {/* Hero Section */}
-      <HeroSection
-        heading="Target fraud detection bias at the source."
-        body="Some sort of subtitle text here. Check out our handy guide ↓ if you need any help!"
-      />
 
-      {/* Process Step / Instruction Section */}
-      <ProcessStep
-        title="Upload your dataset."
-        stepnum={1}
-        body="The format of the dataset must be a parquet file with the following mandatory columns highlighted in the table below."
-      />
-      <Table />
-      <ProcessStep
-        title="View our feedback."
-        stepnum={2}
-        body="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean molestie mi id sapien posuer."
-      />
-      <ProcessStep
-        title="Adjust and try again!"
-        stepnum={3}
-        body="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean molestie mi id sapien posuer."
-      />
-
+      <section id="about">
+        <div className="flex-container">
+          <HeroSection
+            heading={
+              <>
+              Target <span className="highlight">fraud detection</span> bias at the source.
+              </>
+            }
+            body={
+              <>
+              Visualize and alleviate bias in transaction datasets fed 
+              into fraud detection AI models. Check out our <a href="#handy-guide"><span className="highlight"> handy guide ↓</span>
+              </a> if you need any help!
+              </>
+            }
+          />
+          <img src={GraphImage} alt="Graph Image" id="graph-image" />
+        </div>
+      </section>
+      <section id="handy-guide">
+        <div className="process-container">
+          <ProcessStep
+            title={
+              <>
+              <span className="highlight">Upload</span> your dataset.
+              </>
+            }
+            stepnum={1}
+            body="Begin by uploading your dataset, either locally or via an Amazon S3 bucket link.
+            Ensure the dataset is in the Parquet file format and includes the mandatory columns specified in the table below.
+            For tailored analysis, select the protected attributes you wish to analyze."
+          />
+          <Table />
+          <ProcessStep
+            title={
+              <>
+              <span className="highlight">View</span> our feedback.
+              </>
+            }
+            stepnum={2}
+            body="Review the overall fairness score and bias metric results using the provided graphs.
+            Enlarge the graphs for a more detailed view. Access detailed descriptions to understand the rationale
+            behind the scores and gain insights into the metrics."
+          />
+          <ProcessStep
+            title={
+              <>
+              <span className="highlight">Adjust</span> and try again!
+              </>
+            }
+            stepnum={3}
+            body="Modify the dataset based on results. Submit the updated file for analysis to determine
+            if fairness has improved."
+          />
+        </div>
+      </section>
       <Footer label="© 2024 Team TripleB" />
-    </div>
     </div>
   );
 };

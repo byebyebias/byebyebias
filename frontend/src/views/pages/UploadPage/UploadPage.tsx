@@ -11,9 +11,10 @@ import { UploadFileController } from "../../../controllers/UploadFileController"
 import { UploadFileInteractor } from "../../../usecases/UploadFileInteractor";
 import { UploadFilePresenter } from "../../../presenters/UploadFilePresenter";
 
-import UploadFileView from "../../UploadFileView";
+import UploadFileView from "../../components/Upload/UploadFileView";
 import styles from "./UploadPage.module.css"
 import Footer from "../../components/Footer/Footer";
+
 
 const protectedAttributes = ["sender_gender", "sender_race", "sender_age", "receiver_gender", "receiver_race"]
 
@@ -43,9 +44,12 @@ function UploadPage() {
         } 
 
     };
+    
     const handleViewResults = () => {if (file != null) return controller.handleFileUpload(file)};
 
-    const onLinkChange = (e: React.ChangeEvent<HTMLInputElement>) => setLink(e.target.value)
+    const onLinkChange = (e: React.ChangeEvent<HTMLInputElement>) => setLink(e.target.value) 
+
+
 
     return (
         <>

@@ -1,12 +1,12 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import Title from '../components/Title/Title';
+import Title from '../views/components/Title/Title';
 
 test('renders the title with the correct text', () => {
     
-    render(<Title text="Bye Bye Bias"/>);
+    render(<Title label="BYE BYE BIAS"/>);
 
-    const buttonElement = screen.getByText(/Bye Bye Bias/i);
-    expect(buttonElement).toHaveTextContent("Bye Bye Bias");  
+    const buttonElement = screen.getByText(/BYE BYE BIAS/i);
+    expect(buttonElement).toHaveTextContent("BYE BYE BIAS");  
 });

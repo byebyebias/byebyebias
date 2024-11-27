@@ -10,9 +10,9 @@ export class UploadFileController {
     this.presenter = presenter;
   }
 
-  async handleFileUpload(file: File) {
+  async handleFileUpload(file: File, protected_attributes: Array<string>) {
     try {
-      const result = await this.interactor.analyzeFile(file);
+      const result = await this.interactor.analyzeFile(file, protected_attributes);
       this.presenter.presentUploadResult(result);
     } catch (error) {
       console.error("Error in UploadController:", error);

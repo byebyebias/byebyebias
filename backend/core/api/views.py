@@ -6,12 +6,18 @@ from backend.core.use_cases.convert_file_interactor import ConvertFileInteractor
 from django.views.decorators.csrf import csrf_exempt
 import os
 
+import json
+
 @csrf_exempt
 @api_view(['POST'])
 def upload_file(request):
     if 'file' not in request.FILES:
         return Response({'status': 'error', 'message': 'No file provided or invalid request'})
-    
+
+    protected_attributes = json.loads(request.POST.get("protected_attributes"))
+
+    print("THIS IS PROTECTED ATTRIBUTES SELECTED", protected_attributes)
+
     uploaded_file = request.FILES['file']
     file_repo = FileRepository()
     calculate_metrics = CalculateMetricsInteractor()

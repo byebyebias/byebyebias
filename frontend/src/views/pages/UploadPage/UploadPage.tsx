@@ -47,6 +47,7 @@ function UploadPage() {
 
     const handleAttributeClick = (event: React.ChangeEvent<HTMLInputElement>) => {
         const buttonValue = event.target.textContent!
+        
         if((selectedButtons.includes(buttonValue))) {
             setSelectedButtons(selectedButtons.filter((attribute) => attribute != buttonValue ))
         } else {
@@ -54,7 +55,7 @@ function UploadPage() {
         }
     }
 
-    const handleViewResults = () => {if (file != null) return controller.handleFileUpload(file)};
+    const handleViewResults = () => {if (file != null) return controller.handleFileUpload(file, selectedButtons)};
 
     const onLinkChange = (e: React.ChangeEvent<HTMLInputElement>) => setLink(e.target.value)
 

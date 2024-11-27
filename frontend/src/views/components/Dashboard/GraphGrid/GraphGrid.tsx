@@ -5,10 +5,12 @@ import BarChart from "../BarChart/BarChart";
 import InfoButton from "../InfoButton/InfoButton"; // Import the InfoButton component
 
 
-function Graph({data, title}) {
+function Graph({data, title, desc}) {
     return (
-        <Card component="div" aria-label={`This graph displays the ${title} metric for each of your selected attributes`} tabIndex={0} sx={{ border: '0.5px solid #000000',width: "30%", borderRadius: '35px', background: "#F8FEFA", alignItems: 'center'}} >
+        <Card component="div" aria-label={`This graph displays the ${title} metric for each of your selected attributes`} tabIndex={0} sx={{ position: 'relative', border: '0.5px solid #000000',width: "370px", borderRadius: '35px', background: "#F8FEFA", alignItems: 'center'}} >
             <Typography style= {{textAlign: 'left', paddingLeft: '30px', paddingTop: '20px', fontFamily: 'Montserrat', fontSize:'20px', fontWeight: 400, fontStyle: 'italic'}}>{title}</Typography>
+            <div style={{position: 'absolute', bottom: "-5px", right: "5px"}}><InfoButton description={desc} /></div>
+
             <CardContent sx={{justifyContent: 'center', alignItems: 'center', width: '100%'}}>
                 <BarChart data={data} />
             </CardContent>
@@ -36,13 +38,9 @@ const GraphGrid: React.FC<GraphGridProps> = ({ graphsInfo }) => {
     
               return (
                 <Grid2 item key={index}>
-                  <Card style={{ position: "relative", width: "400px" }}>
-                    <CardHeader title={graphTitle} />
-                    <CardContent>
-                      <InfoButton description={description} />
-                      <BarChart data={graphInfo.values} />
-                    </CardContent>
-                  </Card>
+
+                  <Graph data={graphInfo.values} title={graphTitle} desc={description}/>
+
                 </Grid2>
               );
             })}

@@ -27,13 +27,17 @@ body, html {
 
 button.attributeButton {
     color: white;
-    background: #9921D2E5;
+    background: #ac26ea;
     border-radius: 10px;
     padding: 10px;
     text-transform: capitalize;
     width:150px;
     align-self: "center";
     font-weight: 600;
+}
+
+button.selectedAttribute {
+    background: #701798;
 }
 
 .attributeSelection {

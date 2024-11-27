@@ -21,6 +21,7 @@ function UploadPage() {
     const [file, setFile] = useState<File | undefined>(undefined)
     const [page, setPage] = useState<number>(1)
     const [link, setLink] = useState<string>("")
+    const [selectedButtons, setSelectedButtons] = useState<Array<string>>([])
     const linkRef = useRef<HTMLInputElement | null>(null)
 
     const presenter = new UploadFilePresenter();
@@ -43,6 +44,16 @@ function UploadPage() {
         } 
 
     };
+
+    const handleAttributeClick = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const buttonValue = event.target.textContent!
+        if((selectedButtons.includes(buttonValue))) {
+            setSelectedButtons(selectedButtons.filter((attribute) => attribute != buttonValue ))
+        } else {
+            setSelectedButtons([...selectedButtons, buttonValue])
+        }
+    }
+
     const handleViewResults = () => {if (file != null) return controller.handleFileUpload(file)};
 
     const onLinkChange = (e: React.ChangeEvent<HTMLInputElement>) => setLink(e.target.value)
@@ -120,9 +131,10 @@ function UploadPage() {
                             >
                                 {protectedAttributes.map((attribute, index) => 
                                     <Grid size={1} sx={{display: "flex", justifyContent: "center"}}>
-                                        <Button 
-                                            key={index}
-                                            className={styles.attributeButton}
+                                        <Button
+                                            onClick={handleAttributeClick}
+                                            key={attribute}
+                                            className={`${styles.attributeButton} ${selectedButtons.includes(attribute) ? styles.selectedAttribute : ''}`}
                                         >
                                             {attribute}
                                         </Button>

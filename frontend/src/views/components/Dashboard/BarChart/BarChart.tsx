@@ -2,6 +2,7 @@ import { Typography } from "@mui/material";
 import { ResponsiveBar } from "@nivo/bar";
 
 
+// hard-coded colour chart
 const colorMap = {
     "sender_gender": "#271DE0",
     "sender_race": "#6820EA",

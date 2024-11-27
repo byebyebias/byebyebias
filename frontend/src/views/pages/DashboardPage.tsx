@@ -17,7 +17,7 @@ function DashboardPage() {
       <Box bgcolor="#E6EEF5" p={10}>
         <Stack direction="row" spacing={5}>
           <BiasScore score={dashboardData.overview.score} />
-          <Overview data={dashboardData.overview} />
+          <Overview data={dashboardData.overview} graphsInfo={dashboardData.metricResults} />
         </Stack>
         <GraphGrid graphsInfo={dashboardData.metricResults} />
       </Box>

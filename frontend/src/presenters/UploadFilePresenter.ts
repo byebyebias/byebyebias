@@ -14,7 +14,7 @@ export class UploadFilePresenter {
         },
       },
     });
-    console.log(data);
+    
   }
 
   presentError(message: string) {

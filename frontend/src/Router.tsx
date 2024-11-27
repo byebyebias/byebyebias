@@ -4,7 +4,7 @@ import MainPage from './views/pages/MainPage.js'
 
 // Trying react router stuff here
 import DashBoardPage from "./views/pages/DashboardPage.js"
-
+import UploadPage from './views/pages/UploadPage/UploadPage.js'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 
@@ -17,7 +17,10 @@ const router = createBrowserRouter([
     path: "/dashboard",
     element: <DashBoardPage/>,
   },
-  
+  {
+    path: "/upload",
+    element: <UploadPage />
+  }
 ])
 
 // React router stuff ends here

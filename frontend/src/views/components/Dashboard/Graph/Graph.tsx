@@ -58,12 +58,12 @@ export const Graph: React.FC<GraphProps> = ({ title, values }) => {
                 padding: '10px',
                 borderRadius: '35px',
             }}>
-                <Card component="div" tabIndex={0} sx={{width: "90%", borderRadius: '35px', backgroundColor: '#F8FEFA',}} >
+                <Card component="div" tabIndex={0} sx={{ position: 'relative', width: "90%", borderRadius: '35px', backgroundColor: '#F8FEFA',}} >
                     <Typography style= {{textAlign: 'left', paddingLeft: '50px', paddingTop: '30px', fontFamily: 'Montserrat', fontSize:'30px', fontWeight: 400, fontStyle: 'italic'}}>{title}</Typography>
 
-                    <CardContent sx={{display:'flex'}}>
+                    <CardContent sx={{display:'flex', position: 'relative'}}>
                         <BarChart data={values} height="500px" width="50%"/>
-                        <IconButton onClick={handleClose} aria-label="close popup" sx={{position: 'absolute', zIndex: 1, top:30, right: 100}}>
+                        <IconButton onClick={handleClose} aria-label="close popup" sx={{position: 'absolute', zIndex: 1, top:-50, right: 20}}>
                             <CloseIcon/>
                         </IconButton>
                     </CardContent>

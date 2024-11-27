@@ -5,10 +5,13 @@ import {
     Link,
  } from "@mui/material"
 
+ interface OverviewProps {
+    data: {
+      top_category: string;
+    };
+  }
 
-function Overview( { data } ) {
-    //TODO add improvement areas dynamically
-
+function Overview( { data }: OverviewProps) {
     return (
         <Card sx= {{width: '65%', background: '#F8FEFA', border: '0.5px solid #000000', boxShadow:'0px 4px 4px rgba(0, 0, 0, 0.25)', borderRadius: '0px 35px 35px 0px'}}>
 

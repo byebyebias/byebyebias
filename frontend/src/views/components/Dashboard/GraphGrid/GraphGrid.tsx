@@ -1,11 +1,29 @@
 import { Container, Card, CardContent, CardHeader, Typography, Grid2 } from "@mui/material";
-import { ResponsiveBar } from "@nivo/bar";
+import { BarDatum, ResponsiveBar } from "@nivo/bar";
 import { colorSchemes } from '@nivo/colors';
 import BarChart from "../BarChart/BarChart";
-import InfoButton from "../InfoButton/InfoButton"; // Import the InfoButton component
+import InfoButton from "../InfoButton/InfoButton";
 
+interface GraphGridProps {
+  graphsInfo: { 
+    title: string; 
+    values: { 
+      protected_attribute: string; 
+      score: number; 
+    }[]; 
+  }[];
+}
 
-function Graph({data, title, desc}) {
+interface GraphProps {
+  title: string; 
+  data: { 
+      protected_attribute: string; 
+      score: number; 
+    }[]; 
+  desc: string;
+}
+
+function Graph({data, title, desc}: GraphProps) {
     return (
         <Card component="div" aria-label={`This graph displays the ${title} metric for each of your selected attributes`} tabIndex={0} sx={{ position: 'relative', border: '0.5px solid #000000',width: "390px", borderRadius: '35px', background: "#F8FEFA", alignItems: 'center'}} >
             <Typography variant="h3" style= {{textAlign: 'left', paddingLeft: '30px', paddingTop: '20px', fontFamily: 'Montserrat', fontSize:'20px', fontWeight: 400, fontStyle: 'italic'}}>{title}</Typography>
@@ -18,9 +36,6 @@ function Graph({data, title, desc}) {
     )
 }
 
-interface GraphGridProps {
-    graphsInfo: { title: string; values: number[] }[];
-  }
   
 const GraphGrid: React.FC<GraphGridProps> = ({ graphsInfo }) => {
     const descriptors: { [key: string]: string } = {

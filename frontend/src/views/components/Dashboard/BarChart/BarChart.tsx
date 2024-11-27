@@ -1,6 +1,9 @@
 import { Typography } from "@mui/material";
-import { ResponsiveBar } from "@nivo/bar";
+import { BarDatum, ResponsiveBar } from "@nivo/bar";
 
+interface BarChartProps {
+    data: readonly BarDatum[];
+}
 
 // hard-coded colour chart
 const colorMap = {
@@ -10,7 +13,7 @@ const colorMap = {
     "receiver_race": "#EE55E7",
 };
 
-const BarChart = ({ data }) => (
+const BarChart = ({ data }: BarChartProps) => (
         <div style={{height: "300px", width: "100%"}}>
             <ResponsiveBar
                 isFocusable={true}
@@ -45,9 +48,7 @@ const BarChart = ({ data }) => (
                     },
                 }}
                 data={data}
-                keys={[
-                    'score'
-                ]}
+                keys={['score']}
                 indexBy="protected_attribute"
                 margin={{ top: 50, right:50, bottom: 50, left: 80 }}
                 padding={0.3}
@@ -56,12 +57,7 @@ const BarChart = ({ data }) => (
                 colors={({ id, data }) => colorMap[data.protected_attribute] || "#cccccc"}
                 borderColor={{
                     from: 'color',
-                    modifiers: [
-                        [
-                            'darker',
-                            1.6
-                        ]
-                    ]
+                    modifiers: [['darker', 1.6]],
                 }}
                 axisTop={null}
                 axisRight={null}
@@ -72,7 +68,6 @@ const BarChart = ({ data }) => (
                     legend: 'protected_attribute',
                     legendPosition: 'middle',
                     legendOffset: 32,
-                    truncateTickAt: 0
                 }}
                 axisLeft={{
                     tickSize: 5,
@@ -90,6 +85,7 @@ const BarChart = ({ data }) => (
                 role="application"
             />
         </div>
-)
+    );
 
-export default BarChart
+
+export default BarChart;

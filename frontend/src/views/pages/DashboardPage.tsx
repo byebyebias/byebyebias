@@ -8,6 +8,7 @@ import Footer from "../components/Footer/Footer";
 function DashboardPage() {
   const location = useLocation();
   const { dashboardData } = location.state;
+  // console.log("Metric Results:", dashboardData.metricResults);
 
   return (
     <main role="main">

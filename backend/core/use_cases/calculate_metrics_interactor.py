@@ -1,9 +1,6 @@
 from backend.core.entities.bias_metrics import BiasMetrics
 
 class CalculateMetricsInteractor:
-    def __init__(self):
-        pass
-
     def calculate(self, true_df, pred_df, protected_attributes):
         bias_metrics = BiasMetrics(true_df, pred_df, protected_attributes)
 

@@ -14,11 +14,16 @@ const ExportJSONButton: React.FC<ExportJSONButtonProps> = ({ data, graphsInfo })
           };
 
         const blob = new Blob([JSON.stringify(exportData, null, 2)], { type: "application/json" });
+        const fileURL = URL.createObjectURL(blob);
 
         const link = document.createElement("a");
-        link.href = URL.createObjectURL(blob);
+        link.href = fileURL
         link.download = "dashboard_data.json";
+
+        document.body.appendChild(link);
         link.click()
+
+        URL.revokeObjectURL(fileURL);
     };
 
     return (

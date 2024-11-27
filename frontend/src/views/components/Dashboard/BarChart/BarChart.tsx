@@ -80,6 +80,7 @@ const BarChart = ({data, width = '100%', height = '400px'}: BarChartProps) => {
                     legend: 'Score',
                     legendPosition: 'middle',
                     legendOffset: -60,
+                    ariaHidden: true
                 }}
                 labelSkipWidth={12}
                 labelSkipHeight={12}

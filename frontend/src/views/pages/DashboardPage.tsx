@@ -35,7 +35,7 @@ function DashboardPage() {
           <Stack direction="row" spacing={2}>
             <Typography sx={{fontFamily: 'Montserrat', fontSize:'15px', fontWeight: 300, color:"#9921D2"}}>{dashboardData.fileName}</Typography>
             <LetterGrade aria-label={`Letter grade is ${dashboardData.overview?.score || "A+"}`} score={dashboardData.overview?.score || "A+"} percentage={dashboardData.overview.percentage} />
-            <Overview data={dashboardData.overview || { score: 0, top_category: 'Sender_Gender' }} />
+            <Overview data={dashboardData.overview} />
           </Stack>
           <GraphGrid graphsInfo={dashboardData.metricResults} />
         </Box>

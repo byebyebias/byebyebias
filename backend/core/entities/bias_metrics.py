@@ -115,7 +115,7 @@ class BiasMetrics:
 
         return metrics
 
-    # def get_accuracy(self) -> float:
-    #     accuracy = (self.df["is_fraud"] == self.df["predicted_fraud"]).mean()
-    #     percent = round(accuracy * 100, 2)
-    #     return percent
+    def get_accuracy(self) -> float:
+        accuracy = (self.df["is_fraud"] == self.df["predicted_fraud"]).mean()
+        percent = round(accuracy * 100, 2)
+        return percent

@@ -95,14 +95,7 @@ function DashboardPage() {
                   score={dashboardData.overview?.score || "A+"}
                   percentage={dashboardData.overview.percentage}
                 />
-                <Overview
-                  data={
-                    dashboardData.overview || {
-                      score: 0,
-                      top_category: "Sender_Gender",
-                    }
-                  }
-                />
+                <Overview data={dashboardData.overview} />
               </Stack>
               <GraphGrid graphsInfo={dashboardData.metricResults} />
             </Box>

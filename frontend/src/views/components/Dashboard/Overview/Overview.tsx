@@ -2,12 +2,20 @@ import {
     CardContent,
     Typography,
     Card,
-    Link,
+    List,
+    ListItem
  } from "@mui/material"
 
- interface OverviewProps {
+type PrivilegedGroup = {
+    [key: string]: string;
+}
+
+interface OverviewProps {
     data: {
-      top_category: string;
+        score: string;
+        percentage: number;
+        privileged_groups: PrivilegedGroup;
+        accuracy: number;
     };
   }
 
@@ -18,12 +26,20 @@ function Overview( { data }: OverviewProps) {
             <CardContent sx={{flexDirection: 'column', display: 'flex'}}>
                 <Typography variant="h2" sx= {{paddingLeft: '25px', paddingTop: '10px', paddingBottom: '10px', textAlign: 'left', fontFamily: 'Montserrat', fontStyle: 'normal', fontWeight: 700, fontSize: '40px', color: '#28282C'}}>Overview</Typography>
 
-                <Typography variant="body2" sx= {{paddingLeft: '25px', textAlign: 'left', fontFamily: 'Montserrat', fontStyle: 'normal', fontWeight: 200, fontSize: '27px', color: '#28282C'}}>Your top category is {data.top_category}. Areas for improvement include ABC and BCD</Typography>
+                <Typography variant="body2" sx= {{paddingLeft: '25px', textAlign: 'left', fontFamily: 'Montserrat', fontStyle: 'normal', fontWeight: 200, fontSize: '22px', color: '#28282C'}}>
+                    <b>Accuracy:</b> {data.accuracy}%
+                    <br />
+                    <b>Privileged Groups:</b>
+                    {Object.entries(data.privileged_groups).map(([key, value]) => (
+                        <div key={key}>
+                            - {key}: {value}
+                        </div>
+                    ))}
+                </Typography>
 
             </CardContent>
         </Card>
     )
-
 }
 
 export default Overview

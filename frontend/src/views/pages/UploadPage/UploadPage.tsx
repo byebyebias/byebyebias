@@ -81,7 +81,7 @@ function UploadPage() {
 
     return (
         <>
-            <Navbar isDashboard={false}/>
+            <Navbar />
             <Container
                 maxWidth={false}
                 disableGutters

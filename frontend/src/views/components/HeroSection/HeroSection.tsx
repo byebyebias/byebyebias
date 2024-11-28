@@ -17,7 +17,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ heading, body }) => {
             <h1 className="hero-heading">{heading}</h1>
             <p className="hero-body">{body}</p>
             <Link to="upload" style={{ textDecoration: 'none' }}>  
-                <Button onClick={() => null} label="Get Started >"/>
+                <Button className="button" onClick={() => null} label="Get Started >"/>
             </Link>
         </div>
     );

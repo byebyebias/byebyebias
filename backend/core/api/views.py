@@ -32,6 +32,7 @@ def process_link(request):
             true_df, pred_df, df, privileged_groups = convert_file.convert(file_path, protected_attributes)
             results = calculate_metrics.calculate(df, true_df, pred_df, protected_attributes)
 
+            print("Results: ", results)
             return Response({
                 "file_name": file_name,
                 "file_path": file_path,

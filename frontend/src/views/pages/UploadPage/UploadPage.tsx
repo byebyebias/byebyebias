@@ -16,7 +16,7 @@ import styles from "./UploadPage.module.css"
 import Footer from "../../components/Footer/Footer";
 
 
-const protectedAttributes = ["sender_gender", "sender_race", "sender_age", "receiver_gender", "receiver_race"]
+const protectedAttributes = ["sender_gender", "sender_race", "sender_age", "receiver_gender", "receiver_race", "receiver_age"]
 
 function UploadPage() {
     const [file, setFile] = useState<File | undefined>(undefined)

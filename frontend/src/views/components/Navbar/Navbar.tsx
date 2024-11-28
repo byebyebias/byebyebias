@@ -3,14 +3,11 @@ import Logo from "../../assets/CashAppLogo.png";
 import './Navbar.css'; 
 import { Link } from 'react-router-dom';
 
-type ProcessStepProps = {
-    title: React.ReactNode;
-    stepnum: number;
-    body: string;
-
+type NavbarProps = {
+    routes: Object
 }
 
-const Navbar: React.FC = () => {
+const Navbar: React.FC<NavbarProps> = () => {
   return (
     <header className="navbar">
       <nav>

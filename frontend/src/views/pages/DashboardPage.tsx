@@ -26,8 +26,8 @@ function DashboardPage() {
       <ExportJSONButton data={dashboardData.overview || { score: 0, top_category: 'Sender_Gender' }} graphsInfo={dashboardData.metricResults}/>
     </Box>
 
-    <Typography variant="body1" aria-label={`File path displayed as ${dashboardData.filePath.split('/').pop()}`} sx={{paddingBottom: "15px", paddingLeft: "75px", textAlign:'left', fontFamily: 'Montserrat', color: "#9921D2", fontWeight: 500, fontSize: '15pt'}} >
-        {dashboardData.filePath.split('/').pop()}
+    <Typography variant="body1" aria-label={`File path displayed as ${dashboardData.fileName}`} sx={{paddingBottom: "15px", paddingLeft: "75px", textAlign:'left', fontFamily: 'Montserrat', color: "#9921D2", fontWeight: 500, fontSize: '15pt'}} >
+        {dashboardData.fileName}
       </Typography>
 
     <Stack sx={{backgroundColor: '#E6EEF5'}} p = {3}>

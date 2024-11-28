@@ -7,6 +7,10 @@ import {
 import Grid from '@mui/material/Grid2';
 import { useRef, useState } from "react";
 
+import { S3LinkUploadController } from "../../../controllers/S3LinkUploadController"
+import { S3LinkUploadInteractor } from "../../../usecases/S3LinkUploadInteractor";
+import { S3LinkUploadPresenter } from "../../../presenters/S3LinkUploadPresenter";
+
 import { UploadFileController } from "../../../controllers/UploadFileController"
 import { UploadFileInteractor } from "../../../usecases/UploadFileInteractor";
 import { UploadFilePresenter } from "../../../presenters/UploadFilePresenter";
@@ -26,9 +30,13 @@ function UploadPage() {
     const [selectedButtons, setSelectedButtons] = useState<Array<string>>([])
     const linkRef = useRef<HTMLInputElement | null>(null)
 
-    const presenter = new UploadFilePresenter();
-    const interactor = new UploadFileInteractor();
-    const controller = new UploadFileController(interactor, presenter);
+    const file_presenter = new UploadFilePresenter();
+    const file_interactor = new UploadFileInteractor();
+    const file_controller = new UploadFileController(file_interactor, file_presenter);
+
+    const s3_presenter = new S3LinkUploadPresenter();
+    const s3_interactor = new S3LinkUploadInteractor();
+    const s3_controller = new S3LinkUploadController(s3_interactor, s3_presenter);
 
     const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const newFile = event.target.files?.[0];
@@ -41,12 +49,13 @@ function UploadPage() {
             linkRef.current?.reportValidity()
         } else if (file) {
             setPage(2)
+        } else if (link) {
+            setPage(2)
         } else if (linkRef.current?.reportValidity()) {
             setPage(2)
         } 
 
     };
-
     
     const handleAttributeClick = (event: React.ChangeEvent<HTMLInputElement>) => {
         const buttonValue = event.target.textContent!
@@ -58,7 +67,13 @@ function UploadPage() {
         }
     }
 
-    const handleViewResults = () => {if (file != null) return controller.handleFileUpload(file, selectedButtons)};
+    const handleViewResults = () => {
+        if (file != null) {
+            return file_controller.handleFileUpload(file, selectedButtons)
+        } else if (link != null) {
+            return s3_controller.handleS3Link(link, selectedButtons);
+        }
+    };
 
     const onLinkChange = (e: React.ChangeEvent<HTMLInputElement>) => setLink(e.target.value) 
 
@@ -128,7 +143,7 @@ function UploadPage() {
 
                             {/* TODO FOR BUCKET, ADD ACTUAL FILE NAME WHEN CONNECTED WITH S3 INTEGRATION*/}
                             <Typography variant="h2"  fontSize="1.25em" fontFamily="Montserrat">
-                                Selected attributes in <span className={styles.filename}>{file ? file.name : "INSERTDUMMYBUCKETNAME.parquet"}</span> will be scanned for bias
+                                Selected attributes in <span className={styles.filename}>{file ? file.name : new URL(link).pathname.split('/').pop() || "INSERTDUMMYBUCKETNAME.parquet"}</span> will be scanned for bias
                             </Typography>
                             <Grid 
                                 container 

@@ -14,6 +14,7 @@ import { UploadFilePresenter } from "../../../presenters/UploadFilePresenter";
 import UploadFileView from "../../components/Upload/UploadFileView";
 import styles from "./UploadPage.module.css"
 import Footer from "../../components/Footer/Footer";
+import Navbar from "../../components/Navbar/Navbar";
 
 
 const protectedAttributes = ["sender_gender", "sender_race", "sender_age", "receiver_gender", "receiver_race"]
@@ -53,6 +54,7 @@ function UploadPage() {
 
     return (
         <>
+            <Navbar/>
             <Container
                 maxWidth={false}
                 disableGutters

@@ -10,9 +10,9 @@ type NavbarProps = {
 const Navbar: React.FC<NavbarProps> = ({isDashboard}) => {
   return (
     <header className="navbar">
-      <div className="logo">
+      <Link className="logo" to="/">
         <img src={Logo} alt="Logo" />
-      </div>
+      </Link>
 
       {isDashboard ? <nav>
                       <ul>

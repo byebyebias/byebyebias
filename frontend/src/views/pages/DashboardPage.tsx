@@ -13,7 +13,7 @@ function DashboardPage() {
 
   return (
     <>
-      <Navbar routes={routes}/>
+      <Navbar isDashboard={true}/>
       <main role="main">
 
         <Box role="region" aria-live="polite" sx={{ position: 'absolute', left: '-9999px' }}>

@@ -32,6 +32,7 @@ class BiasMetrics:
 
         for metric, protected_attribute_to_value in all_bias_metrics.items():
             values = list(protected_attribute_to_value.values())
+            # refactor to a function 
             if metric == 'Disparate Impact':
                 for value in values:
                     if 0.43 <= value <= 1.47:

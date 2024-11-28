@@ -6,6 +6,8 @@ class CalculateMetricsInteractor:
 
         all_metrics = bias_metrics.get_all_bias_metrics()
         getScore = bias_metrics.get_score(all_metrics)
+        accuracy = bias_metrics.get_accuracy()
+
         letter_grade = getScore[0]
         bias_score = getScore[1]
 
@@ -14,7 +16,8 @@ class CalculateMetricsInteractor:
         return {
             "formatted_metrics": formatted_metrics,
             "letter_grade": letter_grade, 
-            "bias_score": bias_score
+            "bias_score": bias_score, 
+            "accuracy": accuracy
         }
     
     def reformat_metrics(self, metrics_data):

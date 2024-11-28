@@ -50,7 +50,9 @@ def process_link(request):
 def upload_file(request):
     if 'file' not in request.FILES:
         return Response({'status': 'error', 'message': 'No file provided or invalid request'})
-    
+
+    protected_attributes = json.loads(request.POST.get("protected_attributes"))
+
     uploaded_file = request.FILES['file']
     file_repo = FileRepository()
     calculate_metrics = CalculateMetricsInteractor()
@@ -58,9 +60,11 @@ def upload_file(request):
 
     try:
         file_name, file_path = file_repo.save_file(uploaded_file)
-        protected_attributes = ['sender_gender', 'sender_race']
-        true_df, pred_df = convert_file.convert(file_path, protected_attributes)
-        results = calculate_metrics.calculate(true_df, pred_df, protected_attributes)
+        true_df, pred_df, df = convert_file.convert(file_path, protected_attributes)
+        results = calculate_metrics.calculate(df, true_df, pred_df, protected_attributes)
+
+        if os.path.exists(file_path):
+            os.remove(file_path)
 
         return Response({
             "file_name": file_name,

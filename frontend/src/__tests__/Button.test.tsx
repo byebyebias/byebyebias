@@ -5,7 +5,7 @@ import Button from '../views/components/Button/Button';
 
 test('renders the button with the correct label', () => {
     const handleClick = jest.fn();
-    render(<Button label="Click Me" onClick={handleClick} />);
+    render(<Button className="Button" label="Click Me" onClick={handleClick} />);
 
     const buttonElement = screen.getByText(/Click Me/i);
     expect(buttonElement).toHaveTextContent("Click Me");  

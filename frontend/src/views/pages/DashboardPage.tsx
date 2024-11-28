@@ -4,6 +4,7 @@ import GraphGrid from "../components/Dashboard/GraphGrid/GraphGrid";
 import Overview from "../components/Dashboard/Overview/Overview";
 import LetterGrade from "../components/Dashboard/LetterGrade/LetterGrade";
 import Footer from "../components/Footer/Footer";
+import ExportJSONButton from "../components/Dashboard/ExportJsonButton/ExportJsonButton";
 
 function DashboardPage() {
   const location = useLocation();
@@ -16,8 +17,12 @@ function DashboardPage() {
       You are on the Dashboard page.
     </Box>
     
-    
-    <Typography variant="h1" sx={{paddingTop: "20px", paddingLeft: "75px", textAlign:'left', fontFamily: 'Montserrat', fontWeight: 700, fontSize: '45pt'}}>Dashboard</Typography>
+    <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "20px" }}>
+      <Typography variant="h1" sx={{paddingTop: "20px", paddingLeft: "53px", textAlign:'left', fontFamily: 'Montserrat', fontWeight: 700, fontSize: '45pt'}}>Dashboard</Typography>
+
+      <ExportJSONButton data={dashboardData.overview || { score: 0, top_category: 'Sender_Gender' }} graphsInfo={dashboardData.metricResults}/>
+    </Box>
+
     <Typography variant="body1" aria-label={`File path displayed as ${dashboardData.filePath.split('/').pop()}`} sx={{paddingBottom: "15px", paddingLeft: "75px", textAlign:'left', fontFamily: 'Montserrat', color: "#9921D2", fontWeight: 500, fontSize: '15pt'}} >
         {dashboardData.filePath.split('/').pop()}
       </Typography>
@@ -43,3 +48,4 @@ function DashboardPage() {
 }
 
 export default DashboardPage;
+

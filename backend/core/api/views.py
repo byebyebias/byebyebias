@@ -15,7 +15,6 @@ import requests
 def process_link(request):
     
     s3_link = request.data.get('link')
-    print(s3_link)
     if not s3_link:
         return Response({"error": "No link provided"})
 
@@ -31,26 +30,20 @@ def process_link(request):
         if response.status_code == 200:
             file_name, file_path = file_repo.retrieve_s3_file(response)
             
-            print("Views ", protected_attributes)
-            print("File path", file_path)
-            true_df, pred_df, df = convert_file.convert(file_path, protected_attributes)
+            true_df, pred_df, df, privileged_groups = convert_file.convert(file_path, protected_attributes)
             results = calculate_metrics.calculate(df, true_df, pred_df, protected_attributes)
 
-            print("Results: ", results)
             return Response({
                 "file_name": file_name,
                 "file_path": file_path,
                 "overview": {
                     "score": results["letter_grade"],
                     "percentage": results["bias_score"],
-                    "top_category": "ABC"
+                    "privileged_groups": privileged_groups,
+                    "accuracy": results["accuracy"]
                 },
                 "metric_results": results["formatted_metrics"],
             })
-        else:
-            return {
-                "error": f"Failed to download file. Status code: {response.status_code}"
-            }
 
     except Exception as e:
         return Response({'status': 'error', 'message': str(e)})

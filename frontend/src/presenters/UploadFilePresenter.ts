@@ -4,7 +4,6 @@ export class UploadFilePresenter {
   private navigate = useNavigate();
 
   presentUploadResult(data: any) {
-
     this.navigate("/dashboard", {
       state: {
         dashboardData: {
@@ -14,7 +13,6 @@ export class UploadFilePresenter {
         },
       },
     });
-    
   }
 
   presentError(message: string) {

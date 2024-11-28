@@ -81,4 +81,62 @@ def upload_file(request):
 
     except Exception as e:
         return Response({'status': 'error', 'message': str(e)})
+        
+@api_view(['GET'])
+def get_processing_techniques(request):
+    """
+    Retrieve all processing techniques with their descriptions.
+    """
+    try:
+        techniques = [
+            {'name': key, 'description': value['description']}
+            for key, value in PROCESSING_TECHNIQUES.items()
+        ]
+        return Response({'processing_techniques': techniques})
+        
+    except Exception as e:
+        return Response({'error': str(e)}, status=500)
+
+
+@api_view(['GET'])
+def get_processing_technique_details(request, technique_name):
+    """
+    Retrieve details of a specific processing technique, including its algorithms.
+    """
+
+    try:
+        technique = PROCESSING_TECHNIQUES.get(technique_name)
+        if not technique:
+            return Response({'error': 'Processing technique not found'}, status=404)
+
+        return Response({
+            'name': technique_name,
+            'description': technique['description'],
+            'algorithms': list(technique['algorithms'].keys())
+        })
+    except Exception as e:
+        return Response({'error': str(e)}, status=500)
+
+
+@api_view(['GET'])
+def get_algorithm_details(request, technique_name, algorithm_name):
+    """
+    Retrieve details of a specific algorithm under a processing technique.
+    """
+    try:
+        technique = PROCESSING_TECHNIQUES.get(technique_name)
+        if not technique:
+            return Response({'error': 'Processing technique not found'}, status=404)
+
+        algorithm = technique['algorithms'].get(algorithm_name)
+        if not algorithm:
+            return Response({'error': 'Algorithm not found'}, status=404)
+
+        return Response({
+            'technique': technique_name,
+            'algorithm': algorithm_name,
+            'details': algorithm
+        })
+    except Exception as e:
+        return Response({'error': str(e)}, status=500)
     

@@ -5,7 +5,6 @@ from backend.core.use_cases.calculate_metrics_interactor import CalculateMetrics
 from backend.core.use_cases.convert_file_interactor import ConvertFileInteractor
 from django.views.decorators.csrf import csrf_exempt
 import os
-
 import json
 
 @api_view(['POST'])
@@ -22,8 +21,8 @@ def upload_file(request):
 
     try:
         file_name, file_path = file_repo.save_file(uploaded_file)
-        true_df, pred_df = convert_file.convert(file_path, protected_attributes)
-        results = calculate_metrics.calculate(true_df, pred_df, protected_attributes)
+        true_df, pred_df, df = convert_file.convert(file_path, protected_attributes)
+        results = calculate_metrics.calculate(df, true_df, pred_df, protected_attributes)
 
         if os.path.exists(file_path):
             os.remove(file_path)

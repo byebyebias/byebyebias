@@ -69,7 +69,7 @@ def upload_file(request):
 
     try:
         file_name, file_path = file_repo.save_file(uploaded_file)
-        true_df, pred_df, df = convert_file.convert(file_path, protected_attributes)
+        true_df, pred_df, df, privileged_groups = convert_file.convert(file_path, protected_attributes)
         results = calculate_metrics.calculate(df, true_df, pred_df, protected_attributes)
 
         if os.path.exists(file_path):
@@ -81,7 +81,8 @@ def upload_file(request):
             "overview": {
                 "score": results["letter_grade"],
                 "percentage": results["bias_score"],
-                "top_category": "ABC"
+                "privileged_groups": privileged_groups,
+                "accuracy": results["accuracy"]
             },
             "metric_results": results["formatted_metrics"],
         })

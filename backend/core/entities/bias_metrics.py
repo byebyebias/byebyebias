@@ -7,7 +7,8 @@ class BiasMetrics:
     BiasMetrics object contains bias metrics.
     '''
 
-    def __init__(self, true_df: pd.DataFrame, pred_df: pd.DataFrame, protected_attributes: list[str]):
+    def __init__(self, df: pd.DataFrame, true_df: pd.DataFrame, pred_df: pd.DataFrame, protected_attributes: list[str]):
+        self.df = df
         self.true_df = true_df
         self.pred_df = pred_df
         self.protected_attributes = protected_attributes
@@ -31,21 +32,36 @@ class BiasMetrics:
 
         for metric, protected_attribute_to_value in all_bias_metrics.items():
             values = list(protected_attribute_to_value.values())
+            # refactor to a function 
             if metric == 'Disparate Impact':
                 for value in values:
-                    if 0.8 <= value <= 1.25:
+                    if 0.43 <= value <= 1.47:
+                        num_of_fairs.append(1)
+                    else:
+                        num_of_fairs.append(0)
+            elif metric == 'Statistical Parity Difference':
+                for value in values:
+                    if -0.03 <= value <= 0.01:
+                        num_of_fairs.append(1)
+                    else:
+                        num_of_fairs.append(0)
+            elif metric == 'Average Odds Difference':
+                for value in values:
+                    if -0.43 <= value <= 0.12:
                         num_of_fairs.append(1)
                     else:
                         num_of_fairs.append(0)
             else:
                 for value in values:
-                    if -0.1 <= value <= 0.1:
+                    if -0.85 <= value <= 0.23:
                         num_of_fairs.append(1)
                     else:
                         num_of_fairs.append(0)
 
         percent = sum(num_of_fairs) / len(num_of_fairs) * 100
+
         # assign letter grade
+
         if 90 <= percent <= 100:
             letter_grade = 'A+'
         elif 85 <= percent:
@@ -98,3 +114,8 @@ class BiasMetrics:
             metrics['Equal Opportunity Difference'] = round(float(metric.equal_opportunity_difference()), 2)
 
         return metrics
+
+    # def get_accuracy(self) -> float:
+    #     accuracy = (self.df["is_fraud"] == self.df["predicted_fraud"]).mean()
+    #     percent = round(accuracy * 100, 2)
+    #     return percent

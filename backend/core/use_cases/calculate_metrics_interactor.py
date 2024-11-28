@@ -5,8 +5,8 @@ from aif360.algorithms.postprocessing import RejectOptionClassification
 from aif360.algorithms.postprocessing import EqOddsPostprocessing
 
 class CalculateMetricsInteractor:
-    def calculate(self, true_df, pred_df, protected_attributes):
-        bias_metrics = BiasMetrics(true_df, pred_df, protected_attributes)
+    def calculate(self, df, true_df, pred_df, protected_attributes):
+        bias_metrics = BiasMetrics(df, true_df, pred_df, protected_attributes)
 
         all_metrics = bias_metrics.get_all_bias_metrics()
         getScore = bias_metrics.get_score(all_metrics)

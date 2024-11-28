@@ -4,6 +4,7 @@ import GraphGrid from "../components/Dashboard/GraphGrid/GraphGrid";
 import Overview from "../components/Dashboard/Overview/Overview";
 import LetterGrade from "../components/Dashboard/LetterGrade/LetterGrade";
 import Footer from "../components/Footer/Footer";
+import Navbar from "../components/Navbar/Navbar";
 import ExportJSONButton from "../components/Dashboard/ExportJsonButton/ExportJsonButton";
 
 function DashboardPage() {
@@ -11,7 +12,9 @@ function DashboardPage() {
   const { dashboardData } = location.state;
 
   return (
-    <main role="main">
+    <>
+      <Navbar />
+      <main role="main">
 
     <Box role="region" aria-live="polite" sx={{ position: 'absolute', left: '-9999px' }}>
       You are on the Dashboard page.
@@ -41,9 +44,11 @@ function DashboardPage() {
         </Box>
       </Stack>
 
-    </Stack>
-    
-    <Footer label="© 2024 Team TripleB" /></main>
+        </Stack>
+        
+        <Footer label="© 2024 Team TripleB" />
+      </main>
+    </>
   );
 }
 

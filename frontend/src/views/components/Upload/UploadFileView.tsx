@@ -1,8 +1,5 @@
-import React, { useRef, useState } from "react";
-import { UploadFileController } from "../controllers/UploadFileController"
-import { UploadFileInteractor } from "../usecases/UploadFileInteractor";
-import { UploadFilePresenter } from "../presenters/UploadFilePresenter";
 import { Button } from "@mui/material";
+import React, { useRef, useState } from "react";
 import UploadIcon from '@mui/icons-material/Upload';
 
 interface Props {
@@ -14,7 +11,6 @@ const UploadFileView: React.FC<Props> = ({handleFileChange}) => {
   const handleButtonClick = () => {
     fileInputRef.current?.click();
   };
-  console.log(fileInputRef.current?.files)
 
   return (
     <div>
@@ -45,5 +41,6 @@ const UploadFileView: React.FC<Props> = ({handleFileChange}) => {
     </div>
   );
 };
+
 
 export default UploadFileView;

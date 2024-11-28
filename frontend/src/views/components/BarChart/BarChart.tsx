@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { ResponsiveBar } from '@nivo/bar';
 
 export interface BarChartData {
@@ -11,12 +11,16 @@ type BarProps = {
     xaxis: string;
     yaxis: string;
     data: BarChartData[];
+    onClick: void;
+    height: string;
+    width: string
+    
 }
 
-const BarChart:React.FC<BarProps> = ({ xaxis, yaxis, data}) => {
-
+const BarChart:React.FC<BarProps> = ({ xaxis, yaxis, data, onClick, height, width}) => {
+   
     return (
-        <div style={{ height: 400 }}>
+        <div style={{ height, width }}>
           <ResponsiveBar
             data={data}
             keys={[yaxis]}
@@ -32,7 +36,6 @@ const BarChart:React.FC<BarProps> = ({ xaxis, yaxis, data}) => {
               tickSize: 5,
               tickPadding: 5,
               tickRotation: 0,
-              legend: 'Statistical Parity Difference',
               legendPosition: 'middle',
               legendOffset: 32,
             }}
@@ -40,7 +43,6 @@ const BarChart:React.FC<BarProps> = ({ xaxis, yaxis, data}) => {
               tickSize: 5,
               tickPadding: 5,
               tickRotation: 0,
-              legend: 'Value',
               legendPosition: 'middle',
               legendOffset: -40,
             }}

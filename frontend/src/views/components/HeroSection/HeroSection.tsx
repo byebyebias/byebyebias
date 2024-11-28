@@ -1,5 +1,6 @@
 import React from 'react';
 import './HeroSection.css';
+import UploadFileView from '../Upload/UploadFileView';
 import Button from '../Button/Button';
 import { Link } from 'react-router-dom';
 

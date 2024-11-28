@@ -5,12 +5,15 @@ class CalculateMetricsInteractor:
         bias_metrics = BiasMetrics(true_df, pred_df, protected_attributes)
 
         all_metrics = bias_metrics.get_all_bias_metrics()
-        bias_score = bias_metrics.get_score(all_metrics)
+        getScore = bias_metrics.get_score(all_metrics)
+        letter_grade = getScore[0]
+        bias_score = getScore[1]
 
         formatted_metrics = self.reformat_metrics(all_metrics)
 
         return {
             "formatted_metrics": formatted_metrics,
+            "letter_grade": letter_grade, 
             "bias_score": bias_score
         }
     

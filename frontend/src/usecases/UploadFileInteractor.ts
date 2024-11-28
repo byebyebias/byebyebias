@@ -1,9 +1,10 @@
 import { apiService } from "../services/apiService";
 
 export class UploadFileInteractor {
-  async analyzeFile(file: File): Promise<any> {
+  async analyzeFile(file: File, selectedAttributes: Array<string>): Promise<any> {
     const formData = new FormData();
     formData.append("file", file);
+    formData.append("protected_attributes", JSON.stringify(selectedAttributes))
 
     const response = await apiService.post("/upload/", formData);
     if (response.ok) {

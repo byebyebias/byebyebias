@@ -16,8 +16,6 @@ def upload_file(request):
 
     protected_attributes = json.loads(request.POST.get("protected_attributes"))
 
-    print("THIS IS PROTECTED ATTRIBUTES SELECTED", protected_attributes)
-
     uploaded_file = request.FILES['file']
     file_repo = FileRepository()
     calculate_metrics = CalculateMetricsInteractor()
@@ -25,7 +23,6 @@ def upload_file(request):
 
     try:
         file_name, file_path = file_repo.save_file(uploaded_file)
-        protected_attributes = ['sender_gender', 'sender_race']
         true_df, pred_df = convert_file.convert(file_path, protected_attributes)
         results = calculate_metrics.calculate(true_df, pred_df, protected_attributes)
 

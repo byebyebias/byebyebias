@@ -52,6 +52,7 @@ button.selectedAttribute {
 .filename {
     color: #6820EA;
     font-weight: bold;
+    font-family: "Montserrat";
 }
 
 .actionText {

@@ -7,6 +7,7 @@ import { BrowserRouter } from 'react-router-dom';
 
 const handleClick = jest.fn();
 
+
 describe('HeroSection Component', () => {
     beforeEach(() => {
         render(

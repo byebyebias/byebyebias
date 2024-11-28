@@ -17,12 +17,13 @@ import Footer from "../../components/Footer/Footer";
 import Navbar from "../../components/Navbar/Navbar";
 
 
-const protectedAttributes = ["sender_gender", "sender_race", "sender_age", "receiver_gender", "receiver_race"]
+const protectedAttributes = ["sender_gender", "sender_race", "sender_age", "receiver_gender", "receiver_race", "receiver_age"]
 
 function UploadPage() {
     const [file, setFile] = useState<File | undefined>(undefined)
     const [page, setPage] = useState<number>(1)
     const [link, setLink] = useState<string>("")
+    const [selectedButtons, setSelectedButtons] = useState<Array<string>>([])
     const linkRef = useRef<HTMLInputElement | null>(null)
 
     const presenter = new UploadFilePresenter();
@@ -45,8 +46,19 @@ function UploadPage() {
         } 
 
     };
+
     
-    const handleViewResults = () => {if (file != null) return controller.handleFileUpload(file)};
+    const handleAttributeClick = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const buttonValue = event.target.textContent!
+
+        if((selectedButtons.includes(buttonValue))) {
+            setSelectedButtons(selectedButtons.filter((attribute) => attribute != buttonValue ))
+        } else {
+            setSelectedButtons([...selectedButtons, buttonValue])
+        }
+    }
+
+    const handleViewResults = () => {if (file != null) return controller.handleFileUpload(file, selectedButtons)};
 
     const onLinkChange = (e: React.ChangeEvent<HTMLInputElement>) => setLink(e.target.value) 
 
@@ -64,7 +76,7 @@ function UploadPage() {
                 {page === 1 &&
                     <>
                         <main className={styles.center}>
-                            <Typography variant="h1" fontSize="4em" fontWeight="600" id="uploadHeader" fontFamily="Montserrat">Upload Your Dataset</Typography>
+                            <Typography variant="h1" fontSize="4em" fontWeight="600" id="uploadHeader" fontFamily="Montserrat">Upload Dataset</Typography>
 
                             <Box sx={{display: "flex", flexDirection: "column", alignItems: "center"}}>
                                 <UploadFileView handleFileChange={handleFileChange}/>
@@ -112,10 +124,10 @@ function UploadPage() {
                 {page === 2 && 
                     <>
                         <main className={styles.center} aria-live="polite">
-                            <Typography  variant="h1" fontSize="4em" fontWeight="500" id="uploadHeader">Select Attributes</Typography>
+                            <Typography  variant="h1" fontSize="4em" fontWeight="bold" id="uploadHeader" fontFamily="Montserrat">Select Attributes</Typography>
 
                             {/* TODO FOR BUCKET, ADD ACTUAL FILE NAME WHEN CONNECTED WITH S3 INTEGRATION*/}
-                            <Typography variant="h2"  fontSize="1.25em">
+                            <Typography variant="h2"  fontSize="1.25em" fontFamily="Montserrat">
                                 Selected attributes in <span className={styles.filename}>{file ? file.name : "INSERTDUMMYBUCKETNAME.parquet"}</span> will be scanned for bias
                             </Typography>
                             <Grid 
@@ -126,9 +138,10 @@ function UploadPage() {
                             >
                                 {protectedAttributes.map((attribute, index) => 
                                     <Grid size={1} sx={{display: "flex", justifyContent: "center"}}>
-                                        <Button 
-                                            key={index}
-                                            className={styles.attributeButton}
+                                        <Button
+                                            onClick={handleAttributeClick}
+                                            key={attribute}
+                                            className={`${styles.attributeButton} ${selectedButtons.includes(attribute) ? styles.selectedAttribute : ''}`}
                                         >
                                             {attribute}
                                         </Button>
@@ -136,7 +149,11 @@ function UploadPage() {
                                 )}
                             </Grid>
 
-                            <Button variant="contained" onClick={handleViewResults}>
+                            <Button 
+                                variant="contained" 
+                                onClick={handleViewResults}
+                                className={styles.uploadButton}
+                            >
                                 View Results
                             </Button>
                         </main>

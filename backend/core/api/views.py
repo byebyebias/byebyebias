@@ -6,9 +6,8 @@ from backend.core.use_cases.convert_file_interactor import ConvertFileInteractor
 from django.views.decorators.csrf import csrf_exempt
 import os
 import json
-from django.views.decorators.csrf import csrf_exempt
-import os
 import requests
+from django.views.decorators.csrf import csrf_exempt
 
 @csrf_exempt
 @api_view(['POST'])

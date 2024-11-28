@@ -58,9 +58,7 @@ function DashboardPage() {
 
         <Typography
           variant="body1"
-          aria-label={`File path displayed as ${dashboardData.filePath
-            .split("/")
-            .pop()}`}
+          aria-label={`File path displayed as ${dashboardData.fileName}`}
           sx={{
             paddingBottom: "15px",
             paddingLeft: "75px",
@@ -71,7 +69,7 @@ function DashboardPage() {
             fontSize: "15pt",
           }}
         >
-          {dashboardData.filePath.split("/").pop()}
+          {dashboardData.fileName}
         </Typography>
 
         <Stack sx={{ backgroundColor: "#E6EEF5" }} p={3}>

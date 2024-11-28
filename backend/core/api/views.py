@@ -6,12 +6,48 @@ from backend.core.use_cases.convert_file_interactor import ConvertFileInteractor
 from django.views.decorators.csrf import csrf_exempt
 import os
 import json
+import requests
 from django.views.decorators.csrf import csrf_exempt
-import os
 
-from .data import PROCESSING_TECHNIQUES
-
+@csrf_exempt
 @api_view(['POST'])
+def process_link(request):
+    
+    s3_link = request.data.get('link')
+    if not s3_link:
+        return Response({"error": "No link provided"})
+
+    file_repo = FileRepository()
+    calculate_metrics = CalculateMetricsInteractor()
+    convert_file = ConvertFileInteractor()
+
+    protected_attributes = json.loads(request.POST.get("protected_attributes"))
+
+    try:
+        # download parquet file from s3
+        response = requests.get(s3_link, stream=True)
+        if response.status_code == 200:
+            file_name, file_path = file_repo.retrieve_s3_file(response)
+            
+            true_df, pred_df, df, privileged_groups = convert_file.convert(file_path, protected_attributes)
+            results = calculate_metrics.calculate(df, true_df, pred_df, protected_attributes)
+
+            return Response({
+                "file_name": file_name,
+                "file_path": file_path,
+                "overview": {
+                    "score": results["letter_grade"],
+                    "percentage": results["bias_score"],
+                    "privileged_groups": privileged_groups,
+                    "accuracy": results["accuracy"]
+                },
+                "metric_results": results["formatted_metrics"],
+            })
+
+    except Exception as e:
+        return Response({'status': 'error', 'message': str(e)})
+    
+@api_view(['GET', 'POST'])
 def upload_file(request):
     if 'file' not in request.FILES:
         return Response({'status': 'error', 'message': 'No file provided or invalid request'})

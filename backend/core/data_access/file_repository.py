@@ -3,6 +3,7 @@ from backend.setup.settings import MEDIA_ROOT
 import os
 
 class FileRepository:
+
     def save_file(self, uploaded_file):
         file_name = default_storage.save(uploaded_file.name, uploaded_file)
         file_path = default_storage.path(file_name)

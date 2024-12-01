@@ -24,7 +24,7 @@ class BiasMetricsController:
 
         uploaded_file = request_files['file']
         # THIS SHOULD BECOME A PART OF BODY RESPONSE TO PARSE
-        protected_attributes = ['sender_gender', 'sender_race', 'receiver_gender', 'receiver_race']
+        protected_attributes = json.loads(request.POST.get("protected_attributes"))
 
         try:
             file_name, file_path = self.upload_file_interactor.post(uploaded_file)

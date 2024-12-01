@@ -17,19 +17,17 @@ class BiasMetricsController:
         self.convert_file_interactor = convert_file_interactor
         self.upload_file_interactor = upload_file_interactor
 
-    def get_bias_metrics(self, request_files):
+    def get_bias_metrics(self, request_files, protected_attributes):
         if 'file' not in request_files:
             return {'message': 'No file provided or invalid request'}, HTTPStatus.BAD_REQUEST.value
     
 
         uploaded_file = request_files['file']
-        # THIS SHOULD BECOME A PART OF BODY RESPONSE TO PARSE
-        protected_attributes = json.loads(request.POST.get("protected_attributes"))
 
         try:
             file_name, file_path = self.upload_file_interactor.post(uploaded_file)
-            true_df, pred_df = self.convert_file_interactor.convert(file_path, protected_attributes)
-            results = self.calculate_metrics_interactor.calculate(true_df, pred_df, protected_attributes)
+            true_df, pred_df, df, privileged_groups = self.convert_file_interactor.convert(file_path, protected_attributes)
+            results = self.calculate_metrics_interactor.calculate(df, true_df, pred_df, protected_attributes)
 
             if os.path.exists(file_path):
                 os.remove(file_path)
@@ -40,7 +38,8 @@ class BiasMetricsController:
                 "overview": {
                     "score": results["letter_grade"],
                     "percentage": results["bias_score"],
-                    "top_category": "ABC"
+                    "privileged_groups": privileged_groups,
+                    "accuracy": results["accuracy"]
                 },
                 "metric_results": results["formatted_metrics"],
             }

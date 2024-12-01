@@ -50,3 +50,9 @@ section {
   padding-top: 20vh;
   padding-bottom: 20vh;
 }
+.message {
+  font-family: 'Montserrat';
+  padding-left: 50px; 
+  font-size: 18px;
+  color: #ff1b1b; 
+}

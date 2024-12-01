@@ -27,13 +27,17 @@ body, html {
 
 button.attributeButton {
     color: white;
-    background: #9921D2E5;
+    background: #9921D2;
     border-radius: 10px;
     padding: 10px;
-    text-transform: capitalize;
+    text-transform: lowercase;
     width:150px;
     align-self: "center";
     font-weight: 600;
+}
+
+button.selectedAttribute {
+    background: #5a147b;
 }
 
 .attributeSelection {
@@ -48,6 +52,7 @@ button.attributeButton {
 .filename {
     color: #6820EA;
     font-weight: bold;
+    font-family: "Montserrat";
 }
 
 .actionText {
@@ -84,8 +89,8 @@ button.uploadButton {
     background-color: #00CF31; 
     color: white; 
     border-radius: 40px; 
-    padding: 6px 16px; 
-    width: 175px;
+    padding: 6px 40px; 
+    min-width: 175px;
     text-transform: none;
     font-size: 20px;
     font-family: "Montserrat";

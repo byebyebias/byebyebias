@@ -143,13 +143,7 @@ export default function StickyHeadTable() {
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((row) => {
                 return (
-                  <TableRow
-                    hover
-                    key={row.transaction_id}
-                    role="row"
-                    aria-selected={selectedRows.includes(row.transaction_id)}
-                    onClick={() => handleRowSelect(row.transaction_id)}
-                  >
+                  <TableRow hover role="checkbox" tabIndex={-1} key={row.transaction_id}>
                     {columns.map((column) => {
                       const value = row[column.id];
                       return (

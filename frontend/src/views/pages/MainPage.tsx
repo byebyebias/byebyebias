@@ -9,6 +9,8 @@ import GraphImage from "../assets/GraphImage.png"
 import DownArrow from "../assets/DownArrow.png"
 import Header from "../components/Header/Header";
 
+const apiUrl = import.meta.env.VITE_API_URL;
+
 const MainPage: React.FC = () => {
   useEffect(() => {
     // Function to add title to Pericles iframe for Lighthouse score

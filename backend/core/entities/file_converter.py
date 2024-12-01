@@ -8,38 +8,21 @@ class FileConverter:
     def __init__(self, file, protected_attributes: list[str]):
         self.df = pandas.read_parquet(file)
         self.protected_attributes = protected_attributes
+        self.privileged_groups = {}
         self.clean_dataset()
 
-    # refactor clean_dataset to use protected_attributes to clean dataset
     def clean_dataset(self):
-        priv_sender_gender = self.find_priv("sender_gender")
-        priv_sender_race = self.find_priv("sender_race")
-        priv_receiver_gender = self.find_priv("receiver_gender")
-        priv_receiver_race = self.find_priv("receiver_race")
+        for protected_attribute in self.protected_attributes:
+            # encode the protected attribute column as binary
+            priv_group = self.find_priv(protected_attribute)
+            self.privileged_groups[protected_attribute] = priv_group
 
-        # encode the 'race' columns as binary 
-        races = set(self.df['receiver_race']).union(set(self.df['sender_race']))
-        sender_race_map = {race: 0 for race in races if race != priv_sender_race}
-        sender_race_map[priv_sender_race] = 1
+            groups = set(self.df[protected_attribute])
+            group_map = {group: 0 for group in groups if group != priv_group}
+            group_map[priv_group] = 1
+            self.df[protected_attribute] = self.df[protected_attribute].map(group_map)
 
-        receiver_race_map = {race: 0 for race in races if race != priv_receiver_race}
-        receiver_race_map[priv_receiver_race] = 1
-
-        # print(race_map)
-        self.df['receiver_race'] = self.df['receiver_race'].map(receiver_race_map)
-        self.df['sender_race'] = self.df['sender_race'].map(sender_race_map)
-
-        # encode the 'gender' column
-        genders = set(self.df['receiver_gender']).union(set(self.df['sender_gender']))
-        sender_gender_map = {gender: 0 for gender in genders if gender != priv_sender_gender}
-        sender_gender_map[priv_sender_gender] = 1
-        receiver_gender_map = {gender: 0 for gender in genders if gender != priv_receiver_gender}
-        receiver_gender_map[priv_receiver_gender] = 1
-        self.df['receiver_gender'] = self.df['receiver_gender'].map(receiver_gender_map)
-        self.df['sender_gender'] = self.df['sender_gender'].map(sender_gender_map)
-
-        self.df = self.df.drop(columns=[c for c in self.df.columns if c not in ['sender_gender', 'receiver_gender', 'sender_race', 'receiver_race', 'is_fraud', 'predicted_fraud']])
-
+        self.df = self.df.drop(columns=[c for c in self.df.columns if c not in self.protected_attributes + ['is_fraud', 'predicted_fraud']])
         self.df = self.df.dropna()
     
     def get_df(self):
@@ -65,4 +48,7 @@ class FileConverter:
             return fn_count.index[0]
         
         return fp_count.index[0]
+    
+    def get_privileged_groups(self):
+        return self.privileged_groups
         

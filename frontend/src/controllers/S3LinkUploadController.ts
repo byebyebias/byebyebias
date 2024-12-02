@@ -16,7 +16,7 @@ export class S3LinkUploadController {
       this.presenter.presentUploadResult(result);
     } catch (error) {
       console.error("Error in UploadController:", error);
-      this.presenter.presentError("Failed to upload file");
+      this.presenter.presentError("Failed to upload file from S3");
     }
   }
 }

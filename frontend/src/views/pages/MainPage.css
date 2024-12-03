@@ -36,10 +36,11 @@ section {
 }
 
 .main-page {
-	display: flex;
-	flex-direction: column;
-	min-height: 100vh;
-	background-image: url("../assets/PurpleGradient.png");
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-image: url('../assets/PurpleGradient.png');
+  background-repeat: no-repeat;
 }
 
 .flex-container {

@@ -12,17 +12,46 @@ import Header from "../components/Header/Header";
 const apiUrl = import.meta.env.VITE_API_URL;
 
 const MainPage: React.FC = () => {
-	return (
-		<div className="main-page">
-			<Header />
+  useEffect(() => {
+    // Function to add title to Pericles iframe for Lighthouse score
+    const addTitleToPericlesIframe = () => {
+      const iframe = document.getElementById('_pericles_content_iframe');
+      if (iframe && iframe instanceof HTMLIFrameElement && !iframe.title) {
+        iframe.title = 'Homepage Content Frame';
+      }
+    };
+
+    addTitleToPericlesIframe();
+
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.addedNodes.length) {
+          addTitleToPericlesIframe();
+        }
+      });
+    });
+
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true
+    });
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+  return (
+
+    <div className="main-page">
+      <Header />
 
 			<Title label="BYE BYE BIAS" />
 
-			<div className="arrow-container">
-				<a href="#about">
-					<img src={DownArrow} id="down-arrow" />
-				</a>
-			</div>
+      <div className="arrow-container">
+       <a href="#about" tabIndex={-1}>
+          <img src={DownArrow} alt="down-arrow" id="down-arrow" />
+        </a>
+      </div>
 
 			<section id="about">
 				<div className="flex-container">
@@ -91,12 +120,16 @@ const MainPage: React.FC = () => {
 						stepnum={3}
 						body="Modify the dataset based on results. Submit the updated file for analysis to determine
             if fairness has improved."
-					/>
-				</div>
-			</section>
-			<Footer label="© 2024 Team TripleB" />
-		</div>
-	);
+          />
+        </div>
+      </section>
+
+      <footer>
+      <Footer label="Made with <3 by Team Triple B" />
+      </footer>
+
+    </div>
+  );
 };
 
 export default MainPage;

@@ -159,89 +159,63 @@ function UploadPage() {
 								/>
 							</div>
 
-							<Button
-								onClick={handleUploadClick}
-								className={styles.uploadButton}
-								disabled={file == undefined && link == ""}
-							>
-								Upload
-							</Button>
-						</main>
-					</>
-				)}
+                            <Button 
+                                onClick={handleUploadClick}
+                                className={styles.uploadButton}
+                                disabled={file == undefined && link == ''}
+                            >
+                                Upload
+                            </Button>
+                        </main>
 
-				{page === 2 && (
-					<>
-						<main className={styles.center} aria-live="polite">
-							<Typography
-								variant="h1"
-								fontSize="4em"
-								fontWeight="bold"
-								id="uploadHeader"
-								fontFamily="Montserrat"
-							>
-								Select Attributes
-							</Typography>
+                    </>
+                }
 
-							{/* TODO FOR BUCKET, ADD ACTUAL FILE NAME WHEN CONNECTED WITH S3 INTEGRATION*/}
-							<Typography
-								variant="h2"
-								fontSize="1.25em"
-								fontFamily="Montserrat"
-							>
-								Selected attributes in{" "}
-								<span className={styles.filename}>
-									{file
-										? file.name
-										: new URL(link).pathname
-												.split("/")
-												.pop() ||
-											"INSERTDUMMYBUCKETNAME.parquet"}
-								</span>{" "}
-								will be scanned for bias
-							</Typography>
-							<Grid
-								container
-								spacing={{ xs: 2, md: 3 }}
-								columns={{ xs: 1, sm: 1, md: 2, lg: 3, xl: 3 }}
-								className={styles.attributeSelection}
-							>
-								{protectedAttributes.map((attribute, index) => (
-									<Grid
-										size={1}
-										sx={{
-											display: "flex",
-											justifyContent: "center",
-										}}
-									>
-										<Button
-											onClick={handleAttributeClick}
-											key={attribute}
-											className={`${styles.attributeButton} ${selectedButtons.includes(attribute) ? styles.selectedAttribute : ""}`}
-										>
-											{attribute}
-										</Button>
-									</Grid>
-								))}
-							</Grid>
+                {page === 2 && 
+                    <>
+                        <main className={styles.center} aria-live="polite">
+                            <Typography  variant="h1" fontSize="4em" fontWeight="bold" id="uploadHeader" fontFamily="Montserrat">Select Attributes</Typography>
 
-							<Button
-								variant="contained"
-								onClick={handleViewResults}
-								className={styles.uploadButton}
-							>
-								View Results
-							</Button>
-						</main>
-					</>
-				)}
-			</Container>
+                            {/* TODO FOR BUCKET, ADD ACTUAL FILE NAME WHEN CONNECTED WITH S3 INTEGRATION*/}
+                            <Typography variant="h2"  fontSize="1.25em" fontFamily="Montserrat">
+                                Selected attributes in <span className={styles.filename}>{file ? file.name : new URL(link).pathname.split('/').pop() || "INSERTDUMMYBUCKETNAME.parquet"}</span> will be scanned for bias
+                            </Typography>
+                            <Grid 
+                                container 
+                                spacing={{ xs: 2, md: 3 }} 
+                                columns={{xs: 1, sm: 1, md: 2, lg: 3, xl: 3}} 
+                                className={styles.attributeSelection}
+                            >
+                                {protectedAttributes.map((attribute, index) => 
+                                    <Grid size={1} sx={{display: "flex", justifyContent: "center"}}>
+                                        <Button
+                                            onClick={handleAttributeClick}
+                                            key={attribute}
+                                            className={`${styles.attributeButton} ${selectedButtons.includes(attribute) ? styles.selectedAttribute : ''}`}
+                                        >
+                                            {attribute}
+                                        </Button>
+                                    </Grid>
+                                )}
+                            </Grid>
 
-			<footer>
-				<Footer label="made with <3 by team triple b." />
-			</footer>
-		</>
-	);
+                            <Button 
+                                variant="contained" 
+                                onClick={handleViewResults}
+                                className={styles.uploadButton}
+                            >
+                                View Results
+                            </Button>
+                        </main>
+                    </>
+                }
+            </Container>    
+
+            <footer>
+            <Footer label="Made with <3 by Team Triple B" />
+            </footer>
+        </>
+    )
 }
 
 export default UploadPage;

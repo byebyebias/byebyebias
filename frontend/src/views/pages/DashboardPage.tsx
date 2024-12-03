@@ -119,10 +119,12 @@ function DashboardPage() {
 					</Box>
 				</Stack>
 
-				<Footer label="© 2024 Team TripleB" />
-			</main>
-		</>
-	);
+        <footer>
+          <Footer label="Made with <3 by Team Triple B" />
+        </footer>
+        </main>
+    </>
+  );
 }
 
 export default DashboardPage;

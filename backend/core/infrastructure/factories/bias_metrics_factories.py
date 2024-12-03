@@ -1,8 +1,10 @@
 import pandas as pd
 
+from backend.core.adapters.impl_file_converter import ImplFileConverter
 from backend.core.infrastructure.factories.abstract_factories import FileConverterFactory, FileRepositoryFactory
 from backend.core.use_cases.calculate_metrics_interactor import CalculateMetricsInteractor
 from backend.core.use_cases.convert_file_interactor import ConvertFileInteractor
+from backend.core.use_cases.interfaces import FileConverter
 from backend.core.use_cases.upload_file_interactor import UploadFileInteractor
 from backend.core.use_cases.process_link_interactor import ProcessLinkInteractor
 

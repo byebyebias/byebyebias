@@ -1,11 +1,8 @@
-from aif360.datasets import BinaryLabelDataset
+'''from aif360.datasets import BinaryLabelDataset
 from aif360.metrics.mdss_classification_metric import MDSSClassificationMetric
 import pandas as pd
 
 class BiasMetrics:
-    '''
-    BiasMetrics object contains bias metrics.
-    '''
 
     def __init__(self, df: pd.DataFrame, true_df: pd.DataFrame, pred_df: pd.DataFrame, protected_attributes: list[str]):
         self.df = df
@@ -119,3 +116,4 @@ class BiasMetrics:
         accuracy = (self.df["is_fraud"] == self.df["predicted_fraud"]).mean()
         percent = round(accuracy * 100, 2)
         return percent
+'''

@@ -1,4 +1,3 @@
-import { Typography } from "@mui/material";
 import { BarDatum, ResponsiveBar } from "@nivo/bar";
 
 interface BarChartProps {

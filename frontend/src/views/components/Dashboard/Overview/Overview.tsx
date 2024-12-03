@@ -2,8 +2,6 @@ import {
     CardContent,
     Typography,
     Card,
-    List,
-    ListItem
  } from "@mui/material"
 
 type PrivilegedGroup = {

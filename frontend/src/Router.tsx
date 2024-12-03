@@ -7,7 +7,6 @@ import DashBoardPage from "./views/pages/DashboardPage.js";
 import UploadPage from "./views/pages/UploadPage/UploadPage.js";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-
 const router = createBrowserRouter([
   {
     path: "/",
@@ -29,7 +28,7 @@ const router = createBrowserRouter([
 const rootElement = document.getElementById("root")!;
 
 createRoot(rootElement).render(
-  <StrictMode>
-    <RouterProvider router={router} />
-  </StrictMode>
+	<StrictMode>
+		<RouterProvider router={router} />
+	</StrictMode>,
 );

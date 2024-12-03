@@ -1,37 +1,37 @@
 import { BarDatum, ResponsiveBar } from "@nivo/bar";
 
 interface BarChartProps {
-  data: readonly BarDatum[];
-  height: string;
-  width: string;
+	data: readonly BarDatum[];
+	height: string;
+	width: string;
 }
 const colorMap: { [key: string]: string } = {
-  sender_gender: "#271DE0", // blueish
-  sender_race: "#6820EA", // light purple
-  receiver_gender: "#00D632", // bright green
-  receiver_race: "#EE55E7", // pink
-  sender_age: "#FFA500", // orange for age
-  receiver_age: "#FF4500", // reddish-orange
+	sender_gender: "#271DE0", // blueish
+	sender_race: "#6820EA", // light purple
+	receiver_gender: "#00D632", // bright green
+	receiver_race: "#EE55E7", // pink
+	sender_age: "#FFA500", // orange for age
+	receiver_age: "#FF4500", // reddish-orange
 };
 
 const getLuminance = (r: number, g: number, b: number) => {
-  const a = [r, g, b].map((v) => {
-    v /= 255;
-    return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
-  });
-  return 0.2126 * a[0] + 0.7152 * a[1] + 0.0722 * a[2];
+	const a = [r, g, b].map((v) => {
+		v /= 255;
+		return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
+	});
+	return 0.2126 * a[0] + 0.7152 * a[1] + 0.0722 * a[2];
 };
 
 // Function to determine text color based on luminance
 const getTextColor = (r: number, g: number, b: number) => {
-  const luminance = getLuminance(r, g, b);
-  return luminance > 0.5 ? "#000000" : "#ffffff"; // Black for light backgrounds, white for dark
+	const luminance = getLuminance(r, g, b);
+	return luminance > 0.5 ? "#000000" : "#ffffff"; // Black for light backgrounds, white for dark
 };
 
 const BarChart = ({
-  data,
-  width = "100%",
-  height = "400px",
+	data,
+	width = "100%",
+	height = "400px",
 }: BarChartProps) => {
 
   return (

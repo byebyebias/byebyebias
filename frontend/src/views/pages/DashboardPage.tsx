@@ -8,10 +8,9 @@ import Navbar from "../components/Navbar/Navbar";
 import ExportJSONButton from "../components/Dashboard/ExportJsonButton/ExportJsonButton";
 import BackgroundImage from "../assets/PurpleGradient.png";
 
-
 function DashboardPage() {
-  const location = useLocation();
-  const { dashboardData } = location.state;
+	const location = useLocation();
+	const { dashboardData } = location.state;
 
   return (
     <>
@@ -25,28 +24,28 @@ function DashboardPage() {
         backgroundPosition: "center",
         minHeight: "100vh"}}>
 
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            padding: "20px",
-            width: "90%",
-          }}
-        >
-          <Typography
-            variant="h1"
-            sx={{
-              paddingTop: "20px",
-              paddingLeft: "85px",
-              textAlign: "left",
-              fontFamily: "Montserrat",
-              fontWeight: 700,
-              fontSize: "45pt",
-            }}
-          >
-            Dashboard
-          </Typography>
+				<Box
+					sx={{
+						display: "flex",
+						justifyContent: "space-between",
+						alignItems: "center",
+						padding: "20px",
+						width: "90%",
+					}}
+				>
+					<Typography
+						variant="h1"
+						sx={{
+							paddingTop: "20px",
+							paddingLeft: "85px",
+							textAlign: "left",
+							fontFamily: "Montserrat",
+							fontWeight: 700,
+							fontSize: "45pt",
+						}}
+					>
+						Dashboard
+					</Typography>
 
           <ExportJSONButton
             data={
@@ -59,36 +58,41 @@ function DashboardPage() {
           />
         </Box>
 
-        <Stack sx={{justifyContent: "center", alignItems: 'center'}}>
-
-            <Box sx={{width: "90%", alignItems: "center"}}>
-              <Stack direction="row" spacing={0}>
-                <Typography
-                  sx={{
-                    fontFamily: "Montserrat",
-                    fontSize: "15px",
-                    fontWeight: 300,
-                    color: "#9921D2",
-                  }}
-                >
-                  {dashboardData.fileName}
-                </Typography>
-                <Stack direction="row" spacing = {2} sx={{width: "100%"}}>
-                  <LetterGrade
-                    aria-label={`Letter grade is ${
-                      dashboardData.overview?.score || "A+"
-                    }`}
-                    score={dashboardData.overview?.score || "A+"}
-                    percentage={dashboardData.overview.percentage}
-                  />
-                  <Overview data={dashboardData.overview} />
-                </Stack>
-                
-              </Stack>
-              <GraphGrid graphsInfo={dashboardData.metricResults} />
-            </Box>
-
-        </Stack>
+				<Stack sx={{ justifyContent: "center", alignItems: "center" }}>
+					<Box sx={{ width: "90%", alignItems: "center" }}>
+						<Stack direction="row" spacing={0}>
+							<Typography
+								sx={{
+									fontFamily: "Montserrat",
+									fontSize: "15px",
+									fontWeight: 300,
+									color: "#9921D2",
+								}}
+							>
+								{dashboardData.fileName}
+							</Typography>
+							<Stack
+								direction="row"
+								spacing={2}
+								sx={{ width: "100%" }}
+							>
+								<LetterGrade
+									aria-label={`Letter grade is ${
+										dashboardData.overview?.score || "A+"
+									}`}
+									score={
+										dashboardData.overview?.score || "A+"
+									}
+									percentage={
+										dashboardData.overview.percentage
+									}
+								/>
+								<Overview data={dashboardData.overview} />
+							</Stack>
+						</Stack>
+						<GraphGrid graphsInfo={dashboardData.metricResults} />
+					</Box>
+				</Stack>
 
         <footer>
           <Footer label="Made with <3 by Team Triple B" />

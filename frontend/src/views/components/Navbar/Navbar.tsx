@@ -1,8 +1,7 @@
-import React from 'react';
-import Logo from "../../assets/CashAppLogo.png"; 
-import './Navbar.css'; 
-import { Link } from 'react-router-dom';
-
+import React from "react";
+import Logo from "../../assets/CashAppLogo.png";
+import "./Navbar.css";
+import { Link } from "react-router-dom";
 
 const Navbar: React.FC = () => {
   return (

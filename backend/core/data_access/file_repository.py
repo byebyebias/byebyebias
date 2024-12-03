@@ -3,6 +3,7 @@ from backend.setup.settings import MEDIA_ROOT
 import os
 
 class FileRepository:
+
     def save_file(self, uploaded_file):
         file_name = default_storage.save(uploaded_file.name, uploaded_file)
         file_path = default_storage.path(file_name)
@@ -21,5 +22,4 @@ class FileRepository:
         with open(file_path, "wb") as f:
             for chunk in response.iter_content(chunk_size=8192):  
                 f.write(chunk)
-
         return (file_name, file_path)

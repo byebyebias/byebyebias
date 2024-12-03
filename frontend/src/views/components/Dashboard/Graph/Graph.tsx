@@ -71,12 +71,8 @@ export const Graph: React.FC<GraphProps> = ({
             {title}
           </Typography>
           <BarChart data={values} height="350px" width="100%" />
-          <IconButton
-            aria-label="enlarge graph"
-            onClick={handleOpen}
-          >
+          <IconButton aria-label="enlarge graph" onClick={handleOpen}>
             <OpenInFullIcon />
-           
           </IconButton>
         </CardContent>
       </Card>

@@ -209,7 +209,7 @@ function UploadPage() {
                         </main>
 
                     </>
-                }
+                )}
 
                 {page === 2 && 
                     <>
@@ -306,7 +306,7 @@ function UploadPage() {
 							</Button>
 						</main>
 					</>
-				)}
+				}
 			</Container>
 
 			<footer>

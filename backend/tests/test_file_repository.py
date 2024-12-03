@@ -8,8 +8,7 @@ import os
 from backend.core.data_access.file_repository import FileRepository
 
 # python manage.py test backend.tests.test_file_repository
-# DJANGO_SETTINGS_MODULE=backend.setup.settings pytest --cov=backend --cov-html
-
+# DJANGO_SETTINGS_MODULE=backend.setup.settings pytest --cov=backend --cov-report=html
 
 class TestFileRepository(TestCase):
 

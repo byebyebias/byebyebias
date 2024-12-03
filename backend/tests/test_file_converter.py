@@ -9,7 +9,7 @@ class TestFileConverter(TestCase):
     def setUp(self):
         self.df = pd.DataFrame(
             {"sender_gender": [1, 1, 1, 0, 0],
-             "sender_race": [1, 0, 0, 1, 1]}
+             "sender_race": [0, 1, 1, 0, 0]}
         )
 
         self.test_parquet = CreateTestParquet()
@@ -20,5 +20,7 @@ class TestFileConverter(TestCase):
 
     def test_file_converter(self):
         # tests if dataset has been cleaned according to correct privileged groups
+        print(self.file.df["sender_race"])
+        print(self.df["sender_race"])
         self.assertTrue(self.file.df["sender_gender"].reset_index(drop=True).equals(self.df["sender_gender"].reset_index(drop=True)))
         self.assertTrue(self.file.df["sender_race"].reset_index(drop=True).equals(self.df["sender_race"].reset_index(drop=True)))

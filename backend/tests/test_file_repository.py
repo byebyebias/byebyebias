@@ -1,12 +1,15 @@
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.core.files.storage import default_storage
 from django.test import TestCase
+from unittest.mock import patch
 
 from backend.tests.create_test_parquet import CreateTestParquet
 import os
 from backend.core.data_access.file_repository import FileRepository
 
 # python manage.py test backend.tests.test_file_repository
+# DJANGO_SETTINGS_MODULE=backend.setup.settings pytest --cov=backend --cov-html
+
 
 class TestFileRepository(TestCase):
 
@@ -31,7 +34,12 @@ class TestFileRepository(TestCase):
         if default_storage.exists(self.saved_file_path):
             default_storage.delete(self.saved_file_path)
 
-    def test_save_file(self):
+    @patch('backend.core.data_access.file_repository.default_storage')
+    def test_save_file(self, mock_storage):
+        mock_storage.save.return_value = "test.parquet"
+        mock_storage.path.return_value = "../media/test.parquet"
+        mock_storage.exists.return_value = True
+
         file_name, file_path = FileRepository().save_file(self.parquet_file)
 
         # for tearDown method
@@ -40,4 +48,8 @@ class TestFileRepository(TestCase):
         self.assertTrue(file_name.startswith("test"))
         self.assertTrue(file_name.endswith(".parquet"))
 
-        self.assertTrue(default_storage.exists(file_path))
+        self.assertTrue(mock_storage.exists(file_path))
+
+        # check if 'save' and 'exists' methods were called
+        mock_storage.save.assert_called_with(self.parquet_file.name, self.parquet_file)
+        mock_storage.exists.assert_called_with(file_path)

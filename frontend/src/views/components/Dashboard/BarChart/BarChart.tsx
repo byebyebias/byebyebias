@@ -1,4 +1,3 @@
-import { Typography } from "@mui/material";
 import { BarDatum, ResponsiveBar } from "@nivo/bar";
 
 interface BarChartProps {
@@ -34,99 +33,94 @@ const BarChart = ({
 	width = "100%",
 	height = "400px",
 }: BarChartProps) => {
-	// console.log("Data passed to BarChart:", data);
 
-	return (
-		<div style={{ height: height, width: width, overflowX: "auto" }}>
-			<ResponsiveBar
-				isFocusable={true}
-				barAriaLabel={({ id, value, indexValue }) =>
-					`The ${indexValue} bar has a score of ${value}`
-				}
-				theme={{
-					labels: {
-						text: {
-							fontSize: "14px",
-							fontFamily: "Montserrat",
-							fontWeight: "400",
-							fill: "333",
-						},
-					},
-					axis: {
-						ticks: {
-							text: {
-								fontSize: 12,
-								fontFamily: "Montserrat",
-								fill: "#333",
-								maxWidth: "20px",
-							},
-						},
-						legend: {
-							text: {
-								fontSize: 14,
-								fontFamily: "Montserrat",
-								fontWeight: "bold",
-								fill: "#333",
-							},
-						},
-					},
-				}}
-				data={data}
-				keys={["score"]}
-				indexBy="protected_attribute"
-				margin={{ top: 50, right: 50, bottom: 50, left: 80 }}
-				padding={0.3}
-				valueScale={{ type: "linear" }}
-				indexScale={{ type: "band", round: true }}
-				colors={({ id, data }) =>
-					colorMap[data.protected_attribute] || "#cccccc"
-				}
-				borderColor={{
-					from: "color",
-					modifiers: [["darker", 1.6]],
-				}}
-				axisTop={null}
-				axisRight={null}
-				axisBottom={{
-					tickSize: 5,
-					tickPadding: 5,
-					tickRotation: 0,
-					legend: "protected_attribute",
-					legendPosition: "middle",
-					legendOffset: 32,
-					truncateTickAt: 0,
-					ariaHidden: true,
-				}}
-				axisLeft={{
-					tickSize: 5,
-					tickPadding: 5,
-					tickRotation: 0,
-					legend: "Score",
-					legendPosition: "middle",
-					legendOffset: -60,
-					ariaHidden: true,
-				}}
-				labelSkipWidth={12}
-				labelSkipHeight={12}
-				labelTextColor={({ data }) => {
-					const protectedAttribute = data.data?.protected_attribute; //if we have data.data, get the bckg color
-					const colorHex = colorMap[protectedAttribute] || "#cccccc";
-					const hexToRgb = (hex: string) => {
-						const bigint = parseInt(hex.slice(1), 16);
-						return [
-							(bigint >> 16) & 255,
-							(bigint >> 8) & 255,
-							bigint & 255,
-						];
-					};
-					const [r, g, b] = hexToRgb(colorHex);
-					const textColor = getTextColor(r, g, b);
-					return textColor;
-				}}
-				role="application"
-			/>
-		</div>
-	);
+  return (
+    <div style={{ height: height, width: width, overflowX: "auto" }}>
+      <ResponsiveBar
+        isFocusable={true}
+        barAriaLabel={({ id, value, indexValue }) =>
+          `The ${indexValue} bar has a score of ${value}`
+        }
+        theme={{
+          labels: {
+            text: {
+              fontSize: "14px",
+              fontFamily: "Montserrat",
+              fontWeight: "400",
+              fill: "333",
+            },
+          },
+          axis: {
+            ticks: {
+              text: {
+                fontSize: 12,
+                fontFamily: "Montserrat",
+                fill: "#333",
+                maxWidth: "20px",
+              },
+            },
+            legend: {
+              text: {
+                fontSize: 14,
+                fontFamily: "Montserrat",
+                fontWeight: "bold",
+                fill: "#333",
+              },
+            },
+          },
+        }}
+        data={data}
+        keys={["score"]}
+        indexBy="protected_attribute"
+        margin={{ top: 50, right: 50, bottom: 50, left: 80 }}
+        padding={0.3}
+        valueScale={{ type: "linear"}}
+        indexScale={{ type: "band", round: true }}
+        colors={({ id, data }) =>
+          colorMap[data.protected_attribute] || "#cccccc"
+        }
+        borderColor={{
+          from: "color",
+          modifiers: [["darker", 1.6]],
+        }}
+        axisTop={null}
+        axisRight={null}
+        axisBottom={{
+          tickSize: 5,
+          tickPadding: 5,
+          tickRotation: 0,
+          legend: "protected_attribute",
+          legendPosition: "middle",
+          legendOffset: 32,
+          truncateTickAt: 0,
+          ariaHidden: true,
+        }}
+        axisLeft={{
+          tickSize: 5,
+          tickPadding: 5,
+          tickRotation: 0,
+          legend: "Score",
+          legendPosition: "middle",
+          legendOffset: -60,
+          ariaHidden: true,
+        }}
+        labelSkipWidth={12}
+        labelSkipHeight={12}
+        labelTextColor={({ data }) => {
+          const protectedAttribute = data.data?.protected_attribute; //if we have data.data, get the bckg color
+          const colorHex = colorMap[protectedAttribute] || "#cccccc";
+          const hexToRgb = (hex: string) => {
+            const bigint = parseInt(hex.slice(1), 16);
+            return [(bigint >> 16) & 255, (bigint >> 8) & 255, bigint & 255];
+          };
+          const [r, g, b] = hexToRgb(colorHex);
+          const textColor = getTextColor(r, g, b);
+          return textColor;
+        }}
+        role="application"
+      />
+    </div>
+  );
 };
 
 export default BarChart;

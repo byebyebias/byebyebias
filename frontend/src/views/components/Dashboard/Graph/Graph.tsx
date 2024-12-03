@@ -41,110 +41,91 @@ export const Graph: React.FC<GraphProps> = ({
 		console.log("modal has been closed");
 	};
 
-	return (
-		<>
-			<Card
-				aria-label={`This graph displays the ${title} metric for each of your selected attributes`}
-				tabIndex={0}
-				sx={{
-					border: "0.5px solid #000000",
-					width: "30%",
-					borderRadius: "35px",
-					background: "#F8FEFA",
-					alignItems: "center",
-				}}
-			>
-				<CardContent
-					sx={{
-						justifyContent: "center",
-						alignItems: "center",
-						width: "100%",
-					}}
-				>
-					<Typography
-						style={{
-							textAlign: "left",
-							paddingLeft: "20px",
-							paddingTop: "30px",
-							fontFamily: "Montserrat",
-							fontSize: "20px",
-							fontWeight: 400,
-							fontStyle: "italic",
-						}}
-					>
-						{title}
-					</Typography>
-					<BarChart data={values} height="350px" width="100%" />
-					<IconButton
-						tabIndex={0}
-						aria-label="enlarge graph"
-						onClick={handleOpen}
-					>
-						<OpenInFullIcon />
-					</IconButton>
-				</CardContent>
-			</Card>
+  return (
+    <>
+      <Card
+        aria-label={`This graph displays the ${title} metric for each of your selected attributes`}
+        tabIndex={0}
+        sx={{
+          border: "0.5px solid #000000",
+          width: "30%",
+          borderRadius: "35px",
+          background: "#F8FEFA",
+          alignItems: "center",
+        }}
+      >
+        <CardContent
+          sx={{ justifyContent: "center", alignItems: "center", width: "100%" }}
+        >
+          <Typography
+            style={{
+              textAlign: "left",
+              paddingLeft: "20px",
+              paddingTop: "30px",
+              fontFamily: "Montserrat",
+              fontSize: "20px",
+              fontWeight: 400,
+              fontStyle: "italic",
+            }}
+          >
+            {title}
+          </Typography>
+          <BarChart data={values} height="350px" width="100%" />
+          <IconButton aria-label="enlarge graph" onClick={handleOpen}>
+            <OpenInFullIcon />
+          </IconButton>
+        </CardContent>
+      </Card>
 
-			<Modal open={open} onClose={handleClose}>
-				<Box
-					p={6}
-					aria-label={`Enlarged version of the ${title} graph`}
-					tabIndex={0}
-					sx={{
-						display: "flex",
-						justifyContent: "center",
-						alignItems: "center",
-						position: "absolute",
-						top: "50%",
-						left: "50%",
-						transform: "translate(-50%, -50%)",
-						width: "90%",
-						height: "90%",
-						padding: "10px",
-						borderRadius: "35px",
-					}}
-				>
-					<Card
-						component="div"
-						tabIndex={0}
-						sx={{
-							position: "relative",
-							width: "90%",
-							height: "100%",
-							display: "flex",
-							borderRadius: "35px",
-							backgroundColor: "#F8FEFA",
-							overflow: "auto", // Handle large content
-						}}
-					>
-						{/* Graph Section */}
-						<Box sx={{ flex: 1, padding: "20px" }}>
-							<Typography
-								style={{
-									textAlign: "left",
-									paddingLeft: "20px",
-									paddingTop: "30px",
-									fontFamily: "Montserrat",
-									fontSize: "30px",
-									fontWeight: 400,
-									fontStyle: "italic",
-								}}
-							>
-								{title}
-							</Typography>
-							<CardContent
-								sx={{
-									display: "flex",
-									justifyContent: "center",
-								}}
-							>
-								<BarChart
-									data={values}
-									height="500px"
-									width="90%"
-								/>
-							</CardContent>
-						</Box>
+      <Modal open={open} onClose={handleClose}>
+        <Box
+          p={6}
+          aria-label={`Enlarged version of the ${title} graph`}
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            width: "90%",
+            height: "90%",
+            padding: "10px",
+            borderRadius: "35px",
+          }}
+        >
+          <Card
+            component="div"
+            sx={{
+              position: "relative",
+              width: "90%",
+              height: "100%",
+              display: "flex",
+              borderRadius: "35px",
+              backgroundColor: "#F8FEFA",
+              overflow: "auto", // Handle large content
+            }}
+          >
+            {/* Graph Section */}
+            <Box sx={{ flex: 1, padding: "20px" }}>
+              <Typography
+                style={{
+                  textAlign: "left",
+                  paddingLeft: "20px",
+                  paddingTop: "30px",
+                  fontFamily: "Montserrat",
+                  fontSize: "30px",
+                  fontWeight: 400,
+                  fontStyle: "italic",
+                }}
+              >
+                {title}
+              </Typography>
+              <CardContent sx={{ display: "flex", justifyContent: "center" }}>
+                <BarChart data={values} height="500px" width="90%" />
+              </CardContent>
+            </Box>
 
 						{/* Description Section */}
 						<Box

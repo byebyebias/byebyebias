@@ -1,6 +1,5 @@
-// src/components/Footer/Footer.tsx
-import React from "react";
-import "./Footer.css";
+import React from 'react';
+import './Footer.css';
 
 type FooterProps = {
 	label: string;

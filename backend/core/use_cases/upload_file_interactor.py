@@ -1,4 +1,4 @@
-from backend.core.data_access.file_repository import FileRepository
+from backend.core.use_cases.interfaces import FileRepository
 
 class UploadFileInteractor:
     def __init__(self, file_repo: FileRepository):

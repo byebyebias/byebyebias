@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import "./MainPage.css";
 import Footer from "../components/Footer/Footer";
 import HeroSection from "../components/HeroSection/HeroSection";

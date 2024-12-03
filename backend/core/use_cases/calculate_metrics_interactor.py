@@ -1,4 +1,5 @@
-from backend.core.entities.bias_metrics import BiasMetrics
+from backend.core.infrastructure.factories.abstract_factories import BiasMetricsFactory
+from backend.core.use_cases.interfaces import BiasMetrics
 from aif360.algorithms.preprocessing import DisparateImpactRemover
 from aif360.datasets import BinaryLabelDataset
 from aif360.algorithms.postprocessing import RejectOptionClassification
@@ -6,7 +7,7 @@ from aif360.algorithms.postprocessing import EqOddsPostprocessing
 
 class CalculateMetricsInteractor:
     def calculate(self, df, true_df, pred_df, protected_attributes):
-        bias_metrics = BiasMetrics(df, true_df, pred_df, protected_attributes)
+        bias_metrics = BiasMetricsFactory.create(df, true_df, pred_df, protected_attributes)
 
         all_metrics = bias_metrics.get_all_bias_metrics()
         getScore = bias_metrics.get_score(all_metrics)
@@ -66,7 +67,7 @@ class CalculateMetricsInteractor:
         print(pred_df_repaired.head())
 
         # Calculate metrics for repaired data
-        bias_metrics = BiasMetrics(true_df_repaired, pred_df_repaired, protected_attributes)
+        bias_metrics = BiasMetricsFactory.create(true_df_repaired, pred_df_repaired, protected_attributes)
         all_metrics = bias_metrics.get_all_bias_metrics()
         bias_score = bias_metrics.get_score(all_metrics)
         formatted_metrics = self.reformat_metrics(all_metrics)

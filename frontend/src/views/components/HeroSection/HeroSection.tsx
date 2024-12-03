@@ -1,15 +1,7 @@
-<<<<<<< HEAD
 import React from 'react';
 import './HeroSection.css';
 import Button from '../Button/Button';
 import { Link } from 'react-router-dom';
-=======
-import React from "react";
-import "./HeroSection.css";
-import UploadFileView from "../Upload/UploadFileView";
-import Button from "../Button/Button";
-import { Link } from "react-router-dom";
->>>>>>> 0c2160227812245003b220dd4c091827e3f5965a
 
 type setState = (filename: string) => void;
 

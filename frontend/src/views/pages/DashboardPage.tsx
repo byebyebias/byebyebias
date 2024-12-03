@@ -26,14 +26,6 @@ function DashboardPage() {
         minHeight: "100vh"}}>
 
         <Box
-          role="region"
-          aria-live="polite"
-          sx={{ position: "absolute", left: "-9999px" }}
-        >
-          You are on the Dashboard page.
-        </Box>
-
-        <Box
           sx={{
             display: "flex",
             justifyContent: "space-between",
@@ -66,22 +58,6 @@ function DashboardPage() {
             graphsInfo={dashboardData.metricResults}
           />
         </Box>
-
-        <Typography
-          variant="body1"
-          aria-label={`File path displayed as ${dashboardData.fileName}`}
-          sx={{
-            paddingBottom: "15px",
-            paddingLeft: "75px",
-            textAlign: "left",
-            fontFamily: "Montserrat",
-            color: "#9921D2",
-            fontWeight: 500,
-            fontSize: "15pt",
-          }}
-        >
-          {dashboardData.fileName}
-        </Typography>
 
         <Stack sx={{justifyContent: "center", alignItems: 'center'}}>
 

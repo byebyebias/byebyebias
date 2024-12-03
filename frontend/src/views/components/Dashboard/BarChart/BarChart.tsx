@@ -33,7 +33,6 @@ const BarChart = ({
   width = "100%",
   height = "400px",
 }: BarChartProps) => {
-  // console.log("Data passed to BarChart:", data);
 
   return (
     <div style={{ height: height, width: width, overflowX: "auto" }}>
@@ -75,7 +74,7 @@ const BarChart = ({
         indexBy="protected_attribute"
         margin={{ top: 50, right: 50, bottom: 50, left: 80 }}
         padding={0.3}
-        valueScale={{ type: "linear" }}
+        valueScale={{ type: "linear"}}
         indexScale={{ type: "band", round: true }}
         colors={({ id, data }) =>
           colorMap[data.protected_attribute] || "#cccccc"

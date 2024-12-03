@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, Stack } from "@mui/material";
 import { Graph } from "../Graph/Graph";
 
 interface GraphGridProps {
@@ -37,14 +37,17 @@ const GraphGrid: React.FC<GraphGridProps> = ({ graphsInfo }) => {
   }
 
   return (
-    <Box
+    <Stack
+      direction="row"
       sx={{
-        paddingLeft: "20px",
+        paddingLeft: "0px",
         paddingTop: "40px",
         gap: 4,
         display: "flex",
         flexDirection: "row",
         flexWrap: "wrap",
+        alignItems: "left",
+        justifyContent: "center",
       }}
     >
       {graphsInfo.map((graphInfo) => {
@@ -63,7 +66,7 @@ const GraphGrid: React.FC<GraphGridProps> = ({ graphsInfo }) => {
           />
         );
       })}
-    </Box>
+    </Stack>
   );
 };
 

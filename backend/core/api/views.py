@@ -1,5 +1,6 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from backend.core.api.data import PROCESSING_TECHNIQUES
 from backend.core.data_access.file_repository import FileRepository
 from backend.core.use_cases.calculate_metrics_interactor import CalculateMetricsInteractor
 from backend.core.use_cases.convert_file_interactor import ConvertFileInteractor
@@ -42,7 +43,7 @@ def process_link(request):
                     "accuracy": results["accuracy"]
                 },
                 "metric_results": results["formatted_metrics"],
-            })
+        })
 
     except Exception as e:
         return Response({'status': 'error', 'message': str(e)})

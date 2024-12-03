@@ -42,4 +42,8 @@ class FileConverter():
         pass
         
 
-
+class FileRepository():
+    @abstractmethod
+    def save_file(self) -> Any:
+        pass
+    

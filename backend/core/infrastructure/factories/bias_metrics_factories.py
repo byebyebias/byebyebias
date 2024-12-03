@@ -15,14 +15,14 @@ class UploadFileInteractorFactory:
 
     @staticmethod
     def get() -> UploadFileInteractor:
-        file_repository = FileRepositoryFactory.get()
+        file_repository = FileRepositoryFactory.get_local_file()
         return UploadFileInteractor(file_repository)
     
 class ProcessLinkInteractorFactory:
 
     @staticmethod
     def get() -> ProcessLinkInteractor:
-        file_repository = FileRepositoryFactory.get()
+        file_repository = FileRepositoryFactory.get_s3_file()
         return ProcessLinkInteractor(file_repository)
 
 class ConvertFileInteractorFactory:

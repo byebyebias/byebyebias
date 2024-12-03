@@ -2,9 +2,7 @@ import { fireEvent, queryByLabelText, render, screen } from "@testing-library/re
 import {Graph} from "../views/components/Dashboard/Graph/Graph";
 import '@testing-library/jest-dom';
 
-
-
-jest.mock('../views/components/BarChart/BarChart',() => () => <div>BarChart Component</div>);
+jest.mock('../views/components/Dashboard/BarChart/BarChart',() => () => <div>BarChart Component</div>);
 jest.mock('@nivo/bar', () => ({
     ResponsiveBar: jest.fn(() => <div>Mocked ResponsiveBar</div>),
 }));

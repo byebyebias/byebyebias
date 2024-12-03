@@ -1,15 +1,9 @@
-from django.core.files.storage import default_storage
-from backend.setup.settings import MEDIA_ROOT
 import os
+from backend.core.use_cases.interfaces import FileRepository
+from backend.setup.settings import MEDIA_ROOT
 
-class FileRepository:
-
-    def save_file(self, uploaded_file):
-        file_name = default_storage.save(uploaded_file.name, uploaded_file)
-        file_path = default_storage.path(file_name)
-        return (file_name, file_path)
-    
-    def retrieve_s3_file(self, response):
+class S3FileRepo():
+   def save_file(self, response):
         if 'Content-Disposition' in response.headers:
             content_disposition = response.headers['Content-Disposition']
             file_name = content_disposition.split("filename=")[-1].strip('"')
@@ -23,3 +17,4 @@ class FileRepository:
             for chunk in response.iter_content(chunk_size=8192):  
                 f.write(chunk)
         return (file_name, file_path)
+        

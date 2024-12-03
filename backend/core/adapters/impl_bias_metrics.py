@@ -1,8 +1,9 @@
 from aif360.datasets import BinaryLabelDataset
 from aif360.metrics.mdss_classification_metric import MDSSClassificationMetric
 import pandas as pd
+from backend.core.use_cases.interfaces import BiasMetrics
 
-class BiasMetrics:
+class ImplBiasMetrics(BiasMetrics):
     '''
     BiasMetrics object contains bias metrics.
     '''

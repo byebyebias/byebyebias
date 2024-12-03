@@ -109,7 +109,10 @@ const MainPage: React.FC = () => {
           />
         </div>
       </section>
-      <Footer label="© 2024 Team TripleB" />
+
+      <footer>
+      <Footer label="Made with <3 by Team Triple B" />
+      </footer>
 
     </div>
   );

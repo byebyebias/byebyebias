@@ -3,21 +3,26 @@ import warnings
 
 warnings.filterwarnings("ignore", category=UserWarning) # Suppress PyTorch warnings
 
+# python3.12 manage.py test backend.tests.test_file_converter
+
 class FileConverter:
     
     def __init__(self, file, protected_attributes: list[str]):
         self.df = pandas.read_parquet(file)
         self.protected_attributes = protected_attributes
         self.privileged_groups = {}
+        self.all_groups = []
         self.clean_dataset()
 
     def clean_dataset(self):
         for protected_attribute in self.protected_attributes:
-            # encode the protected attribute column as binary
+            groups = set(self.df[protected_attribute].unique())
+            self.all_groups = groups
+
             priv_group = self.find_priv(protected_attribute)
             self.privileged_groups[protected_attribute] = priv_group
-
-            groups = set(self.df[protected_attribute])
+            
+            # encode the protected attribute column as binary
             group_map = {group: 0 for group in groups if group != priv_group}
             group_map[priv_group] = 1
             self.df[protected_attribute] = self.df[protected_attribute].map(group_map)
@@ -41,6 +46,10 @@ class FileConverter:
         # finds the group with the most number of FPs
         fp_count = self.df[(self.df['is_fraud'] == 0) & (self.df['predicted_fraud'] == 1)].groupby(column).size().sort_values(ascending=True)
 
+        if fp_count.shape[0] != len(self.all_groups):
+            no_fp = [group for group in self.all_groups if group not in fp_count.index]
+            return no_fp[0]
+    
         # outlier if top two rows are equal or 0
         if fp_count.index[0] == fp_count.index[1]:
             # break tie with false negative comparison

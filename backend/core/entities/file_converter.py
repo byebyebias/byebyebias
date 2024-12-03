@@ -1,4 +1,4 @@
-import pandas
+'''import pandas
 import warnings
 
 warnings.filterwarnings("ignore", category=UserWarning) # Suppress PyTorch warnings
@@ -50,5 +50,5 @@ class FileConverter:
         return fp_count.index[0]
     
     def get_privileged_groups(self):
-        return self.privileged_groups
+        return self.privileged_groups'''
         

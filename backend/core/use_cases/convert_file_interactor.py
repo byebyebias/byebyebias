@@ -1,4 +1,4 @@
-from backend.core.entities.file_converter import FileConverter
+from backend.core.use_cases.interfaces import FileConverter
 
 class ConvertFileInteractor:
     def convert(self, file_path, protected_attributes):

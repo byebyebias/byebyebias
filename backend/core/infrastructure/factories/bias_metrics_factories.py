@@ -1,5 +1,9 @@
+import pandas as pd
+from backend.core.adapters.impl_bias_metrics import ImplBiasMetrics
+
 from backend.core.use_cases.calculate_metrics_interactor import CalculateMetricsInteractor
 from backend.core.use_cases.convert_file_interactor import ConvertFileInteractor
+from backend.core.use_cases.interfaces import BiasMetrics
 from backend.core.use_cases.upload_file_interactor import UploadFileInteractor
 from backend.core.use_cases.process_link_interactor import ProcessLinkInteractor
 
@@ -58,3 +62,10 @@ class BiasMetricsViewSetFactory:
             upload_file_interactor,
             process_link_interactor
         )
+
+class BiasMetricsFactory:
+
+    @staticmethod
+    def create(df: pd.DataFrame, true_df: pd.DataFrame, pred_df: pd.DataFrame, protected_attributes: list[str]) -> BiasMetrics:
+        return ImplBiasMetrics(df, true_df, pred_df, protected_attributes)
+    

@@ -1,4 +1,4 @@
-from backend.core.entities.bias_metrics import BiasMetrics
+from backend.core.use_cases.interfaces import BiasMetrics
 from aif360.algorithms.preprocessing import DisparateImpactRemover
 from aif360.datasets import BinaryLabelDataset
 from aif360.algorithms.postprocessing import RejectOptionClassification

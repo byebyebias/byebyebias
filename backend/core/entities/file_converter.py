@@ -15,10 +15,8 @@ class FileConverter:
         self.clean_dataset()
 
     def clean_dataset(self):
-        print("PA", self.protected_attributes)
         for protected_attribute in self.protected_attributes:
             groups = set(self.df[protected_attribute].unique())
-            print("groups", groups)
             self.all_groups = groups
 
             priv_group = self.find_priv(protected_attribute)
@@ -47,13 +45,9 @@ class FileConverter:
         # column in table, eg. sender_gender, sender_race 
         # finds the group with the most number of FPs
         fp_count = self.df[(self.df['is_fraud'] == 0) & (self.df['predicted_fraud'] == 1)].groupby(column).size().sort_values(ascending=True)
-        print("fp_count", fp_count)
 
-        print("all_groups", self.all_groups)
-        # print("length", len(self.all_groups[column]))
         if fp_count.shape[0] != len(self.all_groups):
             no_fp = [group for group in self.all_groups if group not in fp_count.index]
-            print("no_fp", no_fp)
             return no_fp[0]
     
         # outlier if top two rows are equal or 0

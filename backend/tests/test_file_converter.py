@@ -20,7 +20,5 @@ class TestFileConverter(TestCase):
 
     def test_file_converter(self):
         # tests if dataset has been cleaned according to correct privileged groups
-        print("File sender_gender", self.file.df["sender_gender"])
-        print("Answer: ", self.df["sender_gender"])
         self.assertTrue(self.file.df["sender_gender"].reset_index(drop=True).equals(self.df["sender_gender"].reset_index(drop=True)))
         self.assertTrue(self.file.df["sender_race"].reset_index(drop=True).equals(self.df["sender_race"].reset_index(drop=True)))

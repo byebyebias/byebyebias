@@ -72,7 +72,6 @@ export const Graph: React.FC<GraphProps> = ({
           </Typography>
           <BarChart data={values} height="350px" width="100%" />
           <IconButton
-            tabIndex={0}
             aria-label="enlarge graph"
             onClick={handleOpen}
           >
@@ -86,7 +85,6 @@ export const Graph: React.FC<GraphProps> = ({
         <Box
           p={6}
           aria-label={`Enlarged version of the ${title} graph`}
-          tabIndex={0}
           sx={{
             display: "flex",
             justifyContent: "center",
@@ -103,7 +101,6 @@ export const Graph: React.FC<GraphProps> = ({
         >
           <Card
             component="div"
-            tabIndex={0}
             sx={{
               position: "relative",
               width: "90%",

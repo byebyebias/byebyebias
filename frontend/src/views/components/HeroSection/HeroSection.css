@@ -1,44 +1,43 @@
-
 .hero-section {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    margin-left: 70px;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: flex-start;
+	margin-left: 70px;
 }
 
 .hero-heading {
-    width: 50vw;
-    height: auto;
+	width: 50vw;
+	height: auto;
 
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 60px;
-    line-height: 91px;
+	font-family: "Montserrat";
+	font-style: normal;
+	font-weight: 700;
+	font-size: 60px;
+	line-height: 91px;
 
-    color: #000000;
-    margin: 0;
+	color: #000000;
+	margin: 0;
 }
 
 .hero-heading .highlight {
-    color: #9921D2;
+	color: #9921d2;
 }
 
 .hero-body {
-    width: 50vw;
-    height: auto;
+	width: 50vw;
+	height: auto;
 
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 300;
-    font-size: 30px;
-    line-height: 43px;
+	font-family: "Montserrat";
+	font-style: normal;
+	font-weight: 300;
+	font-size: 30px;
+	line-height: 43px;
 
-    color: #000000;
+	color: #000000;
 }
 
 .hero-body .highlight {
-    color: #9921D2;
-    text-decoration: underline;
+	color: #9921d2;
+	text-decoration: underline;
 }

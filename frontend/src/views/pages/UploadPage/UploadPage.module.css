@@ -1,102 +1,102 @@
-body, html {
-    padding: 0;
-    margin: 0;
+body,
+html {
+	padding: 0;
+	margin: 0;
 }
 
 .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 2em;
-    height: 100vh;
-    width: 100vw;
-    background-color: #F9FFFB;
-    margin: 0;
-    padding: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	gap: 2em;
+	height: 100vh;
+	width: 100vw;
+	background-color: #f9fffb;
+	margin: 0;
+	padding: 0;
 }
 
 .center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 2em;
-    width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	gap: 2em;
+	width: 100%;
 }
 
 button.attributeButton {
-    color: white;
-    background: #9921D2;
-    border-radius: 10px;
-    padding: 10px;
-    text-transform: lowercase;
-    width:150px;
-    align-self: "center";
-    font-weight: 600;
+	color: white;
+	background: #9921d2;
+	border-radius: 10px;
+	padding: 10px;
+	text-transform: lowercase;
+	width: 150px;
+	align-self: "center";
+	font-weight: 600;
 }
 
 button.selectedAttribute {
-    background: #5a147b;
+	background: #5a147b;
 }
 
 .attributeSelection {
-    background: #E6EEF5;
-    padding: 25px;
-    border-radius: 10px;
-    border: 0.5px solid black;
-    box-shadow: 0px 4px 4px lightgrey;
-    width: 40%;
+	background: #e6eef5;
+	padding: 25px;
+	border-radius: 10px;
+	border: 0.5px solid black;
+	box-shadow: 0px 4px 4px lightgrey;
+	width: 40%;
 }
 
 .filename {
-    color: #6820EA;
-    font-weight: bold;
-    font-family: "Montserrat";
+	color: #6820ea;
+	font-weight: bold;
+	font-family: "Montserrat";
 }
 
 .actionText {
-    font-size: 10em;
+	font-size: 10em;
 }
 
 .bucketUrlInput {
-    height: 50px;
-    width: 400px;
-    background-color: #E6EEF5;
-    border: none;
-    border-radius: 30px;
-    box-shadow: 0px 3px 3px lightgrey;
-    padding: 0 60px;
-    font-size: 16px;
+	height: 50px;
+	width: 400px;
+	background-color: #e6eef5;
+	border: none;
+	border-radius: 30px;
+	box-shadow: 0px 3px 3px lightgrey;
+	padding: 0 60px;
+	font-size: 16px;
 }
 
 .bucketUrlInput::placeholder {
-    font-style: italic;
-    color: #979797;
-    font-family: 'Montserrat';
-    font-size: 16px;
-
+	font-style: italic;
+	color: #979797;
+	font-family: "Montserrat";
+	font-size: 16px;
 }
 
 .bucketLinkIcon {
-    position: absolute;
-    left: 15px;
-    top: 13px;
-    height: 25px;
+	position: absolute;
+	left: 15px;
+	top: 13px;
+	height: 25px;
 }
 
 button.uploadButton {
-    background-color: #00CF31; 
-    color: white; 
-    border-radius: 40px; 
-    padding: 6px 40px; 
-    min-width: 175px;
-    text-transform: none;
-    font-size: 20px;
-    font-family: "Montserrat";
+	background-color: #00cf31;
+	color: white;
+	border-radius: 40px;
+	padding: 6px 40px;
+	min-width: 175px;
+	text-transform: none;
+	font-size: 20px;
+	font-family: "Montserrat";
 }
 
 button.uploadButton:disabled {
-    opacity: 60%;
-    color: lightgrey;
+	opacity: 60%;
+	color: lightgrey;
 }

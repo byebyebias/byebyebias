@@ -1,21 +1,21 @@
 import { useNavigate } from "react-router";
 
 export class UploadFilePresenter {
-  private navigate = useNavigate();
+	private navigate = useNavigate();
 
-  presentUploadResult(data: any) {
-    this.navigate("/dashboard", {
-      state: {
-        dashboardData: {
-          filePath: data.filePath,
-          overview: data.overview,
-          metricResults: data.metricResults,
-        },
-      },
-    });
-  }
+	presentUploadResult(data: any) {
+		this.navigate("/dashboard", {
+			state: {
+				dashboardData: {
+					filePath: data.filePath,
+					overview: data.overview,
+					metricResults: data.metricResults,
+				},
+			},
+		});
+	}
 
-  presentError(message: string) {
-    console.error(message);
-  }
+	presentError(message: string) {
+		console.error(message);
+	}
 }

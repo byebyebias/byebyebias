@@ -10,7 +10,7 @@ const Navbar: React.FC = () => {
       <nav className="navbar" aria-label="Main site navigation">
 
         <Link className="logo" to="/">
-          <img src={Logo} alt="Bye Bye Bias Home" />
+          <img src={Logo} alt="Bye Bye Bias Home Link" />
         </Link>
 
         <ul>

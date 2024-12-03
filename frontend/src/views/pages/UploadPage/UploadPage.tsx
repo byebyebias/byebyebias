@@ -84,7 +84,7 @@ function UploadPage() {
     return (
         <>  
             {/* Aria live region to display to screen readers that upload page is changed to attribute selection */}
-            <div className={styles.visuallyHidden} aria-live="polite">
+            <div className={styles.visuallyHidden} aria-live="polite" role="alert">
                 {ariaLiveContent}
             </div>
 

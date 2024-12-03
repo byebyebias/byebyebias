@@ -28,6 +28,7 @@ function UploadPage() {
     const [page, setPage] = useState<number>(1)
     const [link, setLink] = useState<string>("")
     const [selectedButtons, setSelectedButtons] = useState<Array<string>>([])
+    const [ariaLiveContent, setAriaLiveContent] = useState<string>('')
     const linkRef = useRef<HTMLInputElement | null>(null)
 
     const file_presenter = new UploadFilePresenter();
@@ -44,13 +45,16 @@ function UploadPage() {
     };
 
     const handleUploadClick = () => {
+        const pageChangeMessage = "Upload is a success. Page has been changed to protected attribute selection"
         if (file && link) {
             linkRef.current?.setCustomValidity("Please enter ONLY A FILE or ONLY A LINK")
             linkRef.current?.reportValidity()
         } else if (file) {
             setPage(2)
+            setAriaLiveContent(pageChangeMessage)
         } else if (link) {
             setPage(2)
+            setAriaLiveContent(pageChangeMessage)
         } else if (linkRef.current?.reportValidity()) {
             setPage(2)
         } 
@@ -77,10 +81,13 @@ function UploadPage() {
 
     const onLinkChange = (e: React.ChangeEvent<HTMLInputElement>) => setLink(e.target.value) 
 
-
-
     return (
-        <>
+        <>  
+            {/* Aria live region to display to screen readers that upload page is changed to attribute selection */}
+            <div className={styles.visuallyHidden} aria-live="polite">
+                {ariaLiveContent}
+            </div>
+
             <Navbar />
             <Container
                 maxWidth={false}
@@ -124,10 +131,15 @@ function UploadPage() {
                                 />
                             </div>
 
+                            <div>
+                                
+                            </div>
+
                             <Button 
                                 onClick={handleUploadClick}
                                 className={styles.uploadButton}
                                 disabled={file == undefined && link == ''}
+                                aria-live="polite"
                             >
                                 Upload
                             </Button>

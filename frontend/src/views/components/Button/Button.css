@@ -27,3 +27,7 @@ button:hover {
     box-shadow: 4px 7px 7px 0px rgba(2, 81, 52, 0.5);
     cursor: pointer;
   }
+
+button:focus {
+    box-shadow: 4px 7px 7px 0px rgba(2, 81, 52, 0.5);
+}

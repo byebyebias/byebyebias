@@ -51,6 +51,7 @@ class BiasMetricsViewSetFactory:
         convert_file_interactor = ConvertFileInteractorFactory.get()
         upload_file_interactor = UploadFileInteractorFactory.get()
         process_link_interactor = ProcessLinkInteractorFactory.get()
+
         return BiasMetricsController(
             calculate_metrics_interactor, 
             convert_file_interactor, 

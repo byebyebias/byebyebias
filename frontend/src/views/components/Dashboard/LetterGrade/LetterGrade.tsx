@@ -19,7 +19,7 @@ function LetterGrade( { score, percentage }: LetterGradeProps ) {
             <CardContent>
                 <Typography variant="h2" sx= {{paddingBottom: '10px', textAlign: 'left', paddingTop: '10px', fontFamily: 'Montserrat', fontWeight: 700, fontSize: '40px', color: '#28282C'}}>Fairness score:</Typography>
 
-                <Card sx = {{width: '145px', height: '130px', background: backgroundColour, borderRadius: '20px'}}>
+                <Card sx = {{width: '35%', height: '130px', background: backgroundColour, borderRadius: '20px'}}>
 
                     <CardContent sx={{justifyContent: 'center'}}>
                         <Typography aria-label={`${score}`} sx={{ textAlign: 'center', fontFamily: 'Montserrat', fontWeight: 700, fontSize: '83px', lineHeight: '110px', color: textColour}}>{score}</Typography>

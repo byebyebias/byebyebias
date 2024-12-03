@@ -177,7 +177,7 @@ function UploadPage() {
             </Container>    
 
             <footer>
-                <Footer label="made with <3 by team triple b."/>
+            <Footer label="Made with <3 by Team Triple B" />
             </footer>
         </>
     )

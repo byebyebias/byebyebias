@@ -77,7 +77,6 @@ export const Graph: React.FC<GraphProps> = ({
             onClick={handleOpen}
           >
             <OpenInFullIcon />
-           
           </IconButton>
         </CardContent>
       </Card>

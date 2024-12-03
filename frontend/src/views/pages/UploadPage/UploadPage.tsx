@@ -31,6 +31,7 @@ function UploadPage() {
 	const [selectedButtons, setSelectedButtons] = useState<Array<string>>(
 		[]
 	);
+    const [ariaLiveContent, setAriaLiveContent] = useState<string>('');
 	const linkRef = useRef<HTMLInputElement | null>(null);
 
 	const file_presenter = new UploadFilePresenter();
@@ -55,6 +56,7 @@ function UploadPage() {
 	};
 
 	const handleUploadClick = () => {
+        const pageChangeMessage = "Upload is a success. Page has been changed to protected attribute selection";
 		if (file && link) {
 			linkRef.current?.setCustomValidity(
 				"Please enter ONLY A FILE or ONLY A LINK"
@@ -62,8 +64,10 @@ function UploadPage() {
 			linkRef.current?.reportValidity();
 		} else if (file) {
 			setPage(2);
+            setAriaLiveContent(pageChangeMessage);
 		} else if (link) {
 			setPage(2);
+            setAriaLiveContent(pageChangeMessage);
 		} else if (linkRef.current?.reportValidity()) {
 			setPage(2);
 		}
@@ -104,6 +108,10 @@ function UploadPage() {
 
 	return (
 		<>
+            {/* Aria live region to display to screen readers that upload page is changed to attribute selection */}
+            <div className={styles.visuallyHidden} aria-live="polite" role="alert">
+                {ariaLiveContent}
+            </div>
 			<Navbar />
 			<Container
 				maxWidth={false}
@@ -147,14 +155,14 @@ function UploadPage() {
 								</Typography>
 							</Box>
 
-							<Typography
-								variant="h2"
-								fontSize="2.5em"
-								fontWeight="500"
-								fontFamily="Montserrat"
-							>
-								or
-							</Typography>
+                            <Typography 
+                                variant="h2"
+                                fontSize="2.5em"
+                                fontWeight="500"
+                                fontFamily="Montserrat"
+                            >
+                                or
+                            </Typography>
 
 							<div
 								style={{
@@ -190,44 +198,23 @@ function UploadPage() {
 								/>
 							</div>
 
-							<Button
-								onClick={
-									handleUploadClick
-								}
-								className={
-									styles.uploadButton
-								}
-								disabled={
-									file ==
-										undefined &&
-									link ==
-										""
-								}
-							>
-								Upload
-							</Button>
-						</main>
-					</>
-				)}
+                            <Button 
+                                onClick={handleUploadClick}
+                                className={styles.uploadButton}
+                                disabled={file == undefined && link == ''}
+                                aria-live="polite"
+                            >
+                                Upload
+                            </Button>
+                        </main>
 
-				{page === 2 && (
-					<>
-						<main
-							className={
-								styles.center
-							}
-							aria-live="polite"
-						>
-							<Typography
-								variant="h1"
-								fontSize="4em"
-								fontWeight="bold"
-								id="uploadHeader"
-								fontFamily="Montserrat"
-							>
-								Select
-								Attributes
-							</Typography>
+                    </>
+                )}
+
+                {page === 2 && 
+                    <>
+                        <main className={styles.center} aria-live="polite">
+                            <Typography  variant="h1" fontSize="4em" fontWeight="bold" id="uploadHeader" fontFamily="Montserrat">Select Attributes</Typography>
 
 							{/* TODO FOR BUCKET, ADD ACTUAL FILE NAME WHEN CONNECTED WITH S3 INTEGRATION*/}
 							<Typography
@@ -319,7 +306,7 @@ function UploadPage() {
 							</Button>
 						</main>
 					</>
-				)}
+				}
 			</Container>
 
 			<footer>

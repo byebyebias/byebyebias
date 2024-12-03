@@ -1,6 +1,6 @@
 import pandas as pd
 
-from backend.core.infrastructure.factories.abstract_factories import FileRepositoryFactory
+from backend.core.infrastructure.factories.abstract_factories import FileConverterFactory, FileRepositoryFactory
 from backend.core.use_cases.calculate_metrics_interactor import CalculateMetricsInteractor
 from backend.core.use_cases.convert_file_interactor import ConvertFileInteractor
 from backend.core.use_cases.upload_file_interactor import UploadFileInteractor
@@ -27,6 +27,7 @@ class ConvertFileInteractorFactory:
 
     @staticmethod
     def get() -> ConvertFileInteractor:
+
         return ConvertFileInteractor()
 
 
@@ -38,24 +39,16 @@ class CalculateMetricsInteractorFactory:
 
 
 class BiasMetricsViewSetFactory:
-    def __init__(self, 
-                 calculate_metrics: CalculateMetricsInteractor, 
-                 convert_file_interactor: ConvertFileInteractor, 
-                 upload_file_interactor: UploadFileInteractor, 
-                 process_link_interactor: ProcessLinkInteractor):
-        # Initialize the factory with the provided interactors
-        self.calculate_metrics = calculate_metrics
-        self.convert_file_interactor = convert_file_interactor
-        self.upload_file_interactor = upload_file_interactor
-        self.process_link_interactor = process_link_interactor
+    @staticmethod
+    def create() -> BiasMetricsController:
+        calculate_metrics_interactor = CalculateMetricsInteractorFactory.get()
+        convert_file_interactor = ConvertFileInteractorFactory.get()
+        upload_file_interactor = UploadFileInteractorFactory.get()
+        process_link_interactor = ProcessLinkInteractorFactory.get()
 
-    def create(self) -> BiasMetricsController:
-        # Use the interactors passed to the constructor to create the controller
         return BiasMetricsController(
-            self.calculate_metrics,
-            self.convert_file_interactor,
-            self.upload_file_interactor,
-            self.process_link_interactor
+            calculate_metrics_interactor, 
+            convert_file_interactor, 
+            upload_file_interactor,
+            process_link_interactor
         )
-
-

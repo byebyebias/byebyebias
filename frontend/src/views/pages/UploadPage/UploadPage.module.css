@@ -87,18 +87,22 @@ button.selectedAttribute {
 
 button.uploadButton {
     background-color: #00CF31; 
-    color: white; 
+    color: black; 
     border-radius: 40px; 
     padding: 6px 40px; 
     min-width: 175px;
     text-transform: none;
     font-size: 20px;
     font-family: "Montserrat";
+    font-weight: bold;
 }
 
 button.uploadButton:disabled {
-    opacity: 60%;
-    color: lightgrey;
+    opacity: 50%;
+}
+
+button.uploadButton:hover {
+    box-shadow: 4px 7px 7px 0px rgba(2, 81, 52, 0.5)
 }
 
 .visuallyHidden {

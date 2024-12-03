@@ -1,6 +1,4 @@
-
 import { Button } from "@mui/material";
-import UploadFile from "./UploadFile/UploadFile"
 import React, { useRef, useState } from "react";
 import UploadIcon from '@mui/icons-material/Upload';
 
@@ -13,7 +11,6 @@ const UploadFileView: React.FC<Props> = ({handleFileChange}) => {
   const handleButtonClick = () => {
     fileInputRef.current?.click();
   };
-  console.log(fileInputRef.current?.files)
 
   return (
     <div>

@@ -1,8 +1,8 @@
 import pandas as pd
 from backend.core.adapters.impl_bias_metrics import ImplBiasMetrics
 from backend.core.adapters.impl_file_converter import ImplFileConverter
-from backend.core.data_access.LocalFileRepo import LocalFileRepo
-from backend.core.data_access.S3FileRepo import S3FileRepo
+from backend.core.data_access.local_file_repo import LocalFileRepo
+from backend.core.data_access.s3_file_repo import S3FileRepo
 from backend.core.use_cases.interfaces import BiasMetrics, FileConverter, FileRepository
 
 

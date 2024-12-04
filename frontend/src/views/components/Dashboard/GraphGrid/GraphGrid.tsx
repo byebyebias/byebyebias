@@ -5,7 +5,7 @@ interface GraphGridProps {
 	graphsInfo: {
 		title: string;
 		values: { protected_attribute: string; score: number }[];
-	}[];
+	}[] | undefined;
 }
 
 const GraphGrid: React.FC<GraphGridProps> = ({ graphsInfo }) => {

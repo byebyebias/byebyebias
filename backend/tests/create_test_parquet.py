@@ -9,7 +9,7 @@ class CreateTestParquet:
             "receiver_gender": ["Woman", "Woman", "Woman", "Man", "Man"],
             "receiver_race": ["Hispanic", "Hispanic", "White", "Asian", "Black"],
             "is_fraud": [1, 0, 1, 0, 0],
-            "predicted_fraud": [0, 0, 1, 0, 1]
+            "predicted_fraud": [0, 1, 1, 0, 0]
         }
         df = pd.DataFrame(data)
 

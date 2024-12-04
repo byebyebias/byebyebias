@@ -1,16 +1,19 @@
-import { fireEvent, queryByLabelText, render, screen } from "@testing-library/react";
+import { fireEvent, getByLabelText, queryByLabelText, render, screen } from "@testing-library/react";
 import {Graph} from "../views/components/Dashboard/Graph/Graph";
 import '@testing-library/jest-dom';
 
+// jest.mock('../views/components/Dashboard/BarChart/BarChart', () => ({default: jest.fn(() => <div>BarChart Component</div>)}));
+
+jest.mock('../views/components/Dashboard/BarChart/BarChart', () => ({default: jest.fn(() => <div>BarChart Component</div>)}));
 
 
-jest.mock('../views/components/BarChart/BarChart',() => () => <div>BarChart Component</div>);
 jest.mock('@nivo/bar', () => ({
     ResponsiveBar: jest.fn(() => <div>Mocked ResponsiveBar</div>),
 }));
 
 jest.mock('@mui/material/Modal', () => ({ children }: any) => <div>Mocked Modal</div>);
 
+console.log(Graph)
 
 let graphsInfo=
         [{'title': 'Disparate Impact', 'values': [{'protected_attribute': 'sender_gender', 'score': 0.03}]}, 
@@ -28,7 +31,10 @@ describe('Graph', () =>{
         expect(screen.getByText(/Disparate Impact/i)).toBeInTheDocument();    
     });
 
-    }
-    
+    test('renders Graph modal on click', () => {
+        const enlarge_button = screen.getByLabelText("enlarge graph")
+        fireEvent.click(enlarge_button)
+        expect(screen.getByText("Mocked Modal")).toBeInTheDocument()
+    })
+ }
 );
-

@@ -1,9 +1,9 @@
 from django.test import TestCase
 from backend.tests.create_test_parquet import CreateTestParquet
-from backend.core.entities.file_converter import FileConverter
+from backend.core.adapters.impl_file_converter import ImplFileConverter
 import pandas as pd
 
-# python manage.py test backend.tests.test_file_converter
+# python manage.py test backend.tests.test_impl_file_converter
 
 class TestFileConverter(TestCase):
     def setUp(self):
@@ -13,7 +13,7 @@ class TestFileConverter(TestCase):
         )
 
         self.test_parquet = CreateTestParquet()
-        self.file = FileConverter(self.test_parquet.parquet_file_path, protected_attributes=["sender_gender", "sender_race"])
+        self.file = ImplFileConverter(self.test_parquet.parquet_file_path, protected_attributes=["sender_gender", "sender_race"])
 
     def tearDown(self):
         self.test_parquet.destroy_parquet()

@@ -12,26 +12,17 @@ function DashboardPage() {
 	const location = useLocation();
 	const { dashboardData } = location.state;
 
-	return (
-		<>
-			<Navbar />
-			<main
-				role="main"
-				style={{
-					backgroundImage: `url(${BackgroundImage})`,
-					backgroundSize: "cover",
-					backgroundRepeat: "no-repeat",
-					backgroundPosition: "center",
-					minHeight: "100vh",
-				}}
-			>
-				<Box
-					role="region"
-					aria-live="polite"
-					sx={{ position: "absolute", left: "-9999px" }}
-				>
-					You are on the Dashboard page.
-				</Box>
+  return (
+    <>
+      <Navbar />
+      <main 
+      role="main"
+      style={{
+        backgroundImage: `url(${BackgroundImage})`, 
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "center",
+        minHeight: "100vh"}}>
 
 				<Box
 					sx={{
@@ -56,32 +47,16 @@ function DashboardPage() {
 						Dashboard
 					</Typography>
 
-					<ExportJSONButton
-						data={
-							dashboardData.overview || {
-								score: 0,
-								top_category: "Sender_Gender",
-							}
-						}
-						graphsInfo={dashboardData.metricResults}
-					/>
-				</Box>
-
-				<Typography
-					variant="body1"
-					aria-label={`File path displayed as ${dashboardData.fileName}`}
-					sx={{
-						paddingBottom: "15px",
-						paddingLeft: "75px",
-						textAlign: "left",
-						fontFamily: "Montserrat",
-						color: "#9921D2",
-						fontWeight: 500,
-						fontSize: "15pt",
-					}}
-				>
-					{dashboardData.fileName}
-				</Typography>
+          <ExportJSONButton
+            data={
+              dashboardData.overview || {
+                score: 0,
+                top_category: "Sender_Gender",
+              }
+            }
+            graphsInfo={dashboardData.metricResults}
+          />
+        </Box>
 
 				<Stack sx={{ justifyContent: "center", alignItems: "center" }}>
 					<Box sx={{ width: "90%", alignItems: "center" }}>

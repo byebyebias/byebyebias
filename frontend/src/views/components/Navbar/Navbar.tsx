@@ -4,24 +4,25 @@ import "./Navbar.css";
 import { Link } from "react-router-dom";
 
 const Navbar: React.FC = () => {
-	return (
-		<header className="navbar">
-			<Link className="logo" to="/">
-				<img src={Logo} alt="Logo" />
-			</Link>
+  return (
+    <header>
+      <nav className="navbar" aria-label="Main site navigation">
 
-			<nav>
-				<ul>
-					<li>
-						<Link to="/">Home</Link>
-					</li>
-					<li>
-						<Link to="/upload">Upload</Link>
-					</li>
-				</ul>
-			</nav>
-		</header>
-	);
+        <Link className="logo" to="/">
+          <img src={Logo} aria-label="Bye Bye Bias Home Link" alt="Bye Bye Bias Home Link" />
+        </Link>
+
+        <ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/upload">Upload</Link>
+          </li>
+        </ul>
+      </nav> 
+    </header>
+  );
 };
 
 export default Navbar;

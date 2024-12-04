@@ -1,11 +1,10 @@
 import pandas
 import warnings
+from backend.core.use_cases.interfaces import FileConverter
 
 warnings.filterwarnings("ignore", category=UserWarning) # Suppress PyTorch warnings
 
-# python3.12 manage.py test backend.tests.test_file_converter
-
-class FileConverter:
+class ImplFileConverter(FileConverter):
     
     def __init__(self, file, protected_attributes: list[str]):
         self.df = pandas.read_parquet(file)
@@ -45,16 +44,13 @@ class FileConverter:
         # column in table, eg. sender_gender, sender_race 
         # finds the group with the most number of FPs
         fp_count = self.df[(self.df['is_fraud'] == 0) & (self.df['predicted_fraud'] == 1)].groupby(column).size().sort_values(ascending=True)
-
-        if fp_count.shape[0] != len(self.all_groups):
-            no_fp = [group for group in self.all_groups if group not in fp_count.index]
-            return no_fp[0]
     
-        # outlier if top two rows are equal or 0
-        if fp_count.index[0] == fp_count.index[1]:
-            # break tie with false negative comparison
-            fn_count = self.df[(self.df['is_fraud'] == 1) & (self.df['predicted_fraud'] == 0)].groupby(column).size().sort_values(ascending=True)
-            return fn_count.index[0]
+        # outlier if top two rows are equal
+        if fp_count.shape[0] > 1:
+            if fp_count.index[0] == fp_count.index[1]:
+                # break tie with false negative comparison
+                fn_count = self.df[(self.df['is_fraud'] == 1) & (self.df['predicted_fraud'] == 0)].groupby(column).size().sort_values(ascending=True)
+                return fn_count.index[0]
         
         return fp_count.index[0]
     

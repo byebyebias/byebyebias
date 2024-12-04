@@ -10,15 +10,18 @@ class ImplFileConverter(FileConverter):
         self.df = pandas.read_parquet(file)
         self.protected_attributes = protected_attributes
         self.privileged_groups = {}
+        self.all_groups = []
         self.clean_dataset()
 
     def clean_dataset(self):
         for protected_attribute in self.protected_attributes:
-            # encode the protected attribute column as binary
+            groups = set(self.df[protected_attribute].unique())
+            self.all_groups = groups
+
             priv_group = self.find_priv(protected_attribute)
             self.privileged_groups[protected_attribute] = priv_group
-
-            groups = set(self.df[protected_attribute])
+            
+            # encode the protected attribute column as binary
             group_map = {group: 0 for group in groups if group != priv_group}
             group_map[priv_group] = 1
             self.df[protected_attribute] = self.df[protected_attribute].map(group_map)
@@ -41,12 +44,13 @@ class ImplFileConverter(FileConverter):
         # column in table, eg. sender_gender, sender_race 
         # finds the group with the most number of FPs
         fp_count = self.df[(self.df['is_fraud'] == 0) & (self.df['predicted_fraud'] == 1)].groupby(column).size().sort_values(ascending=True)
-
-        # outlier if top two rows are equal or 0
-        if fp_count.index[0] == fp_count.index[1]:
-            # break tie with false negative comparison
-            fn_count = self.df[(self.df['is_fraud'] == 1) & (self.df['predicted_fraud'] == 0)].groupby(column).size().sort_values(ascending=True)
-            return fn_count.index[0]
+    
+        # outlier if top two rows are equal
+        if fp_count.shape[0] > 1:
+            if fp_count.index[0] == fp_count.index[1]:
+                # break tie with false negative comparison
+                fn_count = self.df[(self.df['is_fraud'] == 1) & (self.df['predicted_fraud'] == 0)].groupby(column).size().sort_values(ascending=True)
+                return fn_count.index[0]
         
         return fp_count.index[0]
     

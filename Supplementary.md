@@ -1,5 +1,13 @@
 # Supplementary Document
 
+## Submitted PRs
+- [S3/CA from Leilia](https://github.com/byebyebias/byebyebias/pull/70)
+- [SOLID from Akshata](https://github.com/byebyebias/byebyebias/pull/76)
+- [Dhairya](https://github.com/byebyebias/byebyebias/pull/45)
+- [Accessibility from Chloe](https://github.com/byebyebias/byebyebias/pull/58)
+- [Helen](https://github.com/byebyebias/byebyebias/pull/49)
+- [CA from Michelle](https://github.com/byebyebias/byebyebias/pull/57)
+
 ## Overall Design
 
 ### Open-Closed Principle

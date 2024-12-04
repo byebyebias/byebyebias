@@ -1,6 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import BarChart from '../views/components/Dashboard/BarChart/BarChart';
+import { getLuminance } from '../views/components/Dashboard/BarChart/BarChart';
 import { ResponsiveBar } from '@nivo/bar';
 
 jest.mock('@nivo/bar', () => ({
@@ -114,4 +115,9 @@ test("renders x and y axis correctly", () => {
 
 })
 
+describe("test luminance function", () => {
 
+  test("calculate luminance for white", () => {
+    expect(getLuminance(255, 255, 255)).toBe(1)
+  })
+})

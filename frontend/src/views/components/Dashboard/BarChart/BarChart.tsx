@@ -124,3 +124,4 @@ const BarChart = ({
 };
 
 export default BarChart;
+export { getLuminance }

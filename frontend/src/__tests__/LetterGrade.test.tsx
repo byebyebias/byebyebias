@@ -11,3 +11,10 @@ test('renders lettergrade with the correct score', () => {
     const gradeElement = screen.getByText(/A-/i);
     expect(gradeElement).toHaveTextContent("A-");  
 });
+
+test('throws error when letter grade is out of bounds', () => {
+
+    expect( () =>
+        render(<LetterGrade percentage={101} score="A-" />)
+    ).toThrow("Percentage out of bounds");  
+});

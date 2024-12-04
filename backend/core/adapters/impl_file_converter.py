@@ -44,10 +44,6 @@ class ImplFileConverter(FileConverter):
         # column in table, eg. sender_gender, sender_race 
         # finds the group with the most number of FPs
         fp_count = self.df[(self.df['is_fraud'] == 0) & (self.df['predicted_fraud'] == 1)].groupby(column).size().sort_values(ascending=True)
-
-        if fp_count.shape[0] != len(self.all_groups):
-            no_fp = [group for group in self.all_groups if group not in fp_count.index]
-            return no_fp[0]
     
         # outlier if top two rows are equal or 0
         if fp_count.index[0] == fp_count.index[1]:

@@ -1,7 +1,7 @@
 from django.test import TestCase
 from backend.tests.create_test_parquet import CreateTestParquet
-from backend.core.entities.file_converter import FileConverter
-from backend.core.entities.bias_metrics import BiasMetrics
+from backend.core.adapters.impl_file_converter import ImplFileConverter
+from backend.core.adapters.impl_bias_metrics import ImplBiasMetrics
 import pandas as pd
 import math
 
@@ -15,9 +15,9 @@ class TestBiasMetrics(TestCase):
         )
 
         self.test_parquet = CreateTestParquet()
-        file = FileConverter(self.test_parquet.parquet_file_path, protected_attributes=["sender_gender", "sender_race"])
+        file = ImplFileConverter(self.test_parquet.parquet_file_path, protected_attributes=["sender_gender", "sender_race"])
 
-        self.metrics = BiasMetrics(file.get_df(), file.get_true_df(), file.get_pred_df(), file.protected_attributes)
+        self.metrics = ImplBiasMetrics(file.get_df(), file.get_true_df(), file.get_pred_df(), file.protected_attributes)
 
     def tearDown(self):
         self.test_parquet.destroy_parquet()

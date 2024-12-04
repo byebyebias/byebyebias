@@ -1,7 +1,7 @@
 from django.test import TestCase
 from unittest.mock import MagicMock, patch
 
-from backend.core.entities.file_converter import FileConverter
+from backend.core.adapters.impl_file_converter import ImplFileConverter
 from backend.core.use_cases.convert_file_interactor import ConvertFileInteractor
 from backend.tests.create_test_parquet import CreateTestParquet
 import pandas as pd
@@ -12,8 +12,8 @@ class TestConvertFileInteractor(TestCase):
     def setUp(self):
         self.test_parquet = CreateTestParquet()
 
-    @patch('backend.core.use_cases.convert_file_interactor.FileConverter')
-    def test_convert(self, MockFileConverter):
+    @patch('backend.core.infrastructure.factories.abstract_factories.FileConverterFactory.create')
+    def test_convert(self, MockFileConverterCreate):
         mock_file_converter_instance = MagicMock()
 
         mock_file_converter_instance.get_true_df.return_value = pd.DataFrame({"is_fraud": []})
@@ -21,7 +21,7 @@ class TestConvertFileInteractor(TestCase):
         mock_file_converter_instance.get_df.return_value = pd.DataFrame({"is_fraud": [], "predicted_fraud": []})
         mock_file_converter_instance.get_privileged_groups.return_value = "Privileged Groups"
 
-        MockFileConverter.return_value = mock_file_converter_instance
+        MockFileConverterCreate.return_value = mock_file_converter_instance
 
         interactor_instance = ConvertFileInteractor()
         result = interactor_instance.convert(self.test_parquet.parquet_file_path, protected_attributes=["sender_gender", "sender_race"])

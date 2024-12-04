@@ -52,4 +52,5 @@ The application then:
 Thank you to the University of Toronto's Focus in Technology Leadership teaching assistants and professors, as well as CashApp for making this all possible!
 
 ## License 
-This project is licensed under the MIT License. 
+This project uses AI Fairness 360 [(AIF360)](https://github.com/Trusted-AI/AIF360), an open-source library developed by IBM for detecting and mitigating bias in machine learning models. AIF360 is distributed under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0).
+

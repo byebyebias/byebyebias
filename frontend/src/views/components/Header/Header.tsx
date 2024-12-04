@@ -1,12 +1,12 @@
-import React from 'react';
-import Logo from "../../assets/CashAppLogo.png"; 
-import './Header.css'; 
+import React from "react";
+import Logo from "../../assets/CashAppLogo.png";
+import "./Header.css";
 
 const Header: React.FC = () => {
   return (
     <header className="header">
       <div className="logo">
-        <img src={Logo} alt="Logo" />
+        <img src={Logo} alt="Logo" role="presentation"/>
       </div>
       <nav>
         <ul>

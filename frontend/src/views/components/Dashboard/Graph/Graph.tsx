@@ -1,44 +1,45 @@
 import {
-  Card,
-  CardContent,
-  Typography,
-  Modal,
-  Box,
-  IconButton,
-  Link,
+	Card,
+	CardContent,
+	Typography,
+	Modal,
+	Box,
+	IconButton,
+	Link,
 } from "@mui/material";
 import BarChart from "../BarChart/BarChart";
 import { useState } from "react";
 import CloseIcon from "@mui/icons-material/Close";
 import OpenInFullIcon from "@mui/icons-material/OpenInFull";
+import InfoButton from "../InfoButton/InfoButton";
 
 interface GraphProps {
-  title: string;
-  values: {
-    protected_attribute: string;
-    score: number;
-  }[];
-  description?: string; // Description for the graph
-  link?: string; // Link to AIF Docs for specific stat
+	title: string;
+	values: {
+		protected_attribute: string;
+		score: number;
+	}[];
+	description?: string; // Description for the graph
+	link?: string; // Link to AIF Docs for specific stat
 }
 
 export const Graph: React.FC<GraphProps> = ({
-  title,
-  values,
-  description,
-  link,
+	title,
+	values,
+	description,
+	link,
 }) => {
-  const [open, setOpen] = useState(false);
+	const [open, setOpen] = useState(false);
 
-  const handleOpen = () => {
-    setOpen(true);
-    console.log("modal has been opened");
-  };
+	const handleOpen = () => {
+		setOpen(true);
+		console.log("modal has been opened");
+	};
 
-  const handleClose = () => {
-    setOpen(false);
-    console.log("modal has been closed");
-  };
+	const handleClose = () => {
+		setOpen(false);
+		console.log("modal has been closed");
+	};
 
   return (
     <>
@@ -59,7 +60,7 @@ export const Graph: React.FC<GraphProps> = ({
           <Typography
             style={{
               textAlign: "left",
-              paddingLeft: "30px",
+              paddingLeft: "20px",
               paddingTop: "30px",
               fontFamily: "Montserrat",
               fontSize: "20px",
@@ -70,11 +71,7 @@ export const Graph: React.FC<GraphProps> = ({
             {title}
           </Typography>
           <BarChart data={values} height="350px" width="100%" />
-          <IconButton
-            tabIndex={0}
-            aria-label="enlarge graph"
-            onClick={handleOpen}
-          >
+          <IconButton aria-label="enlarge graph" onClick={handleOpen}>
             <OpenInFullIcon />
           </IconButton>
         </CardContent>
@@ -84,7 +81,6 @@ export const Graph: React.FC<GraphProps> = ({
         <Box
           p={6}
           aria-label={`Enlarged version of the ${title} graph`}
-          tabIndex={0}
           sx={{
             display: "flex",
             justifyContent: "center",
@@ -101,7 +97,6 @@ export const Graph: React.FC<GraphProps> = ({
         >
           <Card
             component="div"
-            tabIndex={0}
             sx={{
               position: "relative",
               width: "90%",
@@ -132,73 +127,79 @@ export const Graph: React.FC<GraphProps> = ({
               </CardContent>
             </Box>
 
-            {/* Description Section */}
-            <Box
-              sx={{
-                flex: 0.5,
-                padding: "20px",
-                borderLeft: "1px solid #ddd",
-                marginLeft: "-50px",
-                marginRight: "20px",
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
-              }}
-            >
-              <Typography
-                style={{
-                  fontFamily: "Montserrat",
-                  fontSize: "18px",
-                  fontWeight: "bold", // Bold header
-                  marginBottom: "10px",
-                  color: "#333",
-                }}
-              >
-                Description
-              </Typography>
-              <Typography
-                style={{
-                  fontFamily: "Montserrat",
-                  fontSize: "18px",
-                  lineHeight: 1.5,
-                  color: "#333",
-                }}
-              >
-                {description || "No description available for this graph."}
-              </Typography>
-              {link && (
-                <Link
-                  href={link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  sx={{
-                    marginTop: "20px",
-                    fontFamily: "Montserrat",
-                    fontSize: "16px",
-                    fontWeight: 500,
-                    color: "#007BFF",
-                    textDecoration: "underline",
-                    "&:hover": {
-                      color: "#0056b3",
-                    },
-                  }}
-                >
-                  Learn more about this on AIF360
-                </Link>
-              )}
-            </Box>
+						{/* Description Section */}
+						<Box
+							sx={{
+								flex: 0.5,
+								padding: "20px",
+								borderLeft: "1px solid #ddd",
+								marginLeft: "-50px",
+								marginRight: "20px",
+								display: "flex",
+								flexDirection: "column",
+								justifyContent: "center",
+							}}
+						>
+							<Typography
+								style={{
+									fontFamily: "Montserrat",
+									fontSize: "18px",
+									fontWeight: "bold", // Bold header
+									marginBottom: "10px",
+									color: "#333",
+								}}
+							>
+								Description
+							</Typography>
+							<Typography
+								style={{
+									fontFamily: "Montserrat",
+									fontSize: "18px",
+									lineHeight: 1.5,
+									color: "#333",
+								}}
+							>
+								{description ||
+									"No description available for this graph."}
+							</Typography>
+							{link && (
+								<Link
+									href={link}
+									target="_blank"
+									rel="noopener noreferrer"
+									sx={{
+										marginTop: "20px",
+										fontFamily: "Montserrat",
+										fontSize: "16px",
+										fontWeight: 500,
+										color: "#007BFF",
+										textDecoration: "underline",
+										"&:hover": {
+											color: "#0056b3",
+										},
+									}}
+								>
+									Learn more about this on AIF360
+								</Link>
+							)}
+						</Box>
 
-            {/* Close Button */}
-            <IconButton
-              onClick={handleClose}
-              aria-label="close popup"
-              sx={{ position: "absolute", zIndex: 1, top: 20, right: 20 }}
-            >
-              <CloseIcon />
-            </IconButton>
-          </Card>
-        </Box>
-      </Modal>
-    </>
-  );
+						{/* Close Button */}
+						<IconButton
+							onClick={handleClose}
+							aria-label="close popup"
+							sx={{
+								position: "absolute",
+								zIndex: 1,
+								top: 20,
+								right: 20,
+							}}
+						>
+							<CloseIcon />
+						</IconButton>
+					</Card>
+				</Box>
+			</Modal>
+		</>
+	);
 };

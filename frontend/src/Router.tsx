@@ -5,9 +5,7 @@ import MainPage from "./views/pages/MainPage.js";
 // Trying react router stuff here
 import DashBoardPage from "./views/pages/DashboardPage.js";
 import UploadPage from "./views/pages/UploadPage/UploadPage.js";
-import ChatbotPage from "./views/pages/ChatbotPage.js";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-
 
 const router = createBrowserRouter([
   {
@@ -22,10 +20,7 @@ const router = createBrowserRouter([
     path: "/upload",
     element: <UploadPage />,
   },
-  {
-    path: "/chatbot",
-    element: <ChatbotPage />,
-  },
+  
 ]);
 
 // React router stuff ends here
@@ -33,7 +28,7 @@ const router = createBrowserRouter([
 const rootElement = document.getElementById("root")!;
 
 createRoot(rootElement).render(
-  <StrictMode>
-    <RouterProvider router={router} />
-  </StrictMode>
+	<StrictMode>
+		<RouterProvider router={router} />
+	</StrictMode>,
 );

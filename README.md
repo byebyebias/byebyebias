@@ -26,8 +26,8 @@ We then
 
 ##  🏃 Running Our Project
 1. At the root of the project, `python manage.py runserver`
-2. Enter fronotend folder and run `npm run dev`
-3. Website will now be up and running at `http://localhost:5173/`
+2. Enter frontend folder and run `npm run dev`
+3. Website will now be up and running on your local host.
 
 ## 🖥 Tech Stack  
 - **Backend:** Django, Python

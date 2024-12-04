@@ -1,9 +1,10 @@
 import pandas
 import warnings
+from backend.core.use_cases.interfaces import FileConverter
 
 warnings.filterwarnings("ignore", category=UserWarning) # Suppress PyTorch warnings
 
-class FileConverter:
+class ImplFileConverter(FileConverter):
     
     def __init__(self, file, protected_attributes: list[str]):
         self.df = pandas.read_parquet(file)

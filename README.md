@@ -2,15 +2,26 @@
 
 [Deployed Link](https://byebyebias.netlify.app/)
 
+##  Table of Contents  
+- [Our Mission](#our-mission)
+- [Our Approach](#our-mission)
+- [Setup Local Environment](#our-mission)
+  - [Setup](#setup)
+  - [Testing](#testing)
+- [Running Our Project](#running-our-project)
+- [Tech Stack](#tech-stack)
+- [Authors and Contributors](#authors-and-contributors)
+- [License](#license)
+
 ##  🌎 Our Mission   
-Bye Bye Bias strives to spot and recommend fixes to reduce bias in AI fraud detection models, thus building trust in financial services for everyone. We believe everyone deserves fair access to financial tools, especially underrepresented communities. 
+Bye Bye Bias is an application that identifies and visualizes biases within peer-to-peer transactions datasets, in order to tackle the issue of bias in AI fraud detection models. We believe in CashApp's mission to provide fair and equal access to financial services, especially underrepresented communities, and this application aims to identify biases in datasets and convey them in a clear and informative manner that enables a cycle of efficient dataset cleaning. 
 
 ## ⭐️ Our Approach 
-With the click of a button, ML engineers can input peer-to-peer transaction datasets onto our platform.
+ML engineers can upload their peer-to-peer transaction datasets onto our platform, via local file upload or S3 bucket link, then select which protected attributes they wish to analyze.
 
-We then
-- Detect and provide visualizations to better understand biases 
-- Assign a grade from A to F
+The application then:
+- Detects and displays visualizations to better understand biases according to the protected attribute(s)
+- Assigns a grade from A to F based the results of the four fairness metrics
 
 ## 🧱 Setup Local Environment
 #### Setup
@@ -21,21 +32,21 @@ We then
 5. Set up a .env file at the root of the project to contain the secret `VITE_API_URL=http://127.0.0.1:8000`
 
 #### Testing
-- Backend: Enter backend folder and run `pytest` for test suite and `pytest --cov` for test suite + coverage
+- Backend: From root, run `DJANGO_SETTINGS_MODULE=backend.setup.settings pytest --cov=backend --cov-report=html`
 - Frontend: Enter frontend folder and run `npm run test`
 
-##  🏃 Running Our Project
+##  🏃 Running Our Project (Locally)
 1. At the root of the project, `python manage.py runserver`
 2. Enter frontend folder and run `npm run dev`
 3. Website will now be up and running on your local host.
 
 ## 🖥 Tech Stack  
 - **Backend:** Django, Python
-- **Frontend:** React, TypeScript, nivo
+- **Frontend:** React, TypeScript, Nivo, Material UI
 - **Testing:** Jest, pytest
-- **Hosting:** Heroku
+- **Hosting:** Heroku, Netlify
 
-## 💜 Contributors
+## 💜 Authors and Contributors
 **Created by:** [Leilia Ho](https://github.com/aerymist), [Michelle Huang](https://github.com/1michhu1), [Akshata Kulkarni](https://github.com/aakshataa), [Chloe Lee](https://github.com/chloehylee), [Dhairya Thakkar](https://github.com/dhairya-t), [Helen Zhao](https://github.com/1zhaohel)
 
 Thank you to the University of Toronto's Focus in Technology Leadership teaching assistants and professors, as well as CashApp for making this all possible!

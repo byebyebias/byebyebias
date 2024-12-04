@@ -11,6 +11,7 @@
 - [Running Our Project](#running-our-project)
 - [Tech Stack](#tech-stack)
 - [Authors and Contributors](#authors-and-contributors)
+- [Contributions](#contributions)
 - [License](#license)
 
 
@@ -53,6 +54,9 @@ The application then:
 **Created by:** [Leilia Ho](https://github.com/aerymist), [Michelle Huang](https://github.com/1michhu1), [Akshata Kulkarni](https://github.com/aakshataa), [Chloe Lee](https://github.com/chloehylee), [Dhairya Thakkar](https://github.com/dhairya-t), [Helen Zhao](https://github.com/1zhaohel)
 
 Thank you to the University of Toronto's Focus in Technology Leadership teaching assistants and professors, as well as CashApp for making this all possible!
+
+## Contributions
+We are currently not accepting contributions at this time.
 
 ## License 
 This project uses AI Fairness 360 [(AIF360)](https://github.com/Trusted-AI/AIF360), an open-source library developed by IBM for detecting and mitigating bias in machine learning models. AIF360 is distributed under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0).

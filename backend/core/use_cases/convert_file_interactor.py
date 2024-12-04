@@ -1,5 +1,5 @@
 from backend.core.infrastructure.factories.abstract_factories import FileConverterFactory
-from backend.core.use_cases.interfaces import FileConverter
+from backend.core.adapters.impl_file_converter import ImplFileConverter
 
 class ConvertFileInteractor:
     

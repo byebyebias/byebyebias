@@ -2,7 +2,7 @@ import os
 from unittest.mock import MagicMock
 from django.test import TestCase
 from django.core.files.storage import default_storage
-from backend.core.data_access.file_repository import FileRepository
+from backend.core.data_access.local_file_repo import LocalFileRepo
 from backend.core.use_cases.upload_file_interactor import UploadFileInteractor
 from django.core.files.uploadedfile import SimpleUploadedFile
 
@@ -27,7 +27,7 @@ class TestUploadFileInteractor(TestCase):
             content_type='application/octet-stream'
         )
 
-        self.file_repo_mock = MagicMock(spec=FileRepository)
+        self.file_repo_mock = MagicMock(spec=LocalFileRepo)
         self.file_repo_mock.save_file.return_value = ("test.parquet", "../media/test.parquet")
         self.upload_file_interactor = UploadFileInteractor(self.file_repo_mock)
     

@@ -5,12 +5,12 @@ from unittest.mock import patch
 
 from backend.tests.create_test_parquet import CreateTestParquet
 import os
-from backend.core.data_access.file_repository import FileRepository
+from backend.core.data_access.local_file_repo import LocalFileRepo
 
-# python manage.py test backend.tests.test_file_repository
+# python manage.py test backend.tests.test_local_file_repo
 # DJANGO_SETTINGS_MODULE=backend.setup.settings pytest --cov=backend --cov-report=html
 
-class TestFileRepository(TestCase):
+class TestLocalFileRepo(TestCase):
 
     def setUp(self):
         self.file = CreateTestParquet()
@@ -33,13 +33,13 @@ class TestFileRepository(TestCase):
         if default_storage.exists(self.saved_file_path):
             default_storage.delete(self.saved_file_path)
 
-    @patch('backend.core.data_access.file_repository.default_storage')
+    @patch('backend.core.data_access.local_file_repo.default_storage')
     def test_save_file(self, mock_storage):
         mock_storage.save.return_value = "test.parquet"
         mock_storage.path.return_value = "../media/test.parquet"
         mock_storage.exists.return_value = True
 
-        file_name, file_path = FileRepository().save_file(self.parquet_file)
+        file_name, file_path = LocalFileRepo().save_file(self.parquet_file)
 
         # for tearDown method
         self.saved_file_path = file_path

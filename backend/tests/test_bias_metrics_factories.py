@@ -7,7 +7,7 @@ from backend.core.use_cases.convert_file_interactor import ConvertFileInteractor
 from backend.core.use_cases.upload_file_interactor import UploadFileInteractor
 from backend.core.use_cases.process_link_interactor import ProcessLinkInteractor
 
-from backend.core.data_access.file_repository import FileRepository
+from backend.core.data_access.local_file_repo import LocalFileRepo
 
 from backend.core.interface.controllers.bias_metrics_controller import BiasMetricsController
 

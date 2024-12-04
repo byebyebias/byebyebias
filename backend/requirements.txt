@@ -6,7 +6,7 @@ cycler==0.12.1
 dj-database-url==2.3.0
 Django==4.2.5
 django-cors-headers==3.14.0
-django-environ=24.3.1
+django-environ==24.3.1
 django-heroku==0.3.1
 djangorestframework==3.14.0
 fonttools==4.54.1

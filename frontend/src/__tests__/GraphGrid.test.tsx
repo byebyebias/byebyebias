@@ -37,6 +37,15 @@ describe('GraphGrid', () =>{
     
     });
 
+    test('test no graphInfo', () => {
+        render(
+            <ThemeProvider theme={theme}>
+                <GraphGrid graphsInfo={undefined}/>
+            </ThemeProvider>
+        )
+        expect(screen.getByText("No data available")).toBeInTheDocument()
+    })
+
     }
     
 );

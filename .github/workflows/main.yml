@@ -42,6 +42,9 @@ jobs:
         working-directory: backend
         run: |
           pytest tests/
+        env:
+          SECRET_KEY: ${{ secrets.SECRET_KEY }}
+          BACKEND_API_URL: ${{ secrets.BACKEND_API_URL }}
 
   frontend-tests:
     needs: setup

@@ -13,6 +13,9 @@
 - [Authors and Contributors](#authors-and-contributors)
 - [License](#license)
 
+
+![UI](https://github.com/user-attachments/assets/91d3b6d5-fa1a-4718-9da4-9805b9b51b53)
+
 ##  Our Mission   
 Bye Bye Bias is an application that identifies and visualizes biases within peer-to-peer transactions datasets, in order to tackle the issue of bias in AI fraud detection models. We believe in CashApp's mission to provide fair and equal access to financial services, especially underrepresented communities, and this application aims to identify biases in datasets and convey them in a clear and informative manner that enables a cycle of efficient dataset cleaning. 
 
@@ -52,4 +55,5 @@ The application then:
 Thank you to the University of Toronto's Focus in Technology Leadership teaching assistants and professors, as well as CashApp for making this all possible!
 
 ## License 
-This project is licensed under the MIT License. 
+This project uses AI Fairness 360 [(AIF360)](https://github.com/Trusted-AI/AIF360), an open-source library developed by IBM for detecting and mitigating bias in machine learning models. AIF360 is distributed under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0).
+
